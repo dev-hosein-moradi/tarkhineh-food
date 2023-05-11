@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+::-webkit-scrollbar {
+    width: 0;
+}
+
+body {
+    scroll-behavior: smooth;
+}
+
+@font-face {
+    font-family: 'estedad';
+    src: url(assets/font/Estedad-v7.3/ttf/Estedad-ExtraLight.ttf);
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: 'estedad';
+    src: url(assets/font/Estedad-v7.3/ttf/Estedad-Thin.ttf);
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: 'estedad';
+    src: url(assets/font/Estedad-v7.3/ttf/Estedad-Light.ttf);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'estedad';
+    src: url(assets/font/Estedad-v7.3/ttf/Estedad-Regular.ttf);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'estedad';
+    src: url(assets/font/Estedad-v7.3/ttf/Estedad-Medium.ttf);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'estedad';
+    src: url(assets/font/Estedad-v7.3/ttf/Estedad-SemiBold.ttf);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: 'estedad';
+    src: url(assets/font/Estedad-v7.3/ttf/Estedad-Bold.ttf);
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'estedad';
+    src: url(assets/font/Estedad-v7.3/ttf/Estedad-ExtraBold.ttf);
+    font-weight: 800;
+}
+
+@font-face {
+    font-family: 'estedad';
+    src: url(assets/font/Estedad-v7.3/ttf/Estedad-Black.ttf);
+    font-weight: 900;
+}
+
+@font-face {
+    font-family: 'estedad-fd-bold';
+    src: url(assets/font/Estedad-v7.3/ttf/FD/Estedad-FD-Bold.ttf);
+}
