@@ -4,8 +4,9 @@ import SvgMenu from "../assets/svg/SvgMenu";
 import SvgUser from "../assets/svg/SvgUser";
 import SvgArrowDown from "../assets/svg/SvgArrowDown";
 import SvgShoppingCart from "../assets/svg/SvgShoppingCart";
-import LogoSm from "../assets/image/Logo-sm.png";
-import LogoLg from "../assets/image/Logo-lg.png";
+// import LogoSm from "../assets/image/Logo-sm.png";
+// import LogoLg from "../assets/image/Logo-lg.png";
+import Logo from "../assets/image/Logo.svg";
 import ekbatan from "../assets/image/agency/ekbatan.png";
 import chalus from "../assets/image/agency/chalus.png";
 import vanak from "../assets/image/agency/vanak.png";
@@ -26,8 +27,7 @@ const Navbar = () => {
       </button>
 
       {/* logo */}
-      <img className="md:hidden" alt="logo" src={LogoSm} />
-      <img className="hidden md:flex" alt="logo" src={LogoLg} />
+      <img className="md:hidden w-[120px] h-[35px]" alt="logo" src={Logo} />
 
       {/* navbar item list for desktop size */}
       <div className="hidden md:flex">
