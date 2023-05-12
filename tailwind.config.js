@@ -59,7 +59,12 @@ export default {
         "content-card-shadow":
           "0px 42px 17px rgba(0, 0, 0, 0.01), 0px 24px 14px rgba(0, 0, 0, 0.05), 0px 11px 11px rgba(0, 0, 0, 0.09), 0px 3px 6px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1)",
       },
+      backgroundImage: {
+        "hero-slider":
+          "linear-gradient(0deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), linear-gradient(0deg, rgba(33, 64, 43, 0.5), rgba(33, 64, 43, 0.5)), url(/src/assets/image/slider.jpg)",
+      },
     },
+    
   },
   plugins: [],
 };

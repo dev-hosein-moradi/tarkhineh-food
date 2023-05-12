@@ -66,6 +66,9 @@ body {
 }
 
 @font-face {
-    font-family: 'estedad-fd-bold';
+    font-family: 'estedad-fd';
     src: url(assets/font/Estedad-v7.3/ttf/FD/Estedad-FD-Bold.ttf);
+    font-weight: 700;
 }
+
+@layer components {}
