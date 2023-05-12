@@ -34,15 +34,15 @@ const Navbar = () => {
       {/* navbar item list for desktop size */}
       <div className="hidden md:flex">
         <ul className="flex flex-row-reverse">
-          <li className="mx-1 px-1 cursor-pointer hover:text-Primary text-gray-7 font-bold border-b-white border-b-2 py-1 hover:border-Primary duration-75 ease-out">
+          <li className="lg:mx-1 px-1 cursor-pointer hover:text-Primary text-gray-7 lg:font-bold border-b-white border-b-2 py-1 hover:border-Primary duration-75 ease-out">
             صحفه اصلی
           </li>
 
-          <span className="mx-1 px-1 cursor-pointer hover:text-Primary text-gray-7 font-bold group relative">
+          <span className="lg:mx-1 px-1 cursor-pointer hover:text-Primary text-gray-7 lg:font-bold group relative">
             <p className="flex flex-row items-center border-b-white border-b-2 py-1 hover:border-Primary duration-75 ease-out">
               <SvgArrowDown width={16} height={16} /> شعبه
             </p>
-            <ul className="flex-col text-right bg-gray-1 rounded-md shadow-shadow-2 hidden group-hover:flex absolute -right-10 h-[400px] w-[400px] p-2">
+            <ul className="flex-col text-right bg-gray-1 rounded-md shadow-shadow-2 hidden group-hover:flex absolute -right-10 h-[400px] w-[400px] p-2 z-10">
               <li className="flex flex-row-reverse my-2">
                 <img
                   className="rounded-md object-cover w-[100px] h-[80px]"
@@ -106,21 +106,21 @@ const Navbar = () => {
             </ul>
           </span>
 
-          <span className="mx-1 px-1 cursor-pointer hover:text-Primary text-gray-7 font-bold">
+          <span className="lg:mx-1 px-1 cursor-pointer hover:text-Primary text-gray-7 lg:font-bold">
             <p className="flex flex-row items-center border-b-white border-b-2 py-1 hover:border-Primary duration-75 ease-out">
               <SvgArrowDown width={16} height={16} /> منو
             </p>
           </span>
 
-          <li className="mx-1 px-1 cursor-pointer hover:text-Primary text-gray-7 font-bold border-b-white border-b-2 py-1 hover:border-Primary duration-75 ease-out">
+          <li className="lg:mx-1 px-1 cursor-pointer hover:text-Primary text-gray-7 lg:font-bold border-b-white border-b-2 py-1 hover:border-Primary duration-75 ease-out">
             اعطای نمایندگی
           </li>
 
-          <li className="mx-1 px-1 cursor-pointer hover:text-Primary text-gray-7 font-bold border-b-white border-b-2 py-1 hover:border-Primary duration-75 ease-out">
+          <li className="lg:mx-1 px-1 cursor-pointer hover:text-Primary text-gray-7 lg:font-bold border-b-white border-b-2 py-1 hover:border-Primary duration-75 ease-out">
             درباره ما
           </li>
 
-          <li className="mx-1 px-1 cursor-pointer hover:text-Primary text-gray-7 font-bold border-b-white border-b-2 py-1 hover:border-Primary duration-75 ease-out">
+          <li className="lg:mx-1 px-1 cursor-pointer hover:text-Primary text-gray-7 lg:font-bold border-b-white border-b-2 py-1 hover:border-Primary duration-75 ease-out">
             تماس با ما
           </li>
         </ul>
@@ -166,14 +166,14 @@ const Navbar = () => {
                 : "h-[0px] opacity-0"
             } overflow-y-auto snap-y snap-mandatory`}
           >
-            <li className="bg-tint-1 px-3 py-2 rounded-md my-1">
+            <li className="bg-tint-1 px-3 py-2 rounded-md my-1 h-[85px]">
               <h3 className="text-lg font-medium">اکباتان</h3>
               <p className="text-sm font-normal">
                 شهرک اکباتان، فاز ۳، مجتمع تجاری کوروش، طبقه سوم
               </p>
             </li>
 
-            <li className="bg-tint-1 px-3 py-2 rounded-md my-1">
+            <li className="bg-tint-1 px-3 py-2 rounded-md my-1 h-[85px]">
               <h3 className="text-lg font-medium">چالوس</h3>
               <p className="text-sm font-normal">
                 چالوس، خیابان ۱۷ شهریور، بعد کوچه کوروش، جنب داروخانه دکتر
@@ -181,14 +181,14 @@ const Navbar = () => {
               </p>
             </li>
 
-            <li className="bg-tint-1 px-3 py-2 rounded-md my-1">
+            <li className="bg-tint-1 px-3 py-2 rounded-md my-1 h-[85px]">
               <h3 className="text-lg font-medium">اقدسیه</h3>
               <p className="text-sm font-normal">
                 خیابان اقدسیه ، نرسیده به میدان خیام، پلاک ۸
               </p>
             </li>
 
-            <li className="bg-tint-1 px-3 py-2 rounded-md my-1">
+            <li className="bg-tint-1 px-3 py-2 rounded-md my-1 h-[85px]">
               <h3 className="text-lg font-medium">ونک</h3>
               <p className="text-sm font-normal">
                 میدان ونک، خیابان فردوسی، نبش کوچه نیلوفر، پلاک ۲۶
