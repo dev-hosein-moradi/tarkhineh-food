@@ -9,6 +9,7 @@ import ekbatan from "../assets/image/agency/ekbatan.png";
 import chalus from "../assets/image/agency/chalus.png";
 import vanak from "../assets/image/agency/vanak.png";
 import aghdasieh from "../assets/image/agency/aghdasieh.png";
+import SvgSearchColored from "../assets/svg/SvgSearchColored";
 
 const Navbar = () => {
   const [menuSwitcher, setMenuSwitcher] = useState(false);
@@ -128,12 +129,16 @@ const Navbar = () => {
 
       {/* user and cart button */}
       <div className="flex">
-        <button className="mr-1 p-1 bg-[#e5f2e9] rounded-[4px] md:p-2">
+        <button className="p-1 bg-[#e5f2e9] rounded-[4px] md:p-2">
           <SvgUser width={24} height={24} />
         </button>
 
-        <button className="p-1 bg-[#e5f2e9] rounded-[4px] md:p-2">
+        <button className="mx-1 p-1 bg-[#e5f2e9] rounded-[4px] md:p-2">
           <SvgShoppingCart width={24} height={24} />
+        </button>
+
+        <button className="p-1 bg-[#e5f2e9] rounded-[4px] md:p-2">
+          <SvgSearchColored width={24} height={24} />
         </button>
       </div>
 
