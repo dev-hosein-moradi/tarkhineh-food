@@ -71,4 +71,8 @@ body {
     font-weight: 700;
 }
 
-@layer components {}
+@layer components {
+    .rtl-grid {
+        direction: rtl;
+    }
+}
