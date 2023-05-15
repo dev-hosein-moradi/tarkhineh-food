@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import FoodsCategory from "../components/FoodsCategory";
 import QuickAbout from "../components/QuickAbout";
+import Agencies from "../components/Agencies";
 // import Slider from "../assets/image/slider.jpg";
 
 const Main = () => {
@@ -25,6 +26,11 @@ const Main = () => {
       {/* quick summery about us */}
       <section className="w-full bg-summery-img bg-fixed bg-blend-darken bg-no-repeat bg-cover bg-center">
         <QuickAbout />
+      </section>
+
+      {/* Agencies introduce section */}
+      <section className="bg-white w-full">
+        <Agencies />
       </section>
     </div>
   );

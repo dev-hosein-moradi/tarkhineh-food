@@ -137,7 +137,7 @@ const Navbar = () => {
           <SvgShoppingCart width={24} height={24} />
         </button>
 
-        <button className="p-1 bg-[#e5f2e9] rounded-[4px] md:p-2 hidden md:flex">
+        <button className="p-1 bg-[#e5f2e9] rounded-[4px] md:p-2 hidden lg:flex">
           <SvgSearchColored width={24} height={24} />
         </button>
       </div>
