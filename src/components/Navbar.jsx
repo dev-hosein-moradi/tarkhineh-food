@@ -6,7 +6,7 @@ import SvgArrowDown from "../assets/svg/SvgArrowDown";
 import SvgShoppingCart from "../assets/svg/SvgShoppingCart";
 import Logo from "../assets/image/Logo.svg";
 import ekbatan from "../assets/image/agency/ekbatan.png";
-import chalus from "../assets/image/agency/chalus.png";
+import chalus from "../assets/image/agency/chalus.jpg";
 import vanak from "../assets/image/agency/vanak.png";
 import aghdasieh from "../assets/image/agency/aghdasieh.png";
 import SvgSearchColored from "../assets/svg/SvgSearchColored";
