@@ -1,0 +1,54 @@
+// eslint-disable-next-line no-unused-vars
+import React from "react";
+import SvgUserSolid from "../assets/svg/SvgUserSolid";
+import SvgDiagram from "../assets/svg/SvgDiagram";
+import SvgHomeWifi from "../assets/svg/SvgHomeWifi";
+import SvgMenuBoard from "../assets/svg/SvgMenuBoard";
+
+const QuickAbout = () => {
+  return (
+    <div className="w-full h-[400px] py-[16px] px-[20px]">
+      <div className="text-white text-right flex flex-col">
+        <h2 className="font-normal text-xl mb-4">
+          رستوران‌های زنجیره‌ای ترخینه
+        </h2>
+
+        <p className="font-normal text-[12px] sm:text-[15px] leading-5 break-normal">
+          مهمان‌نوازی یکی از مهم‌ترین مشخصه‌های ایرانیان است و باعث افتخار ماست
+          که بیش از 20 سال است خدمت‌گزار مردم شریف ایران هستیم. ما در
+          رستوران‌های زنجیره‌ای ترخینه همواره تلاش کردیم که در محیطی اصیل بر
+          پایه معماری و طراحی مدرن در کنار طبیعتی دلنواز، غذایی سالم و درخورشان
+          شما عزیزان ارائه دهیم
+        </p>
+
+        <button className="border-[1px] border-white w-[150px] h-[35px] font-normal text-[14px] rounded-md mt-4 ">
+          اطلاعات بیشتر
+        </button>
+      </div>
+
+      <div className="flex flex-row-reverse justify-center items-center flex-wrap mt-4">
+        <span className="text-white mx-1 my-2 w-[160px] h-[60px] text-center flex flex-col-reverse items-center  ">
+          <p>پرسنلی مجرب و حرفه‌ای</p>
+          <SvgUserSolid width={24} height={24} />
+        </span>
+
+        <span className="text-white mx-1 my-2 w-[160px] h-[60px] text-center flex flex-col-reverse items-center  ">
+          <p>کیفیت بالای غذاها</p>
+          <SvgDiagram width={24} height={24} />
+        </span>
+
+        <span className="text-white mx-1 my-2 w-[160px] h-[60px] text-center flex flex-col-reverse items-center  ">
+          <p>محیطی دلنشین و آرام</p>
+          <SvgHomeWifi width={24} height={24} />
+        </span>
+
+        <span className="text-white mx-1 my-2 w-[160px] h-[60px] text-center flex flex-col-reverse items-center  ">
+          <p>منوی متنوع</p>
+          <SvgMenuBoard width={24} height={24} />
+        </span>
+      </div>
+    </div>
+  );
+};
+
+export default QuickAbout;

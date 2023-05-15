@@ -2,7 +2,8 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
-import FoodsList from "../components/FoodsList";
+import FoodsCategory from "../components/FoodsCategory";
+import QuickAbout from "../components/QuickAbout";
 // import Slider from "../assets/image/slider.jpg";
 
 const Main = () => {
@@ -18,7 +19,12 @@ const Main = () => {
 
       {/* food lists */}
       <section className="w-full bg-white">
-        <FoodsList />
+        <FoodsCategory />
+      </section>
+
+      {/* quick summery about us */}
+      <section className="w-full bg-summery-img bg-blend-darken bg-no-repeat bg-cover bg-center">
+        <QuickAbout />
       </section>
     </div>
   );
