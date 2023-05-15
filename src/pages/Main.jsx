@@ -23,7 +23,7 @@ const Main = () => {
       </section>
 
       {/* quick summery about us */}
-      <section className="w-full bg-summery-img bg-blend-darken bg-no-repeat bg-cover bg-center">
+      <section className="w-full bg-summery-img bg-fixed bg-blend-darken bg-no-repeat bg-cover bg-center">
         <QuickAbout />
       </section>
     </div>
