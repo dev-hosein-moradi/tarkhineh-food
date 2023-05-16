@@ -1,6 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import React from "react";
-import Navbar from "../components/Navbar";
+import React, { useState } from "react";
 import Hero from "../components/Hero";
 import FoodsCategory from "../components/FoodsCategory";
 import QuickAbout from "../components/QuickAbout";
@@ -11,7 +10,6 @@ import Footer from "../components/Footer";
 const Main = () => {
   return (
     <div>
-      <Navbar />
       {/* hero */}
       <section
         className={`w-full h-[220px] md:h-[260px] lg:h-[336px] bg-hero-slider bg-blend-darken bg-no-repeat bg-cover bg-center flex flex-col items-center justify-center text-white relative`}
