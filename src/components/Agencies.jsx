@@ -65,7 +65,7 @@ const Agencies = () => {
               </p>
             </span>
 
-            <button className="w-[128px] h-[35px] text-shade-2 border-[1px] border-shade-2 rounded-md opacity-0 group-hover:opacity-100 ease-in-out duration-500 mx-auto mt-1  ">
+            <button className=" hidden lg:inline-block w-[128px] h-[35px] text-shade-2 border-[1px] border-shade-2 rounded-md opacity-0 group-hover:opacity-100 ease-in-out duration-500 mx-auto mt-1  ">
               {"<"} صفحه شعبه
             </button>
           </div>
