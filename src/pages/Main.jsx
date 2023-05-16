@@ -5,6 +5,7 @@ import Hero from "../components/Hero";
 import FoodsCategory from "../components/FoodsCategory";
 import QuickAbout from "../components/QuickAbout";
 import Agencies from "../components/Agencies";
+import Footer from "../components/Footer";
 // import Slider from "../assets/image/slider.jpg";
 
 const Main = () => {
@@ -31,6 +32,11 @@ const Main = () => {
       {/* Agencies introduce section */}
       <section className="bg-white w-full">
         <Agencies />
+      </section>
+
+      {/* footer section */}
+      <section className="w-full bg-footer-img bg-blend-darken bg-no-repeat bg-cover bg-center">
+        <Footer />
       </section>
     </div>
   );
