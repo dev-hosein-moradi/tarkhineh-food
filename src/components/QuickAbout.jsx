@@ -27,22 +27,22 @@ const QuickAbout = () => {
       </div>
 
       <div className="flex flex-row-reverse justify-center items-center flex-wrap mt-4 md:w-[50%] lg:justify-end">
-        <span className="text-white mx-1 my-2 w-[140px] h-[60px] text-center flex flex-col-reverse items-center  ">
+        <span className="text-white mx-1 my-2 w-[140px] lg:w-[160px] h-[60px] text-center flex flex-col-reverse items-center  ">
           <p className="font-normal text-[13px] mt-1 ">پرسنلی مجرب و حرفه‌ای</p>
           <SvgUserSolid width={24} height={24} />
         </span>
 
-        <span className="text-white mx-1 my-2 w-[140px] h-[60px] text-center flex flex-col-reverse items-center  ">
+        <span className="text-white mx-1 my-2 w-[140px] lg:w-[160px] h-[60px] text-center flex flex-col-reverse items-center  ">
           <p className="font-normal text-[13px] mt-1 ">کیفیت بالای غذاها</p>
           <SvgDiagram width={24} height={24} />
         </span>
 
-        <span className="text-white mx-1 my-2 w-[140px] h-[60px] text-center flex flex-col-reverse items-center  ">
+        <span className="text-white mx-1 my-2 w-[140px] lg:w-[160px] h-[60px] text-center flex flex-col-reverse items-center  ">
           <p className="font-normal text-[13px] mt-1 ">محیطی دلنشین و آرام</p>
           <SvgHomeWifi width={24} height={24} />
         </span>
 
-        <span className="text-white mx-1 my-2 w-[140px] h-[60px] text-center flex flex-col-reverse items-center  ">
+        <span className="text-white mx-1 my-2 w-[140px] lg:w-[160px] h-[60px] text-center flex flex-col-reverse items-center  ">
           <p className="font-normal text-[13px] mt-1 ">منوی متنوع</p>
           <SvgMenuBoard width={24} height={24} />
         </span>

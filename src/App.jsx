@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar";
 
 const App = () => {
   const [menuSwitcher, setMenuSwitcher] = useState(false);
-  const [searchPop, setSearchPop] = useState(false);
+  const [searchPop, setSearchPop] = useState(true);
   return (
     <div className="font-estedad">
       <Navbar
@@ -14,7 +14,7 @@ const App = () => {
         searchPop={searchPop}
         setSearchPop={setSearchPop}
       />
-      <Main />
+      <Main searchPop={searchPop} setSearchPop={setSearchPop} />
     </div>
   );
 };

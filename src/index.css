@@ -80,4 +80,13 @@ body {
         transform: translateX(-4px);
         transition: .3s all ease-in-out;
     }
+
+    .search-popup {
+        left: calc(50% - 600px/2);
+    }
+
+    .dark-bg-popups {
+        opacity: .09;
+        pointer-events: none;
+    }
 }
