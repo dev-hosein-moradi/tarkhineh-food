@@ -85,6 +85,14 @@ body {
         left: calc(50% - 600px/2);
     }
 
+    .branch-popup-small{
+        left: calc(50% - 320px/2);
+    }
+
+    .branch-popup-large{
+        left: calc(50% - 808px/2);
+    }
+
     .dark-bg-popups {
         opacity: 1;
         pointer-events: none;

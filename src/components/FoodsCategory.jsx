@@ -13,7 +13,8 @@ const foodCategory = [
   { id: 1004, name: "نوشیدنی", imageSrc: Categ4 },
 ];
 
-const FoodsCategory = () => {
+// eslint-disable-next-line no-unused-vars, react/prop-types
+const FoodsCategory = ({ handleDisplayBranchPop }) => {
   return (
     <div className="w-full max-w-[1024px] mx-auto py-5 flex flex-col items-center">
       {/* search bar */}
@@ -45,7 +46,10 @@ const FoodsCategory = () => {
               alt="categ"
               src={cat?.imageSrc}
             />
-            <button className="absolute -bottom-4 mx-[20%] lg:mx-[16%] bg-Primary text-white w-[90px] lg:w-[155px] h-[32px] lg:h-[48px] rounded-[4px] shadow-card-shadow font-normal text-[14px] lg:text-[20px]">
+            <button
+              onClick={() => handleDisplayBranchPop(true)}
+              className="absolute -bottom-4 mx-[20%] lg:mx-[16%] bg-Primary text-white w-[90px] lg:w-[155px] h-[32px] lg:h-[48px] rounded-[4px] shadow-card-shadow font-normal text-[14px] lg:text-[20px]"
+            >
               {cat?.name}
             </button>
           </div>

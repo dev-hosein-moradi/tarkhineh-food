@@ -15,13 +15,13 @@ const SearchPopUp = ({ handleDisplaySearchPop }) => {
         >
           <SvgCloseSolid width={40} height={40} />
         </span>
-        <h2 className="w-[80%] text-center font-semibold text-xl text-gray-8">
+        <h2 className="w-[100%] text-center font-semibold text-xl text-gray-8">
           جستجو
         </h2>
       </div>
 
       <div className="flex flex-col items-center justify-center w-full h-[169px] bg-white py-3 rounded-b-md">
-        <p className="py-3 font-normal text-base text-gray-8">
+        <p className="py-3 font-normal text-base lg:text-lg text-gray-8">
           لطفا متن خود را تایپ و سپس دکمه اینتر را بزنید
         </p>
         {/* search bar */}
