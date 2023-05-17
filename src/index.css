@@ -86,7 +86,9 @@ body {
     }
 
     .dark-bg-popups {
-        opacity: .09;
+        opacity: 1;
         pointer-events: none;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+        filter: blur(3px);
     }
 }

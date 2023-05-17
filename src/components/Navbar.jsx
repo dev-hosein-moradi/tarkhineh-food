@@ -19,9 +19,7 @@ const Navbar = ({ menuSwitcher, setMenuSwitcher, searchPop, setSearchPop }) => {
 
   return (
     <div
-      className={`font-estedad flex flex-row-reverse items-center justify-between py-[16px] px-[20px] relative max-w-[1024px] mx-auto ${
-        searchPop && "dark-bg-popups"
-      }`}
+      className={`font-estedad flex flex-row-reverse items-center justify-between py-[16px] px-[20px] relative max-w-[1024px] mx-auto`}
     >
       {/* navbar container */}
       <button

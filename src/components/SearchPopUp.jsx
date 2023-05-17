@@ -3,12 +3,16 @@ import React from "react";
 import SvgCloseSolid from "../assets/svg/SvgCloseSolid";
 import SvgSearch from "../assets/svg/SvgSearch";
 
-const SearchPopUp = () => {
+// eslint-disable-next-line react/prop-types
+const SearchPopUp = ({ handleDisplaySearchPop }) => {
   return (
     <div className="flex flex-col items-center w-full">
       {/* header */}
       <div className="bg-gray-3 flex flex-row items-center w-full h-[84px] px-4 py-1 rounded-t-md">
-        <span className="cursor-pointer">
+        <span
+          className="cursor-pointer"
+          onClick={() => handleDisplaySearchPop()}
+        >
           <SvgCloseSolid width={40} height={40} />
         </span>
         <h2 className="w-[80%] text-center font-semibold text-xl text-gray-8">

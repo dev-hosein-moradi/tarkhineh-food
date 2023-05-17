@@ -5,15 +5,18 @@ import Navbar from "./components/Navbar";
 
 const App = () => {
   const [menuSwitcher, setMenuSwitcher] = useState(false);
-  const [searchPop, setSearchPop] = useState(true);
+  const [searchPop, setSearchPop] = useState(false);
   return (
     <div className="font-estedad">
-      <Navbar
-        menuSwitcher={menuSwitcher}
-        setMenuSwitcher={setMenuSwitcher}
-        searchPop={searchPop}
-        setSearchPop={setSearchPop}
-      />
+      <section className={`${searchPop && "dark-bg-popups"}`}>
+        <Navbar
+          menuSwitcher={menuSwitcher}
+          setMenuSwitcher={setMenuSwitcher}
+          searchPop={searchPop}
+          setSearchPop={setSearchPop}
+        />
+      </section>
+
       <Main searchPop={searchPop} setSearchPop={setSearchPop} />
     </div>
   );
