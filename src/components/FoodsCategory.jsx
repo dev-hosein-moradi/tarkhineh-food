@@ -16,67 +16,54 @@ const foodCategory = [
 
 // eslint-disable-next-line no-unused-vars, react/prop-types
 const FoodsCategory = ({ handleDisplayBranchPop }) => {
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const [cardOffset1, setCardOffset1] = useState(0);
-  const [cardOffset2, setCardOffset2] = useState(0);
-  const [cardOffset3, setCardOffset3] = useState(0);
-  const [cardOffset4, setCardOffset4] = useState(0);
-  /* get offsetTop of components */
   useEffect(() => {
-    const categoryCard1 = document
-      .querySelector(".category-card1")
-      .getBoundingClientRect().top;
-    categoryCard1 && setCardOffset1(categoryCard1);
+    /* get  all element with this class */
+    const scrollElements = document.querySelectorAll(".category-card");
 
-    const categoryCard2 = document
-      .querySelector(".category-card2")
-      .getBoundingClientRect().top;
-    categoryCard2 && setCardOffset2(categoryCard2);
+    /* check when element in to view */
+    const elementInView = (el, dividend = 1) => {
+      const elementTop = el.getBoundingClientRect().top;
 
-    const categoryCard3 = document
-      .querySelector(".category-card3")
-      .getBoundingClientRect().top;
-    categoryCard3 && setCardOffset3(categoryCard2);
-
-    const categoryCard4 = document
-      .querySelector(".category-card4")
-      .getBoundingClientRect().top;
-    categoryCard4 && setCardOffset4(categoryCard4);
-  }, []);
-
-  const handleScroll = () => {
-    const position = window.pageYOffset;
-    setScrollPosition(position);
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
+      return (
+        elementTop <=
+        (window.innerHeight || document.documentElement.clientHeight) / dividend
+      );
     };
-  }, []);
 
-  useEffect(() => {
-    console.log(Math.floor(cardOffset1 / 111) + "card 1" + cardOffset1);
-    console.log(Math.floor(cardOffset2 / 111) + "card 2" + cardOffset2);
-    console.log(Math.floor(cardOffset3 / 111) + "card 3" + cardOffset3);
-    console.log(Math.floor(cardOffset4 / 111) + "card 4" + cardOffset4);
-    console.log(scrollPosition + "offY");
-    // console.log(cardOffset - scrollPosition);
-    // if (cardOffset1 - scrollPosition === cardOffset1) {
-    //   console.log("card 1");
-    // }
-    // if (cardOffset2 - scrollPosition === cardOffset2) {
-    //   console.log("card 2");
-    // }
-    // if (cardOffset3 - scrollPosition === cardOffset3) {
-    //   console.log("card 3");
-    // }
-    // if (cardOffset4 - scrollPosition === cardOffset4) {
-    //   console.log("card 4");
-    // }
-  }, [cardOffset1, cardOffset2, cardOffset3, cardOffset4, scrollPosition]);
+    /* check when element out of view */
+    const elementOutofView = (el) => {
+      const elementTop = el.getBoundingClientRect().top;
+
+      return (
+        elementTop >
+        (window.innerHeight || document.documentElement.clientHeight)
+      );
+    };
+
+    /* add class when in view */
+    const displayScrollElement = (element) => {
+      element.classList.add("scrolled");
+    };
+
+    /* remove class when out of view */
+    const hideScrollElement = (element) => {
+      element.classList.remove("scrolled");
+    };
+
+    const handleScrollAnimation = () => {
+      scrollElements.forEach((el) => {
+        if (elementInView(el, 1.25)) {
+          displayScrollElement(el);
+        } else if (elementOutofView(el)) {
+          hideScrollElement(el);
+        }
+      });
+    };
+
+    window.addEventListener("scroll", () => {
+      handleScrollAnimation();
+    });
+  }, []);
 
   return (
     <div className="w-full max-w-[1024px] mx-auto py-5 flex flex-col items-center">
@@ -102,7 +89,7 @@ const FoodsCategory = ({ handleDisplayBranchPop }) => {
         {foodCategory?.map((cat) => (
           <div
             key={cat.id}
-            className={`category-card${cat.id} relative border-Primary border-[1px] rounded-[4px] h-[111px] lg:h-[160px] w-[162px] lg:w-[230px] mx-1 sm:mx-2 my-12 lg:my-20 hover:shadow-card-shadow ease-out duration-75`}
+            className={`category-card relative border-Primary border-[1px] rounded-[4px] h-[111px] lg:h-[160px] w-[162px] lg:w-[230px] mx-1 sm:mx-2 my-12 lg:my-20 hover:shadow-card-shadow ease-out duration-75`}
           >
             <img
               className="object-cover absolute -top-14 lg:-top-24 w-[125px] lg:w-[208px] h-[122px] lg:h-[205px] mx-[11%] lg:mx-[5%]"

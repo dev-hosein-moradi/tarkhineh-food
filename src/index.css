@@ -241,4 +241,34 @@ body {
     .loader-square:nth-of-type(7) {
         animation-delay: -10s;
     }
+
+    .category-card {
+        opacity: 0;
+        transition: opacity 500ms;
+    }
+
+    .category-card.scrolled {
+        opacity: 1;
+    }
+
+    .scrolled {
+        animation: fade-in-bottom .7s ease-in-out both;
+    }
+
+    @keyframes fade-in-bottom {
+        0% {
+            -webkit-transform: translateY(50px);
+            transform: translateY(50px);
+            opacity: 0;
+        }
+
+        100% {
+            -webkit-transform: translateY(0);
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+
+    }
+
 }
