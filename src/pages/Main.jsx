@@ -26,6 +26,8 @@ const Main = ({
   const handleDisplayBranchPop = (e) => {
     setBranchPop(e);
   };
+
+  
   return (
     <div className="relative">
       {/* hero */}
