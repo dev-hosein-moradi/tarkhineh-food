@@ -1,9 +1,9 @@
 // eslint-disable-next-line no-unused-vars
 import React, { lazy } from "react";
-import chalus from "../assets/image/agency/chalus.jpg";
-import aghdasieh from "../assets/image/agency/aghdasieh.png";
-import ekbatan from "../assets/image/agency/ekbatan.png";
-import vanak from "../assets/image/agency/vanak.png";
+import chalus from "../assets/image/agency/chalus.webp";
+import aghdasieh from "../assets/image/agency/aghdasieh.webp";
+import ekbatan from "../assets/image/agency/ekbatan.webp";
+import vanak from "../assets/image/agency/vanak.webp";
 
 const SvgCloseSolid = lazy(() => import("../assets/svg/SvgCloseSolid"));
 

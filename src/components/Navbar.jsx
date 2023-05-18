@@ -2,10 +2,10 @@
 import React, { lazy, useState } from "react";
 
 import Logo from "../assets/image/Logo.svg";
-import ekbatan from "../assets/image/agency/ekbatan.png";
-import chalus from "../assets/image/agency/chalus.jpg";
-import vanak from "../assets/image/agency/vanak.png";
-import aghdasieh from "../assets/image/agency/aghdasieh.png";
+import ekbatan from "../assets/image/agency/ekbatan.webp";
+import chalus from "../assets/image/agency/chalus.webp";
+import vanak from "../assets/image/agency/vanak.webp";
+import aghdasieh from "../assets/image/agency/aghdasieh.webp";
 
 const SvgMenu = lazy(() => import("../assets/svg/SvgMenu"));
 const SvgUser = lazy(() => import("../assets/svg/SvgUser"));

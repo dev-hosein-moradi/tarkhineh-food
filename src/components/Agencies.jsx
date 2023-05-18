@@ -1,9 +1,9 @@
 // eslint-disable-next-line no-unused-vars
-import React, { lazy } from "react";
-import chalus from "../assets/image/agency/chalus.jpg";
-import aghdasieh from "../assets/image/agency/aghdasieh.png";
-import ekbatan from "../assets/image/agency/ekbatan.png";
-import vanak from "../assets/image/agency/vanak.png";
+import React, { lazy, useEffect } from "react";
+import chalus from "../assets/image/agency/chalus.webp";
+import aghdasieh from "../assets/image/agency/aghdasieh.webp";
+import ekbatan from "../assets/image/agency/ekbatan.webp";
+import vanak from "../assets/image/agency/vanak.webp";
 
 const SvgExpand = lazy(() => import("../assets/svg/SvgExpand"));
 
@@ -36,6 +36,55 @@ const agencyData = [
 ];
 
 const Agencies = () => {
+  useEffect(() => {
+    /* get  all element with this class */
+    const scrollElements = document.querySelectorAll(".agency-card");
+
+    /* check when element in to view */
+    const elementInView = (el, dividend = 1) => {
+      const elementTop = el.getBoundingClientRect().top;
+
+      return (
+        elementTop <=
+        (window.innerHeight || document.documentElement.clientHeight) / dividend
+      );
+    };
+
+    /* check when element out of view */
+    const elementOutofView = (el) => {
+      const elementTop = el.getBoundingClientRect().top;
+
+      return (
+        elementTop >
+        (window.innerHeight || document.documentElement.clientHeight)
+      );
+    };
+
+    /* add class when in view */
+    const displayScrollElement = (element) => {
+      element.classList.add("scrolled");
+    };
+
+    /* remove class when out of view */
+    const hideScrollElement = (element) => {
+      element.classList.remove("scrolled");
+    };
+
+    const handleScrollAnimation = () => {
+      scrollElements.forEach((el) => {
+        if (elementInView(el, 1.25)) {
+          displayScrollElement(el);
+        } else if (elementOutofView(el)) {
+          hideScrollElement(el);
+        }
+      });
+    };
+
+    window.addEventListener("scroll", () => {
+      handleScrollAnimation();
+    });
+  }, []);
+
   return (
     <div className="w-full max-w-[1024px] mx-auto py-[16px] px-[20px] ">
       <h2 className="text-center font-bold text-xl lg:text-2xl my-2 lg:my-4">
@@ -46,7 +95,7 @@ const Agencies = () => {
         {agencyData?.map((agency) => (
           <div
             key={agency.id}
-            className="w-[340px] h-[102px] border-[1px] border-gray-4 hover:border-Primary rounded-md relative flex flex-row-reverse my-2 sm:mx-1 lg:flex-col lg:w-[230px] lg:h-[344px] hover:shadow-card-shadow ease-in-out duration-500 hover:translate-y-1 group  "
+            className="agency-card w-[340px] h-[102px] border-[1px] border-gray-4 hover:border-Primary rounded-md relative flex flex-row-reverse my-2 sm:mx-1 lg:flex-col lg:w-[230px] lg:h-[344px] hover:shadow-card-shadow ease-in-out duration-500 hover:translate-y-1 group  "
           >
             <img
               className="w-[160px] min-w-[160px] h-[100px] object-cover rounded-r-md lg:w-[228px] lg:h-[230px] lg:rounded-r-none lg:rounded-t-md lg:group-hover:h-[190px] ease-in-out duration-500 "

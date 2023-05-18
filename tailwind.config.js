@@ -61,11 +61,11 @@ export default {
       },
       backgroundImage: {
         "hero-slider":
-          "linear-gradient(0deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), linear-gradient(0deg, rgba(33, 64, 43, 0.5), rgba(33, 64, 43, 0.5)), url(/src/assets/image/slider.jpg)",
+          "linear-gradient(0deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), linear-gradient(0deg, rgba(33, 64, 43, 0.5), rgba(33, 64, 43, 0.5)), url(/src/assets/image/slider.webp)",
         "summery-img":
-          "linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(/src/assets/image/summery.jpg)",
+          "linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(/src/assets/image/summery.webp)",
         "footer-img":
-          "linear-gradient(0deg, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(/src/assets/image/footer.jpg)",
+          "linear-gradient(0deg, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(/src/assets/image/footer.webp)",
       },
     },
   },

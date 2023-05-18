@@ -242,12 +242,14 @@ body {
         animation-delay: -10s;
     }
 
-    .category-card {
+    .category-card,
+    .agency-card {
         opacity: 0;
         transition: opacity 500ms;
     }
 
-    .category-card.scrolled {
+    .category-card.scrolled,
+    .agency-card.scrolled {
         opacity: 1;
     }
 
