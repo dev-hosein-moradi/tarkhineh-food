@@ -1,7 +1,8 @@
 // eslint-disable-next-line no-unused-vars
-import React from "react";
-import SvgArrowLeft from "../assets/svg/SvgArrowLeft";
-import SvgArrowRight from "../assets/svg/SvgArrowRight";
+import React, { lazy } from "react";
+
+const SvgArrowLeft = lazy(() => import("../assets/svg/SvgArrowLeft"));
+const SvgArrowRight = lazy(() => import("../assets/svg/SvgArrowRight"));
 
 const Hero = () => {
   return (

@@ -1,10 +1,11 @@
 // eslint-disable-next-line no-unused-vars
-import React from "react";
-import SvgSearch from "../assets/svg/SvgSearch";
+import React, { lazy } from "react";
 import Categ1 from "../assets/image/categ1.svg";
 import Categ2 from "../assets/image/categ2.svg";
 import Categ3 from "../assets/image/categ3.svg";
 import Categ4 from "../assets/image/categ4.svg";
+
+const SvgSearch = lazy(() => import("../assets/svg/SvgSearch"));
 
 const foodCategory = [
   { id: 1001, name: "غذای اصلی", imageSrc: Categ1 },

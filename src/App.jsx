@@ -1,7 +1,8 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import Main from "./pages/Main";
 import Navbar from "./components/Navbar";
+import Loading from "./pages/Loading";
 
 const App = () => {
   const [darkEffect, setDarkEffect] = useState(false);
@@ -11,31 +12,45 @@ const App = () => {
   const [branchPop, setBranchPop] = useState(false);
 
   useEffect(() => {
-    if (!menuSwitcher && !searchPop && !branchPop) {
+    if (!searchPop && !branchPop) {
       setDarkEffect(false);
-    } else if (menuSwitcher || searchPop || branchPop) {
+    } else if (searchPop || branchPop) {
       setDarkEffect(true);
     }
   }, [branchPop, menuSwitcher, searchPop]);
+
+  /* set hidden to overflow-y body when hamberger menu is open */
+  useEffect(() => {
+    if (menuSwitcher) {
+      document.body.style.overflowY = "hidden";
+    } else {
+      document.body.style.overflowY = "auto";
+    }
+
+    return () => {};
+  }, [menuSwitcher]);
+
   return (
     <div className="font-estedad">
-      <section className={`${darkEffect && "dark-bg-popups"}`}>
-        <Navbar
-          menuSwitcher={menuSwitcher}
-          setMenuSwitcher={setMenuSwitcher}
+      <Suspense fallback={<Loading />}>
+        <section className={`${darkEffect && "dark-bg-popups"}`}>
+          <Navbar
+            menuSwitcher={menuSwitcher}
+            setMenuSwitcher={setMenuSwitcher}
+            searchPop={searchPop}
+            setSearchPop={setSearchPop}
+            darkEffect={darkEffect}
+          />
+        </section>
+
+        <Main
           searchPop={searchPop}
           setSearchPop={setSearchPop}
+          branchPop={branchPop}
+          setBranchPop={setBranchPop}
           darkEffect={darkEffect}
         />
-      </section>
-
-      <Main
-        searchPop={searchPop}
-        setSearchPop={setSearchPop}
-        branchPop={branchPop}
-        setBranchPop={setBranchPop}
-        darkEffect={darkEffect}
-      />
+      </Suspense>
     </div>
   );
 };

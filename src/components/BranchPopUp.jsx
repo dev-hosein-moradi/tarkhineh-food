@@ -1,10 +1,11 @@
 // eslint-disable-next-line no-unused-vars
-import React from "react";
-import SvgCloseSolid from "../assets/svg/SvgCloseSolid";
+import React, { lazy } from "react";
 import chalus from "../assets/image/agency/chalus.jpg";
 import aghdasieh from "../assets/image/agency/aghdasieh.png";
 import ekbatan from "../assets/image/agency/ekbatan.png";
 import vanak from "../assets/image/agency/vanak.png";
+
+const SvgCloseSolid = lazy(() => import("../assets/svg/SvgCloseSolid"));
 
 const agencyData = [
   {
@@ -67,7 +68,9 @@ const BranchPopUp = ({ handleDisplayBranchPop }) => {
                 src={agency?.imageSource}
               />
               <span className="flex flex-col items-center justify-center text-center px-1">
-                <h6 className="font-normal lg:font-medium text-sm lg:text-base ">{agency?.name}</h6>
+                <h6 className="font-normal lg:font-medium text-sm lg:text-base ">
+                  {agency?.name}
+                </h6>
                 <p className="font-normal text-xs">{agency?.address}</p>
               </span>
             </li>

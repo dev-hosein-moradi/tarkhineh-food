@@ -1,10 +1,11 @@
 // eslint-disable-next-line no-unused-vars
-import React from "react";
-import SvgExpand from "../assets/svg/SvgExpand";
+import React, { lazy } from "react";
 import chalus from "../assets/image/agency/chalus.jpg";
 import aghdasieh from "../assets/image/agency/aghdasieh.png";
 import ekbatan from "../assets/image/agency/ekbatan.png";
 import vanak from "../assets/image/agency/vanak.png";
+
+const SvgExpand = lazy(() => import("../assets/svg/SvgExpand"));
 
 const agencyData = [
   {

@@ -1,16 +1,18 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useState } from "react";
-import SvgMenu from "../assets/svg/SvgMenu";
-import SvgUser from "../assets/svg/SvgUser";
-import SvgArrowDown from "../assets/svg/SvgArrowDown";
-import SvgShoppingCart from "../assets/svg/SvgShoppingCart";
-import SvgClose from "../assets/svg/SvgClose";
+import React, { lazy, useState } from "react";
+
 import Logo from "../assets/image/Logo.svg";
 import ekbatan from "../assets/image/agency/ekbatan.png";
 import chalus from "../assets/image/agency/chalus.jpg";
 import vanak from "../assets/image/agency/vanak.png";
 import aghdasieh from "../assets/image/agency/aghdasieh.png";
-import SvgSearchColored from "../assets/svg/SvgSearchColored";
+
+const SvgMenu = lazy(() => import("../assets/svg/SvgMenu"));
+const SvgUser = lazy(() => import("../assets/svg/SvgUser"));
+const SvgArrowDown = lazy(() => import("../assets/svg/SvgArrowDown"));
+const SvgShoppingCart = lazy(() => import("../assets/svg/SvgShoppingCart"));
+const SvgClose = lazy(() => import("../assets/svg/SvgClose"));
+const SvgSearchColored = lazy(() => import("../assets/svg/SvgSearchColored"));
 
 // eslint-disable-next-line react/prop-types
 const Navbar = ({ menuSwitcher, setMenuSwitcher, searchPop, setSearchPop }) => {

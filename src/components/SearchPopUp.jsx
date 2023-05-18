@@ -1,7 +1,8 @@
 // eslint-disable-next-line no-unused-vars
-import React from "react";
-import SvgCloseSolid from "../assets/svg/SvgCloseSolid";
-import SvgSearch from "../assets/svg/SvgSearch";
+import React, { lazy } from "react";
+
+const SvgCloseSolid = lazy(() => import("../assets/svg/SvgCloseSolid"));
+const SvgSearch = lazy(() => import("../assets/svg/SvgSearch"));
 
 // eslint-disable-next-line react/prop-types
 const SearchPopUp = ({ handleDisplaySearchPop }) => {
