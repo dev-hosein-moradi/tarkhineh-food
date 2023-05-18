@@ -1,10 +1,15 @@
 // eslint-disable-next-line no-unused-vars
-import React from "react";
+import React, { useState } from "react";
 import SvgTelegram from "../assets/svg/SvgTelegram";
 import SvgInstagram from "../assets/svg/SvgInstagram";
 import SvgTwitter from "../assets/svg/SvgTwitter";
 
 const Footer = () => {
+  const [charCounter, setCharCounter] = useState(0);
+
+  const handleChangeMessage = (e) => {
+    setCharCounter(e.target.value.length);
+  };
   return (
     <div className="w-full max-w-[1024px] mx-auto h-[200px] lg:h-[270px] py-[16px] px-[20px] flex flex-row-reverse justify-between ">
       {/* links */}
@@ -86,8 +91,9 @@ const Footer = () => {
             <textarea
               className="bg-transparent w-[300px] h-[135px] text-[15px] font-normal border-[1px] border-gray-6  hover:border-gray-1 my-1 mr-2 rounded-md resize-none outline-none rtl-grid text-white px-4 py-1 focus:border-gray-1 "
               placeholder="پیام شما"
+              onChange={handleChangeMessage}
             />
-            <p className="font-thin text-xs">0/200</p>
+            <p className="font-thin text-xs">{charCounter}/200</p>
           </div>
         </div>
         <button className="border-[1px] border-gray-6 w-[183px] h-[40px] mr-auto my-2 rounded-md hover:footer-link-hover active:footer-link-hover">

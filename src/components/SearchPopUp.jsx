@@ -6,6 +6,10 @@ const SvgSearch = lazy(() => import("../assets/svg/SvgSearch"));
 
 // eslint-disable-next-line react/prop-types
 const SearchPopUp = ({ handleDisplaySearchPop }) => {
+  const handleSubmitSearch = (e) => {
+    e.preventDefault();
+    console.log("sended");
+  };
   return (
     <div className="flex flex-col items-center w-full">
       {/* header */}
@@ -27,7 +31,10 @@ const SearchPopUp = ({ handleDisplaySearchPop }) => {
         </p>
         {/* search bar */}
         <div className="w-full relative">
-          <span className="flex flex-row-reverse items-center justify-center w-[390px] h-[50px] mx-auto border-gray-4 border-[1px] rounded-[4px]">
+          <form
+            onSubmit={handleSubmitSearch}
+            className="flex flex-row-reverse items-center justify-center w-[390px] h-[50px] mx-auto border-gray-4 border-[1px] rounded-[4px]"
+          >
             <input
               className="rtl-grid w-[80%] h-full outline-none px-2 text-gray-8 font-medium text-lg"
               placeholder="جستجو"
@@ -35,7 +42,7 @@ const SearchPopUp = ({ handleDisplaySearchPop }) => {
               name="food"
             />
             <SvgSearch width={24} height={24} />
-          </span>
+          </form>
         </div>
       </div>
     </div>
