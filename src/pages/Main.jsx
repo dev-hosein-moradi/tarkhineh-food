@@ -32,7 +32,7 @@ const Main = ({
     <div className="relative">
       {/* hero */}
       <section
-        className={`w-full h-[220px] md:h-[260px] lg:h-[336px] bg-hero-slider bg-blend-darken bg-no-repeat bg-cover bg-center flex flex-col items-center justify-center text-white relative ${
+        className={`w-full h-[400px] bg-hero-slider bg-blend-darken bg-no-repeat bg-cover bg-center flex flex-col items-center justify-center text-white relative ${
           darkEffect && "dark-bg-popups"
         } ease-in-out duration-300`}
       >
