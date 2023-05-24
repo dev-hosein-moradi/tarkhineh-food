@@ -48,7 +48,6 @@ const Register = ({ handleDisplayRegisterPop }) => {
     value: "",
     isValid: null,
   });
-  //   console.log(phoneState.isValid);
 
   /* state for verification code */
   const [codeState, dispatchCode] = useReducer(CodeReducer, {
@@ -64,6 +63,9 @@ const Register = ({ handleDisplayRegisterPop }) => {
 
   /* state for status of form validation */
   const [isFormValid, setIsFormValid] = useState(false);
+
+  /* step counter for register process */
+  const [step, setStep] = useState(1);
 
   // change and validate handler for phone number input
   const phoneNumberChangeHandler = (e) => {
@@ -103,6 +105,16 @@ const Register = ({ handleDisplayRegisterPop }) => {
       clearTimeout(identifier);
     };
   }, [phoneNumberIsValid]);
+
+  /* handler for submit phone number */
+  const submitPhoneHandler = () => {
+    setStep(2);
+  };
+
+  /* handler for return to prev section */
+  const returnSectionHandler = () => {
+    setStep(1);
+  };
   return (
     <div className="p-4 flex flex-col items-center">
       {/* btn handler */}
@@ -114,7 +126,10 @@ const Register = ({ handleDisplayRegisterPop }) => {
           <SvgCloseSolid width={30} height={30} />
         </span>
 
-        <span className="w-[35px] pt-[2.5px] cursor-pointer">
+        <span
+          onClick={returnSectionHandler}
+          className="w-[35px] pt-[2.5px] cursor-pointer"
+        >
           <SvgArrowRightColor width={35} height={30} />
         </span>
       </div>
@@ -122,12 +137,16 @@ const Register = ({ handleDisplayRegisterPop }) => {
       {/* brand */}
       <img className="w-[200px] h-[60px] my-8 " alt="logo" src={Logo} />
 
-      <div className="flex flex-col items-center w-full">
+      <div
+        className={`flex flex-col items-center w-full ${
+          step === 1 ? "animate-leftToRight translate-x-[0]" : "animate-reverseLeftToRight -translate-x-[100%]"
+        }`}
+      >
         {/* title */}
         <h1 className="font-bold text-lg text-gray-8">ورود / ثبت نام</h1>
 
         {/* input box */}
-        <form className="w-full text-center my-4">
+        <div className="w-full text-center my-4">
           <h3 className="font-normal text-gray-7 text-base">
             شماره همراه خود را وارد کنید
           </h3>
@@ -154,10 +173,11 @@ const Register = ({ handleDisplayRegisterPop }) => {
             onChange={phoneNumberChangeHandler}
             onBlur={validatePhoneNumberHandler}
           />
-        </form>
+        </div>
 
         {/* btn send */}
         <button
+          onClick={submitPhoneHandler}
           className={`w-[320px] h-[40px] font-medium text-base rounded-md ease-in-out duration-300 ${
             isFormValid
               ? "text-white bg-Primary pointer-events-auto cursor-pointer shadow-shadow-2 hover:shadow-shadow-4 active:shadow-shadow-4"

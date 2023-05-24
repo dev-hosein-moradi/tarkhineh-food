@@ -67,6 +67,32 @@ export default {
         "footer-img":
           "linear-gradient(0deg, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(/src/assets/image/footer.webp)",
       },
+      keyframes: {
+        leftToRight: {
+          "0%": { transform: "translateX(-100%)", opacity: "0" },
+          "50%": { transform: "translateX(-50%)", opacity: "0" },
+          "100%": { transform: "translateX(0)", opacity: "1" },
+        },
+        reverseLeftToRight: {
+          "0%": { transform: "translateX(0)", opacity: "1" },
+          "100%": { transform: "translateX(-100%)", opacity: "0" },
+        },
+        rightToLeft: {
+          "0%": { transform: "translateX(0)", opacity: "0" },
+          "50%": { transform: "translateX(-50%)", opacity: "0" },
+          "100%": { transform: "translateX(100%)", opacity: "1" },
+        },
+        reverseRightToLaft: {
+          "0%": { transform: "translateX(0)", opacity: "1" },
+          "100%": { transform: "translateX(100%)", opacity: "0" },
+        },
+      },
+      animation: {
+        rightToLaft: "rightToLaft .5s linear 1",
+        reverseRightToLaft: "reverseRightToLaft .5s linear 1",
+        leftToRight: "leftToRight .5s linear 1",
+        reverseLeftToRight: "reverseLeftToRight .5s linear 1",
+      },
     },
   },
   plugins: [],
