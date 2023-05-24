@@ -10,25 +10,28 @@ const App = () => {
   const [menuSwitcher, setMenuSwitcher] = useState(false);
   const [searchPop, setSearchPop] = useState(false);
   const [branchPop, setBranchPop] = useState(false);
+  const [registerPop, setRegisterPop] = useState(true);
 
   useEffect(() => {
-    if (!searchPop && !branchPop) {
+    if (!searchPop && !branchPop && !registerPop) {
       setDarkEffect(false);
-    } else if (searchPop || branchPop) {
+    } else if (searchPop || branchPop || registerPop) {
       setDarkEffect(true);
     }
-  }, [branchPop, menuSwitcher, searchPop]);
+  }, [branchPop, menuSwitcher, registerPop, searchPop]);
 
   /* set hidden to overflow-y body when hamberger menu is open */
   useEffect(() => {
-    if (menuSwitcher) {
+    if (menuSwitcher || registerPop) {
       document.body.style.overflowY = "hidden";
     } else {
       document.body.style.overflowY = "auto";
     }
 
     return () => {};
-  }, [menuSwitcher]);
+  }, [menuSwitcher, registerPop]);
+
+  console.log(registerPop);
 
   return (
     <div className="font-estedad">
@@ -40,6 +43,8 @@ const App = () => {
             searchPop={searchPop}
             setSearchPop={setSearchPop}
             darkEffect={darkEffect}
+            registerPop={registerPop}
+            setRegisterPop={setRegisterPop}
           />
         </section>
 
@@ -49,6 +54,10 @@ const App = () => {
           branchPop={branchPop}
           setBranchPop={setBranchPop}
           darkEffect={darkEffect}
+          menuSwitcher={menuSwitcher}
+          setMenuSwitcher={setMenuSwitcher}
+          registerPop={registerPop}
+          setRegisterPop={setRegisterPop}
         />
       </Suspense>
     </div>

@@ -8,7 +8,6 @@ const SvgSearch = lazy(() => import("../assets/svg/SvgSearch"));
 const SearchPopUp = ({ handleDisplaySearchPop }) => {
   const handleSubmitSearch = (e) => {
     e.preventDefault();
-    console.log("sended");
   };
   return (
     <div className="flex flex-col items-center w-full">

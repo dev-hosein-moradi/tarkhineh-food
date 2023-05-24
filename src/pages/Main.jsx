@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
@@ -8,6 +9,7 @@ import Agencies from "../components/Agencies";
 import Footer from "../components/Footer";
 import SearchPopUp from "../components/SearchPopUp";
 import BranchPopUp from "../components/BranchPopUp";
+import Register from "../components/Register";
 
 // eslint-disable-next-line react/prop-types, no-unused-vars
 const Main = ({
@@ -16,6 +18,10 @@ const Main = ({
   branchPop,
   setBranchPop,
   darkEffect,
+  menuSwitcher,
+  setMenuSwitcher,
+  registerPop,
+  setRegisterPop,
 }) => {
   /* handling close and open func for search pop up */
   const handleDisplaySearchPop = () => {
@@ -27,9 +33,24 @@ const Main = ({
     setBranchPop(e);
   };
 
-  
+  /* handling close and open func for register pop up */
+  const handleDisplayRegisterPop = () => {
+    setRegisterPop(false);
+  };
+
   return (
     <div className="relative">
+      {/* register pop up section */}
+      <section
+        className={`w-[100dvw] h-[100dvh] bg-white absolute left-0 -top-[72px] z-10 ${
+          registerPop
+            ? "scale-100 opacity-100 pointer-events-auto"
+            : "scale-0 opacity-0 pointer-events-none"
+        } ease-in-out duration-300 `}
+      >
+        <Register handleDisplayRegisterPop={handleDisplayRegisterPop} />
+      </section>
+
       {/* hero */}
       <section
         className={`w-full h-[400px] bg-hero-slider bg-blend-darken bg-no-repeat bg-cover bg-center flex flex-col items-center justify-center text-white relative ${

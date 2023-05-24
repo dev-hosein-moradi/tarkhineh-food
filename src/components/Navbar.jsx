@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 // eslint-disable-next-line no-unused-vars
 import React, { lazy, useState } from "react";
 
@@ -15,7 +16,13 @@ const SvgClose = lazy(() => import("../assets/svg/SvgClose"));
 const SvgSearchColored = lazy(() => import("../assets/svg/SvgSearchColored"));
 
 // eslint-disable-next-line react/prop-types
-const Navbar = ({ menuSwitcher, setMenuSwitcher, searchPop, setSearchPop }) => {
+const Navbar = ({
+  menuSwitcher,
+  setMenuSwitcher,
+  searchPop,
+  setSearchPop,
+  setRegisterPop,
+}) => {
   const [agencySwitcher, setAgencySwitcher] = useState(false);
   const [listSwitcher, setListSwitcher] = useState(false);
 
@@ -135,17 +142,20 @@ const Navbar = ({ menuSwitcher, setMenuSwitcher, searchPop, setSearchPop }) => {
 
       {/* user and cart button */}
       <div className="flex">
-        <button className="p-1 bg-[#e5f2e9] rounded-[4px] md:p-2">
+        <button
+          onClick={() => setRegisterPop(true)}
+          className="p-1 bg-tint-1 rounded-[4px] md:p-2"
+        >
           <SvgUser width={24} height={24} />
         </button>
 
-        <button className="mx-1 p-1 bg-[#e5f2e9] rounded-[4px] md:p-2">
+        <button className="mx-1 p-1 bg-tint-1 rounded-[4px] md:p-2">
           <SvgShoppingCart width={24} height={24} />
         </button>
 
         <button
           onClick={() => setSearchPop(!searchPop)}
-          className="p-1 bg-[#e5f2e9] rounded-[4px] md:p-2 hidden lg:flex"
+          className="p-1 bg-tint-1 rounded-[4px] md:p-2 hidden lg:flex"
         >
           <SvgSearchColored width={24} height={24} />
         </button>
@@ -154,8 +164,8 @@ const Navbar = ({ menuSwitcher, setMenuSwitcher, searchPop, setSearchPop }) => {
       {/* navbar item list for mobile size */}
       <div
         className={`${
-          menuSwitcher ? "w-full opacity-100" : "w-0 opacity-0"
-        } min-h-[100vh] flex flex-col text-right bg-white absolute top-0 left-0 z-10 duration-300 ease-out md:hidden`}
+          menuSwitcher ? "w-full opacity-100 left-0" : "w-0 opacity-0 -left-12"
+        } min-h-[100vh] flex flex-col text-right bg-white absolute top-0  z-10 duration-300 ease-out md:hidden`}
       >
         <div className="flex flex-row items-center px-3 justify-between bg-hero-slider bg-blend-darken bg-no-repeat bg-cover bg-center h-[100px]">
           <img
