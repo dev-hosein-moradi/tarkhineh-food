@@ -31,8 +31,6 @@ const App = () => {
     return () => {};
   }, [menuSwitcher, registerPop]);
 
-  console.log(registerPop);
-
   return (
     <div className="font-estedad">
       <Suspense fallback={<Loading />}>

@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 // eslint-disable-next-line no-unused-vars
-import React, { lazy } from "react";
+import React, { lazy, useEffect, useReducer, useState } from "react";
 import Logo from "../assets/image/Logo.svg";
 
 const SvgCloseSolid = lazy(() => import("../assets/svg/SvgCloseSolid"));
@@ -8,7 +8,101 @@ const SvgArrowRightColor = lazy(() =>
   import("../assets/svg/SvgArrowRightColor")
 );
 
+//phone number reducer
+const phoneReducer = (state, action) => {
+  if (action.type === "PHONE_INPUT") {
+    return {
+      value: action.val,
+      isValid:
+        action.val[0] === "0" &&
+        action.val[1] !== "0" &&
+        action?.val?.split(" ")[0].length === 11,
+    };
+  }
+  if (action.type === "INPUT_BLUR") {
+    return {
+      value: state.value,
+      isValid:
+        state?.value[0] === "0" &&
+        state?.value[1] !== "0" &&
+        state?.value?.split(" ")[0].length === 11,
+    };
+  }
+  return { value: "", isValid: false };
+};
+
+//code reducer
+const CodeReducer = (state, action) => {
+  if (action.type === "CODE_INPUT") {
+    return { value: action.val, isValid: action.val.includes("@") };
+  }
+  if (action.type === "INPUT_BLUR") {
+    return { value: state.value, isValid: state.value.includes("@") };
+  }
+  return { value: "", isValid: false };
+};
+
 const Register = ({ handleDisplayRegisterPop }) => {
+  /* state for phone number */
+  const [phoneState, dispatchPhone] = useReducer(phoneReducer, {
+    value: "",
+    isValid: null,
+  });
+  //   console.log(phoneState.isValid);
+
+  /* state for verification code */
+  const [codeState, dispatchCode] = useReducer(CodeReducer, {
+    value: "",
+    isValid: null,
+  });
+
+  /* state for error`s */
+  const [errors, setErrors] = useState({
+    phoneError: "",
+    codeError: "",
+  });
+
+  /* state for status of form validation */
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  // change and validate handler for phone number input
+  const phoneNumberChangeHandler = (e) => {
+    dispatchPhone({ type: "PHONE_INPUT", val: e.target.value });
+    setErrors((state) => {
+      return {
+        ...state,
+        phoneError: "",
+      };
+    });
+  };
+
+  const validatePhoneNumberHandler = () => {
+    dispatchPhone({ type: "INPUT_BLUR" });
+    // handle invalid format error of phone number input
+    if (!phoneState.isValid && phoneState.value) {
+      setErrors((state) => {
+        return {
+          ...state,
+          phoneError: "enter correct format! 09123456789",
+        };
+      });
+    }
+  };
+
+  //check form validate
+  const { isValid: phoneNumberIsValid } = phoneState;
+  //   const { isValid: codeIsValid } = codeState;
+
+  // set status of form validate
+  useEffect(() => {
+    const identifier = setTimeout(() => {
+      setIsFormValid(phoneNumberIsValid);
+    }, 100);
+
+    return () => {
+      clearTimeout(identifier);
+    };
+  }, [phoneNumberIsValid]);
   return (
     <div className="p-4 flex flex-col items-center">
       {/* btn handler */}
@@ -33,20 +127,42 @@ const Register = ({ handleDisplayRegisterPop }) => {
         <h1 className="font-bold text-lg text-gray-8">ورود / ثبت نام</h1>
 
         {/* input box */}
-        <div className="w-full text-center my-4">
+        <form className="w-full text-center my-4">
           <h3 className="font-normal text-gray-7 text-base">
             شماره همراه خود را وارد کنید
           </h3>
           <input
-            className="rtl-grid w-[320px] h-[40px] border-[1px] border-gray-4 rounded-md my-3 px-4 py-2 outline-none focus:border-Primary hover:border-Primary "
+            className={`rtl-grid w-[320px] h-[40px] border-[1px] rounded-md my-3 px-4 py-2 outline-none  ${
+              phoneNumberIsValid !== null
+                ? phoneNumberIsValid
+                  ? "focus:border-success hover:border-success border-gray-4"
+                  : "border-error"
+                : null
+            } `}
             type="tel"
             placeholder="شماره همراه"
+            pattern="/^[0-9]+$/"
+            name="phoneNumber"
+            id="phoneNumber"
+            autoComplete="off"
+            aria-describedby="phoneNumber"
+            spellCheck="false"
+            required
+            min="11"
+            max="11"
+            value={phoneState.value}
+            onChange={phoneNumberChangeHandler}
+            onBlur={validatePhoneNumberHandler}
           />
-        </div>
+        </form>
 
         {/* btn send */}
         <button
-          className={`w-[320px] h-[40px] font-medium text-base bg-gray-3 rounded-md text-gray-4 pointer-events-none `}
+          className={`w-[320px] h-[40px] font-medium text-base rounded-md ease-in-out duration-300 ${
+            isFormValid
+              ? "text-white bg-Primary pointer-events-auto cursor-pointer shadow-shadow-2 hover:shadow-shadow-4 active:shadow-shadow-4"
+              : "bg-gray-3 text-gray-4 pointer-events-none"
+          } `}
         >
           ورود
         </button>
