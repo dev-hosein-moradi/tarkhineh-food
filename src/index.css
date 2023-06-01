@@ -271,8 +271,35 @@ body {
         }
     }
 
-    /* animation for register section */
-    .rightToLeft{}
-    
-    .leftToRight{}
+    /* digit code input group for register */
+   .vi__wrapper{
+    width: 100% !important;
+   }
+    .container {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+    }
+
+    .character {
+        border: none;
+        font-size: 20px;
+        border-radius: 8px;
+        width: 55px;
+        height: 35px;
+
+        /* light theme */
+        color: #272729;
+        background-color: #ffffff;
+        border: 1px solid #E1E1E1;
+    }
+
+    .character--selected{
+        border: 1px solid#417F56 !important;
+        outline: none;
+    }
 }

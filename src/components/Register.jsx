@@ -2,6 +2,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { lazy, useEffect, useReducer, useState } from "react";
 import Logo from "../assets/image/Logo.svg";
+import VerificationInput from "react-verification-input";
 
 const SvgCloseSolid = lazy(() => import("../assets/svg/SvgCloseSolid"));
 const SvgArrowRightColor = lazy(() =>
@@ -116,7 +117,7 @@ const Register = ({ handleDisplayRegisterPop }) => {
     setStep(1);
   };
   return (
-    <div className="p-4 flex flex-col items-center">
+    <div className="p-4 h-full flex flex-col items-center overflow-x-hidden relative">
       {/* btn handler */}
       <div className="w-full h-[150px] flex flex-row items-start justify-between">
         <span
@@ -137,9 +138,12 @@ const Register = ({ handleDisplayRegisterPop }) => {
       {/* brand */}
       <img className="w-[200px] h-[60px] my-8 " alt="logo" src={Logo} />
 
+      {/* step one of register process */}
       <div
-        className={`flex flex-col items-center w-full ${
-          step === 1 ? "animate-leftToRight translate-x-[0]" : "animate-reverseLeftToRight -translate-x-[100%]"
+        className={`flex flex-col items-center w-full absolute bottom-[100px] ease-in-out duration-300 ${
+          step === 1
+            ? "animate-leftToRight left-0 delay-100"
+            : "animate-reverseLeftToRight -left-[150%]"
         }`}
       >
         {/* title */}
@@ -193,6 +197,46 @@ const Register = ({ handleDisplayRegisterPop }) => {
           ورود و عضویت در ترخینه به منزله قبول{" "}
           <p className="inline-block text-Primary">قوانین و مقررات </p> است
         </h6>
+      </div>
+
+      {/* step 2 of register process */}
+      <div
+        className={`flex flex-col items-center w-full absolute bottom-[130px] ease-in-out duration-300 ${
+          step === 2
+            ? "animate-rightToLaft right-0 delay-100"
+            : "animate-reverseRightToLaft right-[150%]"
+        }`}
+      >
+        {/* title */}
+        <h1 className="font-bold text-lg text-gray-8">کد تائید</h1>
+
+        {/* input box */}
+        <div className="w-full text-center my-4 flex flex-col items-center justify-center">
+          <h3 className="font-normal text-gray-7 text-base mb-4">
+            کد تائید پنج رقمی به شماره {`09025197379`} ارسال شد
+          </h3>
+          <VerificationInput
+            length={5}
+            classNames={{
+              container: "container",
+              character: "character",
+              characterInactive: "character--inactive",
+              characterSelected: "character--selected",
+            }}
+          />
+        </div>
+
+        {/* btn send */}
+        <button
+          onClick={submitPhoneHandler}
+          className={`w-[320px] h-[40px] font-medium text-base rounded-md ease-in-out duration-300 mt-4 ${
+            isFormValid
+              ? "text-white bg-Primary pointer-events-auto cursor-pointer shadow-shadow-2 hover:shadow-shadow-4 active:shadow-shadow-4"
+              : "bg-gray-3 text-gray-4 pointer-events-none"
+          } `}
+        >
+          تائید
+        </button>
       </div>
     </div>
   );

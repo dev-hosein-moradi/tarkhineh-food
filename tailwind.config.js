@@ -69,22 +69,28 @@ export default {
       },
       keyframes: {
         leftToRight: {
-          "0%": { transform: "translateX(-100%)", opacity: "0" },
-          "50%": { transform: "translateX(-50%)", opacity: "0" },
-          "100%": { transform: "translateX(0)", opacity: "1" },
+          "0%": { left: "-150%", opacity: "0" },
+          "50%": { left: "-50%", opacity: "0" },
+          "100%": { left: "0", opacity: "1" },
         },
         reverseLeftToRight: {
-          "0%": { transform: "translateX(0)", opacity: "1" },
-          "100%": { transform: "translateX(-100%)", opacity: "0" },
+          "0%": { left: "0", opacity: "1" },
+          "100%": {
+            left: "-150%",
+            opacity: "0",
+          },
         },
         rightToLeft: {
-          "0%": { transform: "translateX(0)", opacity: "0" },
-          "50%": { transform: "translateX(-50%)", opacity: "0" },
-          "100%": { transform: "translateX(100%)", opacity: "1" },
+          "0%": { right: "150%", opacity: "0" },
+          "50%": { right: "50%", opacity: "0" },
+          "100%": { right: "0", opacity: "1" },
         },
         reverseRightToLaft: {
-          "0%": { transform: "translateX(0)", opacity: "1" },
-          "100%": { transform: "translateX(100%)", opacity: "0" },
+          "0%": { right: "0", opacity: "1" },
+          "100%": {
+            right: "150%",
+            opacity: "0",
+          },
         },
       },
       animation: {
