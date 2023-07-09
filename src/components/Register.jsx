@@ -3,6 +3,8 @@
 import React, { lazy, useEffect, useReducer, useState } from "react";
 import Logo from "../assets/image/Logo.svg";
 import VerificationInput from "react-verification-input";
+import SpinnerLoading from "./SpinnerLoading";
+import SvgClock from "../assets/svg/SvgClock";
 
 const SvgCloseSolid = lazy(() => import("../assets/svg/SvgCloseSolid"));
 const SvgArrowRightColor = lazy(() =>
@@ -68,6 +70,15 @@ const Register = ({ handleDisplayRegisterPop }) => {
   /* step counter for register process */
   const [step, setStep] = useState(1);
 
+  /* handle loading action on btn when entered verification code. */
+  const [isLoading, setIsLoading] = useState(false);
+
+  /* time counter for another code request */
+  const [timeCounter, setTimeCounter] = useState({
+    minute: 1,
+    secende: 59,
+  });
+
   // change and validate handler for phone number input
   const phoneNumberChangeHandler = (e) => {
     dispatchPhone({ type: "PHONE_INPUT", val: e.target.value });
@@ -112,14 +123,61 @@ const Register = ({ handleDisplayRegisterPop }) => {
     setStep(2);
   };
 
+  const submitCodeHandler = () => {
+    setIsLoading(true);
+  };
+
   /* handler for return to prev section */
   const returnSectionHandler = () => {
     setStep(1);
   };
+
+  /* handle logic for time counter */
+  useEffect(() => {
+    if (step === 2) {
+      var timeId = setInterval(() => {
+        if (timeCounter.secende === 0 && timeCounter.minute !== 0) {
+          setTimeCounter(() => {
+            return {
+              minute: 0,
+              secende: 59,
+            };
+          });
+        } else if (timeCounter.minute === 0 && timeCounter.secende === 0) {
+          setTimeCounter(() => {
+            return {
+              minute: 0,
+              secende: 0,
+            };
+          });
+        } else {
+          setTimeCounter((prevValue) => {
+            return {
+              ...prevValue,
+              secende: timeCounter.secende - 1,
+            };
+          });
+        }
+      }, 1000);
+    }
+
+    return () => {
+      clearInterval(timeId);
+    };
+  }, [step, timeCounter]);
+
+  const handleSendAnotherCode = () => {
+    setTimeCounter(() => {
+      return {
+        minute: 1,
+        secende: 59,
+      };
+    });
+  };
   return (
     <div className="p-4 h-full flex flex-col items-center overflow-x-hidden relative">
       {/* btn handler */}
-      <div className="w-full h-[150px] flex flex-row items-start justify-between">
+      <div className="w-full h-[80px] flex flex-row items-start justify-between">
         <span
           className="w-[35px] cursor-pointer"
           onClick={() => handleDisplayRegisterPop()}
@@ -129,18 +187,20 @@ const Register = ({ handleDisplayRegisterPop }) => {
 
         <span
           onClick={returnSectionHandler}
-          className="w-[35px] pt-[2.5px] cursor-pointer"
+          className={`w-[35px] pt-[2.5px] cursor-pointer ${
+            isLoading ? "pointer-events-none" : "pointer-events-auto"
+          }`}
         >
           <SvgArrowRightColor width={35} height={30} />
         </span>
       </div>
 
       {/* brand */}
-      <img className="w-[200px] h-[60px] my-8 " alt="logo" src={Logo} />
+      <img className="w-[200px] h-[60px] mb-8 " alt="logo" src={Logo} />
 
       {/* step one of register process */}
       <div
-        className={`flex flex-col items-center w-full absolute bottom-[100px] ease-in-out duration-300 ${
+        className={`flex flex-col items-center w-full absolute bottom-[130px] ease-in-out duration-300 ${
           step === 1
             ? "animate-leftToRight left-0 delay-100"
             : "animate-reverseLeftToRight -left-[150%]"
@@ -182,7 +242,7 @@ const Register = ({ handleDisplayRegisterPop }) => {
         {/* btn send */}
         <button
           onClick={submitPhoneHandler}
-          className={`w-[320px] h-[40px] font-medium text-base rounded-md ease-in-out duration-300 ${
+          className={`w-[320px] h-[50px] font-medium text-base rounded-md ease-in-out duration-300 ${
             isFormValid
               ? "text-white bg-Primary pointer-events-auto cursor-pointer shadow-shadow-2 hover:shadow-shadow-4 active:shadow-shadow-4"
               : "bg-gray-3 text-gray-4 pointer-events-none"
@@ -201,7 +261,7 @@ const Register = ({ handleDisplayRegisterPop }) => {
 
       {/* step 2 of register process */}
       <div
-        className={`flex flex-col items-center w-full absolute bottom-[130px] ease-in-out duration-300 ${
+        className={`flex flex-col items-center w-full h-[400px] absolute bottom-[30px] ease-in-out duration-300 ${
           step === 2
             ? "animate-rightToLaft right-0 delay-100"
             : "animate-reverseRightToLaft right-[150%]"
@@ -226,16 +286,46 @@ const Register = ({ handleDisplayRegisterPop }) => {
           />
         </div>
 
+        {/* timer and edit mobile number section */}
+        <div className="flex flex-row-reverse items-center w-[320px] justify-between">
+          {timeCounter.minute === 0 && timeCounter.secende === 0 ? (
+            <button
+              onClick={handleSendAnotherCode}
+              className="font-normal text-sm h-[35px] w-[120px] text-gray-7 hover:text-Primary"
+            >
+              درخواست مجدد کد
+            </button>
+          ) : (
+            <span className="flex flex-row">
+              <p className="font-normal text-sm text-gray-7">
+                تا دریافت مجدد کد
+              </p>
+              <p className="w-[35px] text-center font-normal text-sm text-Primary ease-out duration-300">
+                {timeCounter.minute}:{timeCounter.secende}
+              </p>
+              <SvgClock with={20} height={20} />
+            </span>
+          )}
+
+          <button className="font-normal text-sm h-[35px] w-[100px] text-gray-7 hover:text-Primary">
+            ویرایش شماره
+          </button>
+        </div>
+
         {/* btn send */}
         <button
-          onClick={submitPhoneHandler}
-          className={`w-[320px] h-[40px] font-medium text-base rounded-md ease-in-out duration-300 mt-4 ${
+          onClick={submitCodeHandler}
+          className={`w-[320px] h-[50px] font-medium text-base rounded-md ease-in-out duration-300 mt-4 flex items-center justify-center ${
             isFormValid
               ? "text-white bg-Primary pointer-events-auto cursor-pointer shadow-shadow-2 hover:shadow-shadow-4 active:shadow-shadow-4"
               : "bg-gray-3 text-gray-4 pointer-events-none"
+          } ${
+            isLoading
+              ? "pointer-events-none cursor-wait opacity-80"
+              : "pointer-events-auto cursor-pointer opacity-100"
           } `}
         >
-          تائید
+          {isLoading ? <SpinnerLoading size={2.2} /> : "تائید"}
         </button>
       </div>
     </div>
