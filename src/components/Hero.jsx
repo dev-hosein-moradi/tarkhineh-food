@@ -1,20 +1,43 @@
 // eslint-disable-next-line no-unused-vars
 import React, { lazy } from "react";
+import { useParams } from "react-router-dom";
 
 const SvgArrowLeft = lazy(() => import("../assets/svg/SvgArrowLeft"));
 const SvgArrowRight = lazy(() => import("../assets/svg/SvgArrowRight"));
 
-const Hero = () => {
+// eslint-disable-next-line react/prop-types
+const Hero = ({ clientParams }) => {
+  const params = useParams();
   return (
     <>
       <div className="hidden md:flex absolute left-0 mx-3 h-[30px] w-[30px] cursor-pointer">
         <SvgArrowLeft width={28} height={28} />
       </div>
       {/* text content */}
-      <div className="">
-        <p className="text-lg md:text-2xl lg:text-3xl font-bold">
-          تجربه غذای سالم و گیاهی به سبک ترخینه
-        </p>
+      <div>
+        {/* add condition for hero title in home page, branch page and menu page */}
+        {clientParams === "home" && (
+          <p className="text-lg md:text-2xl lg:text-3xl font-bold">
+            تجربه غذای سالم و گیاهی به سبک ترخینه
+          </p>
+        )}
+        {params.branchName === "ekbatan" ? (
+          <p className="text-lg md:text-2xl lg:text-3xl font-bold">
+            سرسبزی اکباتان دلیل حس خوب شماست
+          </p>
+        ) : params.branchName === "chalus" ? (
+          <p className="text-lg md:text-2xl lg:text-3xl font-bold">
+            سرسبزی چالوس دلیل حس خوب شماست
+          </p>
+        ) : params.branchName === "aghdasieh" ? (
+          <p className="text-lg md:text-2xl lg:text-3xl font-bold">
+            سرسبزی اقدسیه دلیل حس خوب شماست
+          </p>
+        ) : params.branchName === "vanak" ? (
+          <p className="text-lg md:text-2xl lg:text-3xl font-bold">
+            سرسبزی ونک دلیل حس خوب شماست
+          </p>
+        ) : null}
       </div>
 
       {/* button */}
