@@ -16,6 +16,8 @@ import vanak from "./assets/image/agency/vanak.webp";
 import aghdasieh from "./assets/image/agency/aghdasieh.webp";
 import chalus from "./assets/image/agency/chalus.webp";
 
+import hosein from "./assets/image/hosein.jpg";
+
 export const branchFood = [
   {
     id: 1,
@@ -256,5 +258,32 @@ export const branchContact = [
     address: " چالوس ، فاز 5، مجتمع تجاری کوروش، طبقه سوم",
     phoneNumber: "۳۳۵۳۵۳۵۴-۳۳۵۳۵۳۵۶",
     timeActivity: "همه‌روزه از ساعت ۱۲  الی ۲۳ ",
+  },
+];
+
+export const comments = [
+  {
+    name: "حسین مرادی",
+    message:
+      "از با صفا بودن شعبه اکباتان هر چی بگم کم گفتم. بهترین غذاهای گیاهی عمرمو اینجا خوردم. از مدیریت شعبه اکباتان رستوران‌های ترخینه واقعا تشکر میکنم",
+    rate: 4,
+    date: "۰۱/۰۵/۱۴۰۲",
+    avatar: hosein,
+  },
+  {
+    name: "حسین مرادی",
+    message:
+      "از با صفا بودن شعبه اکباتان هر چی بگم کم گفتم. بهترین غذاهای گیاهی عمرمو اینجا خوردم. از مدیریت شعبه اکباتان رستوران‌های ترخینه واقعا تشکر میکنم",
+    rate: 3,
+    date: "۰۱/۰۵/۱۴۰۲",
+    avatar: hosein,
+  },
+  {
+    name: "حسین مرادی",
+    message:
+      "از با صفا بودن شعبه اکباتان هر چی بگم کم گفتم. بهترین غذاهای گیاهی عمرمو اینجا خوردم. از مدیریت شعبه اکباتان رستوران‌های ترخینه واقعا تشکر میکنم",
+    rate: 5,
+    date: "۰۱/۰۵/۱۴۰۲",
+    avatar: hosein,
   },
 ];

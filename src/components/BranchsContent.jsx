@@ -1,10 +1,11 @@
 // eslint-disable-next-line no-unused-vars
 import React from "react";
 import SvgArrowLeft from "../assets/svg/SvgArrowLeft";
-import { branchFood } from "../dummyData";
+import { branchFood, comments } from "../dummyData";
 import BranchFoodCard from "./BranchFoodCard";
 import SvgNote from "../assets/svg/SvgNote";
 import BranchDetail from "./BranchDetail";
+import CommentCard from "./CommentCard";
 
 const BranchsContent = () => {
   return (
@@ -97,7 +98,13 @@ const BranchsContent = () => {
 
       {/* information of branch */}
       <BranchDetail />
+
       {/* people comments about current branch */}
+      <div className="w-full py-5 flex flex-row overflow-x-auto overflow-y-hidden gap-3">
+        {comments?.map((comment, index) => (
+          <CommentCard key={index} {...comment} />
+        ))}
+      </div>
       {/* footer */}
     </div>
   );
