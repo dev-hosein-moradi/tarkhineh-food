@@ -1,11 +1,11 @@
-// eslint-disable-next-line no-unused-vars
-import React, { Fragment, useState } from "react";
+import React, { Fragment, lazy, useState } from "react";
 import { useParams } from "react-router-dom";
-import SvgLocation from "../assets/svg/SvgLocation";
-import SvgClock from "../assets/svg/SvgClock";
-import SvgCallCalling from "../assets/svg/SvgCallCalling";
 import { agencyData, comments } from "../constants";
-import CommentCard from "./CommentCard";
+
+const CommentCard = lazy(() => import("./CommentCard"));
+const SvgLocation = lazy(() => import("../assets/svg/SvgLocation"));
+const SvgClock = lazy(() => import("../assets/svg/SvgClock"));
+const SvgCallCalling = lazy(() => import("../assets/svg/SvgCallCalling"));
 
 const BranchDetail = () => {
   const { branchName } = useParams();
@@ -51,6 +51,7 @@ const BranchDetail = () => {
                 className={`min-w-[100vw] h-[500px] object-cover `}
                 alt={index}
                 src={image?.image}
+                loading="lazy"
               />
             );
           })}

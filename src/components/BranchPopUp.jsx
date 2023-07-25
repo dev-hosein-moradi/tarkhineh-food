@@ -1,41 +1,8 @@
-// eslint-disable-next-line no-unused-vars
 import React, { lazy } from "react";
-import chalus from "../assets/image/agency/chalus.webp";
-import aghdasieh from "../assets/image/agency/aghdasieh.webp";
-import ekbatan from "../assets/image/agency/ekbatan.webp";
-import vanak from "../assets/image/agency/vanak.webp";
+import { agencyData } from "../constants";
 
 const SvgCloseSolid = lazy(() => import("../assets/svg/SvgCloseSolid"));
 
-const agencyData = [
-  {
-    id: 1001,
-    name: "شعبه اکباتان",
-    address: "شهرک اکباتان، فاز ۳، مجتمع تجاری کوروش، طبقه سوم",
-    imageSource: ekbatan,
-  },
-  {
-    id: 1002,
-    name: "شعبه چالوس",
-    address:
-      "چالوس، خیابان ۱۷ شهریور، بعد کوچه کوروش، جنب داروخانه دکتر میلانی",
-    imageSource: chalus,
-  },
-  {
-    id: 1003,
-    name: "شعبه اقدسیه",
-    address: "خیابان اقدسیه ، نرسیده به میدان خیام، پلاک ۸",
-    imageSource: aghdasieh,
-  },
-  {
-    id: 1004,
-    name: "شعبه ونک",
-    address: "میدان ونک، خیابان فردوسی، نبش کوچه نیلوفر، پلاک ۲۶",
-    imageSource: vanak,
-  },
-];
-
-// eslint-disable-next-line react/prop-types
 const BranchPopUp = ({ handleDisplayBranchPop }) => {
   return (
     <div className="flex flex-col items-center w-full">
@@ -66,6 +33,7 @@ const BranchPopUp = ({ handleDisplayBranchPop }) => {
                 className="h-[78px] lg:h-[179px] min-w-[114px] lg:min-w-[173px] rounded-r-md lg:rounded-r-none lg:rounded-t-md object-cover"
                 alt="agency"
                 src={agency?.imageSource}
+                loading="lazy"
               />
               <span className="flex flex-col items-center justify-center text-center px-1">
                 <h6 className="font-normal lg:font-medium text-sm lg:text-base ">

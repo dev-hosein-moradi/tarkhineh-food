@@ -1,12 +1,6 @@
-/* eslint-disable react/prop-types */
-// eslint-disable-next-line no-unused-vars
 import React, { lazy, useState } from "react";
-
+import { agencyData } from "../constants";
 import Logo from "../assets/image/Logo.svg";
-import ekbatan from "../assets/image/agency/ekbatan.webp";
-import chalus from "../assets/image/agency/chalus.webp";
-import vanak from "../assets/image/agency/vanak.webp";
-import aghdasieh from "../assets/image/agency/aghdasieh.webp";
 
 const SvgMenu = lazy(() => import("../assets/svg/SvgMenu"));
 const SvgUser = lazy(() => import("../assets/svg/SvgUser"));
@@ -15,7 +9,6 @@ const SvgShoppingCart = lazy(() => import("../assets/svg/SvgShoppingCart"));
 const SvgClose = lazy(() => import("../assets/svg/SvgClose"));
 const SvgSearchColored = lazy(() => import("../assets/svg/SvgSearchColored"));
 
-// eslint-disable-next-line react/prop-types
 const Navbar = ({
   menuSwitcher,
   setMenuSwitcher,
@@ -43,6 +36,7 @@ const Navbar = ({
         className="w-[150px] h-[38px] md:h-[42px] lg:h-[50px]"
         alt="logo"
         src={Logo}
+        loading="lazy"
       />
 
       {/* navbar item list for desktop size */}
@@ -57,66 +51,21 @@ const Navbar = ({
               <SvgArrowDown width={16} height={16} /> شعبه
             </p>
             <ul className="flex-col text-right bg-gray-1 rounded-md shadow-shadow-2 hidden group-hover:flex absolute -right-10 h-[400px] w-[400px] p-2 z-10">
-              <li className="flex flex-row-reverse my-2">
-                <img
-                  className="rounded-md object-cover w-[100px] h-[80px]"
-                  alt="agency"
-                  src={ekbatan}
-                />
+              {agencyData?.map((agency) => (
+                <li key={agency?.id} className="flex flex-row-reverse my-2">
+                  <img
+                    className="rounded-md object-cover w-[100px] h-[80px]"
+                    alt="agency"
+                    src={agency?.imageSource}
+                    loading="lazy"
+                  />
 
-                <div className="px-2 text-gray-7 hover:text-Primary">
-                  <h3 className="text-lg font-medium">اکباتان</h3>
-                  <p className="text-sm font-normal">
-                    شهرک اکباتان، فاز ۳، مجتمع تجاری کوروش، طبقه سوم
-                  </p>
-                </div>
-              </li>
-
-              <li className="flex flex-row-reverse my-2">
-                <img
-                  className="rounded-md object-cover w-[100px] h-[80px]"
-                  alt="agency"
-                  src={chalus}
-                />
-
-                <div className="px-2 text-gray-7 hover:text-Primary">
-                  <h3 className="text-lg font-medium">چالوس</h3>
-                  <p className="text-sm font-normal">
-                    چالوس، خیابان ۱۷ شهریور، بعد کوچه کوروش، جنب داروخانه دکتر
-                    میلانی
-                  </p>
-                </div>
-              </li>
-
-              <li className="flex flex-row-reverse my-2">
-                <img
-                  className="rounded-md object-cover w-[100px] h-[80px]"
-                  alt="agency"
-                  src={aghdasieh}
-                />
-
-                <div className="px-2 text-gray-7 hover:text-Primary">
-                  <h3 className="text-lg font-medium">اقدسیه</h3>
-                  <p className="text-sm font-normal">
-                    خیابان اقدسیه ، نرسیده به میدان خیام، پلاک ۸
-                  </p>
-                </div>
-              </li>
-
-              <li className="flex flex-row-reverse my-2">
-                <img
-                  className="rounded-md object-cover w-[100px] h-[80px]"
-                  alt="agency"
-                  src={vanak}
-                />
-
-                <div className="px-2 text-gray-7 hover:text-Primary">
-                  <h3 className="text-lg font-medium">ونک</h3>
-                  <p className="text-sm font-normal">
-                    میدان ونک، خیابان فردوسی، نبش کوچه نیلوفر، پلاک ۲۶
-                  </p>
-                </div>
-              </li>
+                  <div className="px-2 text-gray-7 hover:text-Primary">
+                    <h3 className="text-lg font-medium">{agency?.name}</h3>
+                    <p className="text-sm font-normal">{agency?.address}</p>
+                  </div>
+                </li>
+              ))}
             </ul>
           </span>
 
@@ -172,6 +121,7 @@ const Navbar = ({
             className="w-[150px] h-[45px] md:h-[42px] lg:h-[50px]"
             alt="logo"
             src={Logo}
+            loading="lazy"
           />
           <span
             className="cursor-pointer"
@@ -206,34 +156,15 @@ const Navbar = ({
                   : "h-[0px] opacity-0"
               } overflow-y-auto snap-y snap-mandatory`}
             >
-              <li className="bg-tint-1 px-3 py-2 rounded-md my-1 h-[85px]">
-                <h3 className="text-lg font-medium">اکباتان</h3>
-                <p className="text-sm font-normal">
-                  شهرک اکباتان، فاز ۳، مجتمع تجاری کوروش، طبقه سوم
-                </p>
-              </li>
-
-              <li className="bg-tint-1 px-3 py-2 rounded-md my-1 h-[85px]">
-                <h3 className="text-lg font-medium">چالوس</h3>
-                <p className="text-sm font-normal">
-                  چالوس، خیابان ۱۷ شهریور، بعد کوچه کوروش، جنب داروخانه دکتر
-                  میلانی
-                </p>
-              </li>
-
-              <li className="bg-tint-1 px-3 py-2 rounded-md my-1 h-[85px]">
-                <h3 className="text-lg font-medium">اقدسیه</h3>
-                <p className="text-sm font-normal">
-                  خیابان اقدسیه ، نرسیده به میدان خیام، پلاک ۸
-                </p>
-              </li>
-
-              <li className="bg-tint-1 px-3 py-2 rounded-md my-1 h-[85px]">
-                <h3 className="text-lg font-medium">ونک</h3>
-                <p className="text-sm font-normal">
-                  میدان ونک، خیابان فردوسی، نبش کوچه نیلوفر، پلاک ۲۶
-                </p>
-              </li>
+              {agencyData?.map((agency) => (
+                <li
+                  key={agency?.id}
+                  className="bg-tint-1 px-3 py-2 rounded-md my-1 h-[85px]"
+                >
+                  <h3 className="text-lg font-medium">{agency?.name}</h3>
+                  <p className="text-sm font-normal">{agency?.address}</p>
+                </li>
+              ))}
             </ul>
           </span>
           <span

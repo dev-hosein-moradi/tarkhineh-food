@@ -1,13 +1,14 @@
 // eslint-disable-next-line no-unused-vars
-import React from "react";
-import SvgArrowLeft from "../assets/svg/SvgArrowLeft";
-import BranchFoodCard from "./BranchFoodCard";
-import SvgNote from "../assets/svg/SvgNote";
-import BranchDetail from "./BranchDetail";
+import React, { lazy } from "react";
+import { branchFood } from "../constants";
 import { motion } from "framer-motion";
 import { textVariant } from "../utils/motion";
-import { branchFood } from "../constants";
-import SvgArrowRight from "../assets/svg/SvgArrowRight";
+
+const BranchDetail = lazy(() => import("./BranchDetail"));
+const BranchFoodCard = lazy(() => import("./BranchFoodCard"));
+const SvgArrowLeft = lazy(() => import("../assets/svg/SvgArrowLeft"));
+const SvgNote = lazy(() => import("../assets/svg/SvgNote"));
+const SvgArrowRight = lazy(() => import("../assets/svg/SvgArrowRight"));
 
 const BranchsContent = () => {
   return (

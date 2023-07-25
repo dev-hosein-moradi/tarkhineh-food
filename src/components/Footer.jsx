@@ -1,8 +1,8 @@
-// eslint-disable-next-line no-unused-vars
-import React, { useState } from "react";
-import SvgTelegram from "../assets/svg/SvgTelegram";
-import SvgInstagram from "../assets/svg/SvgInstagram";
-import SvgTwitter from "../assets/svg/SvgTwitter";
+import React, { lazy, useState } from "react";
+
+const SvgTelegram = lazy(() => import("../assets/svg/SvgTelegram"));
+const SvgInstagram = lazy(() => import("../assets/svg/SvgInstagram"));
+const SvgTwitter = lazy(() => import("../assets/svg/SvgTwitter"));
 
 const Footer = () => {
   const [charCounter, setCharCounter] = useState(0);

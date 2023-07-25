@@ -1,18 +1,15 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
-// eslint-disable-next-line no-unused-vars
-import React, { Fragment, useState } from "react";
-import Hero from "../components/Hero";
-import FoodsCategory from "../components/FoodsCategory";
-import QuickAbout from "../components/QuickAbout";
-import Agencies from "../components/Agencies";
-import Footer from "../components/Footer";
-import SearchPopUp from "../components/SearchPopUp";
-import BranchPopUp from "../components/BranchPopUp";
-import Register from "../components/Register";
-import Navbar from "../components/Navbar";
+import React, { Fragment, lazy } from "react";
 
-// eslint-disable-next-line react/prop-types, no-unused-vars
+const Register = lazy(() => import("../components/Register"));
+const BranchPopUp = lazy(() => import("../components/BranchPopUp"));
+const SearchPopUp = lazy(() => import("../components/SearchPopUp"));
+const Footer = lazy(() => import("../components/Footer"));
+const Agencies = lazy(() => import("../components/Agencies"));
+const QuickAbout = lazy(() => import("../components/QuickAbout"));
+const FoodsCategory = lazy(() => import("../components/FoodsCategory"));
+const Navbar = lazy(() => import("../components/Navbar"));
+const Hero = lazy(() => import("../components/Hero"));
+
 const Main = ({
   searchPop,
   setSearchPop,

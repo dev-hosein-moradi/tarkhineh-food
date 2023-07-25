@@ -1,12 +1,10 @@
-/* eslint-disable react/prop-types */
-// eslint-disable-next-line no-unused-vars
-import React, { Fragment } from "react";
-import Svg5Star from "../assets/svg/Svg5Star";
-import Svg4Star from "../assets/svg/Svg4Star";
-import Svg3Star from "../assets/svg/Svg3Star";
-import SvgHeart from "../assets/svg/SvgHeart";
+import React, { Fragment, lazy } from "react";
 
-// eslint-disable-next-line react/prop-types
+const Svg5Star = lazy(() => import("../assets/svg/Svg5Star"));
+const Svg4Star = lazy(() => import("../assets/svg/Svg4Star"));
+const Svg3Star = lazy(() => import("../assets/svg/Svg3Star"));
+const SvgHeart = lazy(() => import("../assets/svg/SvgHeart"));
+
 const BranchFoodCard = ({ food }) => {
   return (
     <div className="w-[230px] min-w-[230px] h-[280px] min-h-[280px] rounded-md border-[1px] border-gray-4 bg-white p-2 shadow-card-shadow hover:shadow-content-card-shadow ease-in-out duration-300">
@@ -14,6 +12,7 @@ const BranchFoodCard = ({ food }) => {
         className="min-w-[213px] h-[130px] object-cover rounded-md"
         alt={food?.name}
         src={food?.imgUrl}
+        loading="lazy"
       />
 
       <h4 className="font-normal text-base my-1 text-center">{food?.name}</h4>

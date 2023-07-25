@@ -1,12 +1,10 @@
-/* eslint-disable react/prop-types */
-// eslint-disable-next-line no-unused-vars
 import React, { lazy, useEffect, useReducer, useState } from "react";
-import Logo from "../assets/image/Logo.svg";
 import VerificationInput from "react-verification-input";
-import SpinnerLoading from "./SpinnerLoading";
-import SvgClock from "../assets/svg/SvgClock";
 
 const SvgCloseSolid = lazy(() => import("../assets/svg/SvgCloseSolid"));
+const Logo = lazy(() => import("../assets/image/Logo.svg"));
+const SpinnerLoading = lazy(() => import("./SpinnerLoading"));
+const SvgClock = lazy(() => import("../assets/svg/SvgClock"));
 const SvgArrowRightColor = lazy(() =>
   import("../assets/svg/SvgArrowRightColor")
 );

@@ -1,10 +1,11 @@
-// eslint-disable-next-line no-unused-vars
-import React, { Suspense, useEffect, useState } from "react";
+import React, { Suspense, lazy, useEffect, useState } from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 import Main from "./pages/Main";
 import Loading from "./pages/Loading";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import BranchMain from "./pages/BranchMain";
-import MenuMain from "./pages/MenuMain";
+
+const BranchMain = lazy(() => import("./pages/BranchMain"));
+const MenuMain = lazy(() => import("./pages/MenuMain"));
 
 const App = () => {
   const [darkEffect, setDarkEffect] = useState(false);

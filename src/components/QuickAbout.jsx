@@ -1,12 +1,12 @@
-// eslint-disable-next-line no-unused-vars
-import React from "react";
-import SvgUserSolid from "../assets/svg/SvgUserSolid";
-import SvgDiagram from "../assets/svg/SvgDiagram";
-import SvgHomeWifi from "../assets/svg/SvgHomeWifi";
-import SvgMenuBoard from "../assets/svg/SvgMenuBoard";
-import SectionWrapper from "../hoc/sectionWrapper/SectionWrapper";
+import React, { lazy } from "react";
 import { motion } from "framer-motion";
-import { fadeIn, zoomIn } from "../utils/motion";
+import { fadeIn } from "../utils/motion";
+import SectionWrapper from "../hoc/sectionWrapper/SectionWrapper";
+
+const SvgUserSolid = lazy(() => import("../assets/svg/SvgUserSolid"));
+const SvgDiagram = lazy(() => import("../assets/svg/SvgDiagram"));
+const SvgHomeWifi = lazy(() => import("../assets/svg/SvgHomeWifi"));
+const SvgMenuBoard = lazy(() => import("../assets/svg/SvgMenuBoard"));
 
 const QuickAbout = () => {
   return (
@@ -18,13 +18,13 @@ const QuickAbout = () => {
           </h2>
         </motion.div>
 
-          <p className="font-normal text-[13px] sm:text-[15px] md:text-sm leading-6 md:leading-7 break-normal">
-            مهمان‌نوازی یکی از مهم‌ترین مشخصه‌های ایرانیان است و باعث افتخار
-            ماست که بیش از 20 سال است خدمت‌گزار مردم شریف ایران هستیم. ما در
-            رستوران‌های زنجیره‌ای ترخینه همواره تلاش کردیم که در محیطی اصیل بر
-            پایه معماری و طراحی مدرن در کنار طبیعتی دلنواز، غذایی سالم و
-            درخورشان شما عزیزان ارائه دهیم
-          </p>
+        <p className="font-normal text-[13px] sm:text-[15px] md:text-sm leading-6 md:leading-7 break-normal">
+          مهمان‌نوازی یکی از مهم‌ترین مشخصه‌های ایرانیان است و باعث افتخار ماست
+          که بیش از 20 سال است خدمت‌گزار مردم شریف ایران هستیم. ما در
+          رستوران‌های زنجیره‌ای ترخینه همواره تلاش کردیم که در محیطی اصیل بر
+          پایه معماری و طراحی مدرن در کنار طبیعتی دلنواز، غذایی سالم و درخورشان
+          شما عزیزان ارائه دهیم
+        </p>
 
         <button className="border-[1px] border-white w-[150px] h-[35px] font-normal text-[14px] rounded-md mt-4 ">
           اطلاعات بیشتر

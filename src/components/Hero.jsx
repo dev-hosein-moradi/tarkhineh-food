@@ -1,11 +1,9 @@
-// eslint-disable-next-line no-unused-vars
 import React, { lazy } from "react";
 import { useParams } from "react-router-dom";
 
 const SvgArrowLeft = lazy(() => import("../assets/svg/SvgArrowLeft"));
 const SvgArrowRight = lazy(() => import("../assets/svg/SvgArrowRight"));
 
-// eslint-disable-next-line react/prop-types
 const Hero = ({ clientParams }) => {
   const params = useParams();
   return (

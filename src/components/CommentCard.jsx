@@ -1,7 +1,7 @@
-import React from "react";
-import Svg3Star from "../assets/svg/Svg3Star";
-import Svg4Star from "../assets/svg/Svg4Star";
-import Svg5Star from "../assets/svg/Svg5Star";
+import React, { lazy } from "react";
+const Svg3Star = lazy(() => import("../assets/svg/Svg3Star"));
+const Svg4Star = lazy(() => import("../assets/svg/Svg4Star"));
+const Svg5Star = lazy(() => import("../assets/svg/Svg5Star"));
 
 const CommentCard = ({ name, message, date, avatar, rate }) => {
   return (
@@ -23,6 +23,7 @@ const CommentCard = ({ name, message, date, avatar, rate }) => {
           className="w-16 h-16 object-fill rounded-full"
           alt={name}
           src={avatar}
+          loading="lazy"
         />
         <p className="text-xs text-right w-full text-gray-7">{name}</p>
         <p className="text-xs text-gray-7">{date}</p>

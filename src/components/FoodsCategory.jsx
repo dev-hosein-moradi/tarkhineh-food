@@ -1,13 +1,11 @@
-// eslint-disable-next-line no-unused-vars
 import React, { lazy } from "react";
 
 import SectionWrapper from "../hoc/sectionWrapper/SectionWrapper";
 import { motion } from "framer-motion";
-import {  textVariant, zoomIn } from "../utils/motion";
+import { textVariant, zoomIn } from "../utils/motion";
 import { foodCategory } from "../constants";
 
 const SvgSearch = lazy(() => import("../assets/svg/SvgSearch"));
-
 
 const FoodsCategory = ({ handleDisplayBranchPop }) => {
   return (
@@ -26,11 +24,11 @@ const FoodsCategory = ({ handleDisplayBranchPop }) => {
       </div>
 
       {/* list of category */}
-      <motion.h2 variants={textVariant()}>
+      <motion.div variants={textVariant()}>
         <h2 className="font-bold text-gray-8 text-2xl sm:text-[26px] md:my-10 md:text-[30px] mt-8">
           منوی رستوران
         </h2>
-      </motion.h2>
+      </motion.div>
       <div className="flex flex-row-reverse justify-center flex-wrap mt-14">
         {/* card */}
         {foodCategory?.map((cat) => (
@@ -39,15 +37,16 @@ const FoodsCategory = ({ handleDisplayBranchPop }) => {
             whileInView="show"
             variants={zoomIn(0.2, 1)}
             viewport={{ once: true }}
+            key={cat.id}
           >
             <div
-              key={cat.id}
               className={`category-card relative border-Primary border-[1px] rounded-[4px] h-[111px] lg:h-[160px] w-[162px] lg:w-[230px] mx-1 sm:mx-2 my-12 lg:my-20 hover:shadow-card-shadow ease-out duration-75`}
             >
               <img
                 className="object-cover absolute -top-14 lg:-top-24 w-[125px] lg:w-[208px] h-[122px] lg:h-[205px] mx-[11%] lg:mx-[5%]"
                 alt="categ"
                 src={cat?.imageSrc}
+                loading="lazy"
               />
               <button
                 onClick={() => handleDisplayBranchPop(true)}

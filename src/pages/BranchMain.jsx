@@ -1,13 +1,12 @@
-/* eslint-disable react/prop-types */
-// eslint-disable-next-line no-unused-vars
-import React, { Fragment } from "react";
-import Hero from "../components/Hero";
-import Navbar from "../components/Navbar";
-import Register from "../components/Register";
-import SearchPopUp from "../components/SearchPopUp";
-import SvgSearch from "../assets/svg/SvgSearch";
-import BranchsContent from "../components/BranchsContent";
-import Footer from "../components/Footer";
+import React, { Fragment, lazy } from "react";
+
+const Footer = lazy(() => import("../components/Footer"));
+const BranchsContent = lazy(() => import("../components/BranchsContent"));
+const SvgSearch = lazy(() => import("../assets/svg/SvgSearch"));
+const SearchPopUp = lazy(() => import("../components/SearchPopUp"));
+const Register = lazy(() => import("../components/Register"));
+const Navbar = lazy(() => import("../components/Navbar"));
+const Hero = lazy(() => import("../components/Hero"));
 
 const BranchMain = ({
   searchPop,
