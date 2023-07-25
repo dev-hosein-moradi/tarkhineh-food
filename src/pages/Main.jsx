@@ -12,6 +12,8 @@ import BranchPopUp from "../components/BranchPopUp";
 import Register from "../components/Register";
 import Navbar from "../components/Navbar";
 
+
+
 // eslint-disable-next-line react/prop-types, no-unused-vars
 const Main = ({
   searchPop,
@@ -107,7 +109,7 @@ const Main = ({
 
         {/* quick summery about us */}
         <section
-          className={`w-full bg-summery-img bg-fixed bg-blend-darken bg-no-repeat bg-cover bg-center ${
+          className={`w-full bg-summery-img  bg-blend-darken bg-no-repeat bg-cover bg-center ${
             darkEffect && "dark-bg-popups"
           } ease-in-out duration-300`}
         >

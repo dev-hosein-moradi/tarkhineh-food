@@ -1,9 +1,12 @@
 // eslint-disable-next-line no-unused-vars
-import React, { lazy, useEffect, useState } from "react";
+import React, { lazy } from "react";
 import Categ1 from "../assets/image/categ1.svg";
 import Categ2 from "../assets/image/categ2.svg";
 import Categ3 from "../assets/image/categ3.svg";
 import Categ4 from "../assets/image/categ4.svg";
+import SectionWrapper from "../hoc/sectionWrapper/SectionWrapper";
+import { motion } from "framer-motion";
+import { fadeIn, slideIn, textVariant, zoomIn } from "../utils/motion";
 
 const SvgSearch = lazy(() => import("../assets/svg/SvgSearch"));
 
@@ -14,57 +17,7 @@ const foodCategory = [
   { id: 4, name: "نوشیدنی", imageSrc: Categ4 },
 ];
 
-// eslint-disable-next-line no-unused-vars, react/prop-types
 const FoodsCategory = ({ handleDisplayBranchPop }) => {
-  useEffect(() => {
-    /* get  all element with this class */
-    const scrollElements = document.querySelectorAll(".category-card");
-
-    /* check when element in to view */
-    const elementInView = (el, dividend = 1) => {
-      const elementTop = el.getBoundingClientRect().top;
-
-      return (
-        elementTop <=
-        (window.innerHeight || document.documentElement.clientHeight) / dividend
-      );
-    };
-
-    /* check when element out of view */
-    const elementOutofView = (el) => {
-      const elementTop = el.getBoundingClientRect().top;
-
-      return (
-        elementTop >
-        (window.innerHeight || document.documentElement.clientHeight)
-      );
-    };
-
-    /* add class when in view */
-    const displayScrollElement = (element) => {
-      element.classList.add("scrolled");
-    };
-
-    /* remove class when out of view */
-    const hideScrollElement = (element) => {
-      element.classList.remove("scrolled");
-    };
-
-    const handleScrollAnimation = () => {
-      scrollElements.forEach((el) => {
-        if (elementInView(el, 1.25)) {
-          displayScrollElement(el);
-        } else if (elementOutofView(el)) {
-          hideScrollElement(el);
-        }
-      });
-    };
-
-    window.addEventListener("scroll", () => {
-      handleScrollAnimation();
-    });
-  }, []);
-
   return (
     <div className="w-full max-w-[1024px] mx-auto py-5 flex flex-col items-center">
       {/* search bar */}
@@ -81,32 +34,41 @@ const FoodsCategory = ({ handleDisplayBranchPop }) => {
       </div>
 
       {/* list of category */}
-      <h2 className="font-bold text-gray-8 text-2xl sm:text-[26px] md:my-10 md:text-[30px] mt-8">
-        منوی رستوران
-      </h2>
+      <motion.h2 variants={textVariant()}>
+        <h2 className="font-bold text-gray-8 text-2xl sm:text-[26px] md:my-10 md:text-[30px] mt-8">
+          منوی رستوران
+        </h2>
+      </motion.h2>
       <div className="flex flex-row-reverse justify-center flex-wrap mt-14">
         {/* card */}
         {foodCategory?.map((cat) => (
-          <div
-            key={cat.id}
-            className={`category-card relative border-Primary border-[1px] rounded-[4px] h-[111px] lg:h-[160px] w-[162px] lg:w-[230px] mx-1 sm:mx-2 my-12 lg:my-20 hover:shadow-card-shadow ease-out duration-75`}
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            variants={zoomIn(0.2, 1)}
+            viewport={{ once: true }}
           >
-            <img
-              className="object-cover absolute -top-14 lg:-top-24 w-[125px] lg:w-[208px] h-[122px] lg:h-[205px] mx-[11%] lg:mx-[5%]"
-              alt="categ"
-              src={cat?.imageSrc}
-            />
-            <button
-              onClick={() => handleDisplayBranchPop(true)}
-              className="absolute -bottom-4 mx-[20%] lg:mx-[16%] bg-Primary text-white w-[90px] lg:w-[155px] h-[32px] lg:h-[48px] rounded-[4px] shadow-card-shadow font-normal text-[14px] lg:text-[20px]"
+            <div
+              key={cat.id}
+              className={`category-card relative border-Primary border-[1px] rounded-[4px] h-[111px] lg:h-[160px] w-[162px] lg:w-[230px] mx-1 sm:mx-2 my-12 lg:my-20 hover:shadow-card-shadow ease-out duration-75`}
             >
-              {cat?.name}
-            </button>
-          </div>
+              <img
+                className="object-cover absolute -top-14 lg:-top-24 w-[125px] lg:w-[208px] h-[122px] lg:h-[205px] mx-[11%] lg:mx-[5%]"
+                alt="categ"
+                src={cat?.imageSrc}
+              />
+              <button
+                onClick={() => handleDisplayBranchPop(true)}
+                className="absolute -bottom-4 mx-[20%] lg:mx-[16%] bg-Primary text-white w-[90px] lg:w-[155px] h-[32px] lg:h-[48px] rounded-[4px] shadow-card-shadow font-normal text-[14px] lg:text-[20px]"
+              >
+                {cat?.name}
+              </button>
+            </div>
+          </motion.div>
         ))}
       </div>
     </div>
   );
 };
 
-export default FoodsCategory;
+export default SectionWrapper(FoodsCategory, "foodsCategory");
