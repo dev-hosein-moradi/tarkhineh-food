@@ -1,24 +1,108 @@
-import sf1 from "./assets/image/sf1.svg";
-import sf2 from "./assets/image/sf2.svg";
-import sf3 from "./assets/image/sf3.svg";
-import sf4 from "./assets/image/sf4.svg";
-import ff1 from "./assets/image/ff1.svg";
-import ff2 from "./assets/image/ff2.svg";
-import ff3 from "./assets/image/ff3.svg";
-import ff4 from "./assets/image/ff4.svg";
-import of1 from "./assets/image/of1.svg";
-import of2 from "./assets/image/of2.svg";
-import of3 from "./assets/image/of3.svg";
-import of4 from "./assets/image/of4.svg";
+import chalus from "../assets/image/agency/chalus.webp";
+import aghdasieh from "../assets/image/agency/aghdasieh.webp";
+import ekbatan from "../assets/image/agency/ekbatan.webp";
+import vanak from "../assets/image/agency/vanak.webp";
 
-import ekbatan from "./assets/image/agency/ekbatan.webp";
-import vanak from "./assets/image/agency/vanak.webp";
-import aghdasieh from "./assets/image/agency/aghdasieh.webp";
-import chalus from "./assets/image/agency/chalus.webp";
+import Categ1 from "../assets/image/categ1.svg";
+import Categ2 from "../assets/image/categ2.svg";
+import Categ3 from "../assets/image/categ3.svg";
+import Categ4 from "../assets/image/categ4.svg";
 
-import hosein from "./assets/image/hosein.jpg";
+import sf1 from "../assets/image/sf1.svg";
+import sf2 from "../assets/image/sf2.svg";
+import sf3 from "../assets/image/sf3.svg";
+import sf4 from "../assets/image/sf4.svg";
+import ff1 from "../assets/image/ff1.svg";
+import ff2 from "../assets/image/ff2.svg";
+import ff3 from "../assets/image/ff3.svg";
+import ff4 from "../assets/image/ff4.svg";
+import of1 from "../assets/image/of1.svg";
+import of2 from "../assets/image/of2.svg";
+import of3 from "../assets/image/of3.svg";
+import of4 from "../assets/image/of4.svg";
 
-export const branchFood = [
+import hosein from "../assets/image/hosein.jpg";
+
+const agencyData = [
+  {
+    id: 1001,
+    name: "شعبه اکباتان",
+    address: "شهرک اکباتان، فاز ۳، مجتمع تجاری کوروش، طبقه سوم",
+    imageSource: ekbatan,
+    title: "ekbatan",
+    images: [
+      {
+        image: ekbatan,
+      },
+      {
+        image: ekbatan,
+      },
+    ],
+    phoneNumber: "۳۳۵۳۵۳۵۴-۳۳۵۳۵۳۵۶",
+    timeActivity: "همه‌روزه از ساعت ۱۲  الی ۲۳ ",
+  },
+  {
+    id: 1002,
+    name: "شعبه چالوس",
+    address:
+      "چالوس، خیابان ۱۷ شهریور، بعد کوچه کوروش، جنب داروخانه دکتر میلانی",
+    imageSource: chalus,
+    title: "chalus",
+    images: [
+      {
+        image: chalus,
+      },
+      {
+        image: chalus,
+      },
+    ],
+    phoneNumber: "۳۳۵۳۵۳۵۴-۳۳۵۳۵۳۵۶",
+    timeActivity: "همه‌روزه از ساعت ۱۲  الی ۲۳ ",
+  },
+  {
+    id: 1003,
+    name: "شعبه اقدسیه",
+    address: "خیابان اقدسیه ، نرسیده به میدان خیام، پلاک ۸",
+    imageSource: aghdasieh,
+    title: "aghdasieh",
+    images: [
+      {
+        image: aghdasieh,
+      },
+      {
+        image: aghdasieh,
+      },
+    ],
+    phoneNumber: "۳۳۵۳۵۳۵۴-۳۳۵۳۵۳۵۶",
+    timeActivity: "همه‌روزه از ساعت ۱۲  الی ۲۳ ",
+  },
+  {
+    id: 1004,
+    name: "شعبه ونک",
+    address: "میدان ونک، خیابان فردوسی، نبش کوچه نیلوفر، پلاک ۲۶",
+    imageSource: vanak,
+    title: "vanak",
+    images: [
+      {
+        image: vanak,
+      },
+      {
+        image: vanak,
+      },
+    ],
+    phoneNumber: "۳۳۵۳۵۳۵۴-۳۳۵۳۵۳۵۶",
+    timeActivity: "همه‌روزه از ساعت ۱۲  الی ۲۳ ",
+  },
+];
+
+const foodCategory = [
+  { id: 1, name: "غذای اصلی", imageSrc: Categ1 },
+  { id: 2, name: "پیش غذا", imageSrc: Categ2 },
+  { id: 3, name: "دسر", imageSrc: Categ3 },
+  { id: 4, name: "نوشیدنی", imageSrc: Categ4 },
+];
+
+const branchFood = [
   {
     id: 1,
     tag: "so",
@@ -201,67 +285,7 @@ export const branchFood = [
   },
 ];
 
-export const ekbatanGallery = [
-  {
-    image: ekbatan,
-  },
-  {
-    image: ekbatan,
-  },
-];
-export const chalusGallery = [
-  {
-    image: chalus,
-  },
-  {
-    image: chalus,
-  },
-];
-export const vanakGallery = [
-  {
-    image: vanak,
-  },
-  {
-    image: vanak,
-  },
-];
-export const aghdasiehGallery = [
-  {
-    image: aghdasieh,
-  },
-  {
-    image: aghdasieh,
-  },
-];
-
-export const branchContact = [
-  {
-    id: "ekbatan",
-    address: "شهرک اکباتان، فاز 3، مجتمع تجاری کوروش، طبقه سوم",
-    phoneNumber: "۳۳۵۳۵۳۵۴-۳۳۵۳۵۳۵۶",
-    timeActivity: "همه‌روزه از ساعت ۱۲  الی ۲۳ ",
-  },
-  {
-    id: "vanak",
-    address: " ونک ، فاز 2، مجتمع تجاری کوروش، طبقه سوم",
-    phoneNumber: "۳۳۵۳۵۳۵۴-۳۳۵۳۵۳۵۶",
-    timeActivity: "همه‌روزه از ساعت ۱۲  الی ۲۳ ",
-  },
-  {
-    id: "aghdasieh",
-    address: " اقدسیه ، فاز 1، مجتمع تجاری کوروش، طبقه سوم",
-    phoneNumber: "۳۳۵۳۵۳۵۴-۳۳۵۳۵۳۵۶",
-    timeActivity: "همه‌روزه از ساعت ۱۲  الی ۲۳ ",
-  },
-  {
-    id: "chalus",
-    address: " چالوس ، فاز 5، مجتمع تجاری کوروش، طبقه سوم",
-    phoneNumber: "۳۳۵۳۵۳۵۴-۳۳۵۳۵۳۵۶",
-    timeActivity: "همه‌روزه از ساعت ۱۲  الی ۲۳ ",
-  },
-];
-
-export const comments = [
+const comments = [
   {
     name: "حسین مرادی",
     message:
@@ -287,3 +311,5 @@ export const comments = [
     avatar: hosein,
   },
 ];
+
+export { agencyData, foodCategory, branchFood, comments };

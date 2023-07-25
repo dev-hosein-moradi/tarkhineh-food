@@ -7,6 +7,7 @@ import Register from "../components/Register";
 import SearchPopUp from "../components/SearchPopUp";
 import SvgSearch from "../assets/svg/SvgSearch";
 import BranchsContent from "../components/BranchsContent";
+import Footer from "../components/Footer";
 
 const BranchMain = ({
   searchPop,
@@ -87,6 +88,15 @@ const BranchMain = ({
         </div>
 
         <BranchsContent />
+
+        {/* footer section */}
+        <section
+          className={`w-full bg-footer-img bg-blend-darken bg-no-repeat bg-cover bg-center ${
+            darkEffect && "dark-bg-popups"
+          } ease-in-out duration-300`}
+        >
+          <Footer />
+        </section>
       </main>
     </Fragment>
   );

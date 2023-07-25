@@ -1,21 +1,13 @@
 // eslint-disable-next-line no-unused-vars
 import React, { lazy } from "react";
-import Categ1 from "../assets/image/categ1.svg";
-import Categ2 from "../assets/image/categ2.svg";
-import Categ3 from "../assets/image/categ3.svg";
-import Categ4 from "../assets/image/categ4.svg";
+
 import SectionWrapper from "../hoc/sectionWrapper/SectionWrapper";
 import { motion } from "framer-motion";
-import { fadeIn, slideIn, textVariant, zoomIn } from "../utils/motion";
+import {  textVariant, zoomIn } from "../utils/motion";
+import { foodCategory } from "../constants";
 
 const SvgSearch = lazy(() => import("../assets/svg/SvgSearch"));
 
-const foodCategory = [
-  { id: 1, name: "غذای اصلی", imageSrc: Categ1 },
-  { id: 2, name: "پیش غذا", imageSrc: Categ2 },
-  { id: 3, name: "دسر", imageSrc: Categ3 },
-  { id: 4, name: "نوشیدنی", imageSrc: Categ4 },
-];
 
 const FoodsCategory = ({ handleDisplayBranchPop }) => {
   return (

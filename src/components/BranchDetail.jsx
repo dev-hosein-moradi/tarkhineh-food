@@ -1,17 +1,19 @@
 // eslint-disable-next-line no-unused-vars
 import React, { Fragment, useState } from "react";
 import { useParams } from "react-router-dom";
-import { branchContact, ekbatanGallery } from "../dummyData";
 import SvgLocation from "../assets/svg/SvgLocation";
 import SvgClock from "../assets/svg/SvgClock";
 import SvgCallCalling from "../assets/svg/SvgCallCalling";
+import { agencyData, comments } from "../constants";
+import CommentCard from "./CommentCard";
 
 const BranchDetail = () => {
   const { branchName } = useParams();
   const [slideCounter, setSlideCounter] = useState(0);
+
   return (
     <section className="w-full py-5">
-      <h1 className="text-xl font-bold text-gray-8 leading-5 text-center">
+      <h1 className="text-xl font-bold text-gray-8 leading-5 text-center mb-4">
         شعبه
         {branchName === "ekbatan"
           ? " اکباتان"
@@ -33,12 +35,20 @@ const BranchDetail = () => {
           }}
         ></button>
 
-        <div className="w-full overflow-x-auto snap-x snap-mandatory scroll-smooth flex flex-row items-center gap-1">
-          {ekbatanGallery?.map((image, index) => {
+        <div className="w-full overflow-x-auto sm:overflow-x-hidden snap-x snap-mandatory scroll-smooth flex flex-row-reverse items-center gap-1">
+          {agencyData[
+            branchName === "ekbatan"
+              ? 0
+              : branchName === "chalus"
+              ? 1
+              : branchName === "aghdasieh"
+              ? 2
+              : 3
+          ]?.images?.map((image, index) => {
             return (
               <img
                 key={index}
-                className={`w-[300px] min-w-[400px] h-60 object-cover `}
+                className={`min-w-[100vw] h-[500px] object-cover `}
                 alt={index}
                 src={image?.image}
               />
@@ -57,23 +67,23 @@ const BranchDetail = () => {
       </div>
 
       {/* contact card */}
-      <div className="bg-white w-[98%] relative -top-12 mx-auto h-20 rounded border-Primary border-[1px] flex flex-col justify-around px-2 ">
-        {branchContact?.map((contact) => {
-          if (contact?.id === branchName) {
+      <div className="bg-white w-[85%] sm:w-[80%] md:w-[60%] relative -top-12 mx-auto h-20 sm:h-24 rounded border-Primary border-[1px] flex flex-col sm:flex-row sm:items-center justify-around px-2 ">
+        {agencyData?.map((contact) => {
+          if (contact?.title === branchName) {
             return (
-              <Fragment>
-                <span className="flex flex-row w-full items-center justify-end">
+              <Fragment key={contact?.id}>
+                <span className="flex flex-row sm:flex-col-reverse sm:w-[40%] text-center w-full items-center justify-end">
                   <p className="font-normal text-sm">{contact?.address}</p>
                   <SvgLocation />
                 </span>
-                <div className="flex flex-row-reverse items-center justify-between">
-                  <span className="flex flex-row items-center">
+                <div className="flex flex-2 flex-row-reverse items-center justify-between sm:w-[60%]">
+                  <span className="flex flex-1 flex-row sm:flex-col-reverse items-center">
                     <p className="font-normal text-xs">
                       {contact?.phoneNumber}
                     </p>
                     <SvgCallCalling />
                   </span>
-                  <span className="flex flex-row w-full items-center">
+                  <span className="flex flex-2 flex-row sm:flex-col-reverse w-full items-center">
                     <p className="font-normal text-xs">
                       {contact?.timeActivity}
                     </p>
@@ -86,8 +96,12 @@ const BranchDetail = () => {
         })}
       </div>
 
-      {/* users comment */}
-      <div></div>
+      {/* people comments about current branch */}
+      <div className="w-full py-8 flex flex-row-reverse overflow-x-auto md:overflow-x-hidden  gap-3">
+        {comments?.map((comment, index) => (
+          <CommentCard key={index} {...comment} />
+        ))}
+      </div>
     </section>
   );
 };

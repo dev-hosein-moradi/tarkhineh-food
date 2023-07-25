@@ -1,105 +1,35 @@
-// eslint-disable-next-line no-unused-vars
-import React, { lazy, useEffect } from "react";
-import chalus from "../assets/image/agency/chalus.webp";
-import aghdasieh from "../assets/image/agency/aghdasieh.webp";
-import ekbatan from "../assets/image/agency/ekbatan.webp";
-import vanak from "../assets/image/agency/vanak.webp";
-import { Link } from "react-router-dom";
+import React, { lazy } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import { fadeIn, textVariant } from "../utils/motion";
+import SectionWrapper from "../hoc/sectionWrapper/SectionWrapper";
+import { agencyData } from "../constants";
 
 const SvgExpand = lazy(() => import("../assets/svg/SvgExpand"));
 
-const agencyData = [
-  {
-    id: 1001,
-    name: "شعبه اکباتان",
-    address: "شهرک اکباتان، فاز ۳، مجتمع تجاری کوروش، طبقه سوم",
-    imageSource: ekbatan,
-    title: "ekbatan",
-  },
-  {
-    id: 1002,
-    name: "شعبه چالوس",
-    address:
-      "چالوس، خیابان ۱۷ شهریور، بعد کوچه کوروش، جنب داروخانه دکتر میلانی",
-    imageSource: chalus,
-    title: "chalus",
-  },
-  {
-    id: 1003,
-    name: "شعبه اقدسیه",
-    address: "خیابان اقدسیه ، نرسیده به میدان خیام، پلاک ۸",
-    imageSource: aghdasieh,
-    title: "aghdasieh",
-  },
-  {
-    id: 1004,
-    name: "شعبه ونک",
-    address: "میدان ونک، خیابان فردوسی، نبش کوچه نیلوفر، پلاک ۲۶",
-    imageSource: vanak,
-    title: "vanak",
-  },
-];
-
 const Agencies = () => {
-  useEffect(() => {
-    /* get  all element with this class */
-    const scrollElements = document.querySelectorAll(".agency-card");
-
-    /* check when element in to view */
-    const elementInView = (el, dividend = 1) => {
-      const elementTop = el.getBoundingClientRect().top;
-
-      return (
-        elementTop <=
-        (window.innerHeight || document.documentElement.clientHeight) / dividend
-      );
-    };
-
-    /* check when element out of view */
-    const elementOutofView = (el) => {
-      const elementTop = el.getBoundingClientRect().top;
-
-      return (
-        elementTop >
-        (window.innerHeight || document.documentElement.clientHeight)
-      );
-    };
-
-    /* add class when in view */
-    const displayScrollElement = (element) => {
-      element.classList.add("scrolled");
-    };
-
-    /* remove class when out of view */
-    const hideScrollElement = (element) => {
-      element.classList.remove("scrolled");
-    };
-
-    const handleScrollAnimation = () => {
-      scrollElements.forEach((el) => {
-        if (elementInView(el, 1.25)) {
-          displayScrollElement(el);
-        } else if (elementOutofView(el)) {
-          hideScrollElement(el);
-        }
-      });
-    };
-
-    window.addEventListener("scroll", () => {
-      handleScrollAnimation();
-    });
-  }, []);
-
+  const navigate = useNavigate();
   return (
     <div className="w-full max-w-[1024px] mx-auto py-[16px] px-[20px] ">
-      <h2 className="text-center font-bold text-xl lg:text-2xl my-2 lg:my-4">
-        ترخینه گردی
-      </h2>
+      <motion.div variants={textVariant(0.2)}>
+        <h2 className="text-center font-bold text-xl lg:text-2xl my-2 lg:my-4">
+          ترخینه گردی
+        </h2>
+      </motion.div>
       {/* cards */}
       <div className="flex flex-row-reverse flex-wrap w-full items-center justify-center py-5">
         {agencyData?.map((agency) => (
-          <Link to={`branch/${agency?.title}`}>
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            variants={fadeIn("up", "tween", 0.2, 0.5)}
+          >
             <div
+              onClick={() => {
+                navigate(`branch/${agency?.title}`);
+                window.scrollTo(0, 0);
+              }}
               key={agency.id}
               className="agency-card w-[340px] h-[102px] border-[1px] border-gray-4 hover:border-Primary rounded-md relative flex flex-row-reverse my-2 sm:mx-1 lg:flex-col lg:w-[230px] lg:h-[344px] hover:shadow-card-shadow ease-in-out duration-500 hover:translate-y-1 group  "
             >
@@ -125,11 +55,11 @@ const Agencies = () => {
                 {"<"} صفحه شعبه
               </button>
             </div>
-          </Link>
+          </motion.div>
         ))}
       </div>
     </div>
   );
 };
 
-export default Agencies;
+export default SectionWrapper(Agencies, "agencies");

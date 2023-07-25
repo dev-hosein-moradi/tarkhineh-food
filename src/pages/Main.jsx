@@ -12,8 +12,6 @@ import BranchPopUp from "../components/BranchPopUp";
 import Register from "../components/Register";
 import Navbar from "../components/Navbar";
 
-
-
 // eslint-disable-next-line react/prop-types, no-unused-vars
 const Main = ({
   searchPop,
