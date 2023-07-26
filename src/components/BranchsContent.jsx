@@ -3,6 +3,8 @@ import React, { lazy } from "react";
 import { branchFood } from "../constants";
 import { motion } from "framer-motion";
 import { textVariant } from "../utils/motion";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 const BranchDetail = lazy(() => import("./BranchDetail"));
 const BranchFoodCard = lazy(() => import("./BranchFoodCard"));
@@ -11,94 +13,105 @@ const SvgNote = lazy(() => import("../assets/svg/SvgNote"));
 const SvgArrowRight = lazy(() => import("../assets/svg/SvgArrowRight"));
 
 const BranchsContent = () => {
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5,
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 4,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 3,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+    },
+  };
   return (
     <div className="w-full">
       {/* special offer section */}
-      <section className="w-full h-[450px] relative">
+      <section className="w-full h-[500px] relative">
         <motion.div variants={textVariant(0.2)}>
           <h2 className="text-right font-bold text-lg text-gray-8 pr-4 mt-20">
             پیشنهاد ویژه
           </h2>
         </motion.div>
         {/* box wrapper */}
-        <div className="w-full relative">
-          {/* previos btn */}
-          <button className="left-3 hidden lg:flex bg-gray-6 absolute">
-            <SvgArrowLeft width={30} height={30} />
-          </button>
-
-          {/* slides */}
-          <div className="flex flex-row-reverse gap-4 w-full overflow-x-auto md:overflow-x-hidden snap-x snap-mandatory px-4 py-10">
+        <div className="w-full h-[450px] py-5 relative">
+          <Carousel
+            responsive={responsive}
+            swipeable={true}
+            draggable={true}
+            showDots={true}
+            infinite={true}
+            className=""
+          >
             {branchFood?.map(
               (food) =>
                 food?.tag === "so" && (
                   <BranchFoodCard key={food?.id} food={food} />
                 )
             )}
-          </div>
-
-          {/* next btn */}
-          <button className="right-3 hidden lg:flex bg-gray-6 absolute">
-            <SvgArrowRight width={30} height={30} />
-          </button>
+          </Carousel>
         </div>
       </section>
 
       {/* favorite item section */}
-      <section className="w-full h-[450px] relative bg-Primary py-10 my-16">
+      <section className="w-full h-[500px] relative bg-Primary py-10 my-16">
         <motion.div variants={textVariant(0.2)}>
           <h2 className="text-right font-bold text-lg text-white pr-4">
             غذاهای محبوب
           </h2>
         </motion.div>
         {/* box wrapper */}
-        <div className="w-full absolute">
-          {/* previos btn */}
-          <button className="left-0 hidden lg:flex ">
-            <SvgArrowLeft width={30} height={30} />
-          </button>
-
-          {/* slides */}
-          <div className="flex flex-row-reverse gap-4 w-full overflow-x-auto snap-x snap-mandatory px-4 py-10">
+        <div className="w-full h-[400px] py-5 relative">
+        <Carousel
+            responsive={responsive}
+            swipeable={true}
+            draggable={true}
+            showDots={true}
+            infinite={true}
+            className=""
+          >
             {branchFood?.map(
               (food) =>
                 food?.tag === "ff" && (
                   <BranchFoodCard key={food?.id} food={food} />
                 )
             )}
-          </div>
-
-          {/* next btn */}
-          <button className="right-0 hidden lg:flex"></button>
+          </Carousel>
         </div>
       </section>
 
       {/* other items section */}
-      <section className="w-full h-[450px] relative py-10 my-16">
+      <section className="w-full h-[500px] relative py-10 my-16">
         <motion.div variants={textVariant(0.2)}>
           <h2 className="text-right font-bold text-lg text-gray-8 pr-4">
             غذاهای غیر ایرانی
           </h2>
         </motion.div>
         {/* box wrapper */}
-        <div className="w-full absolute">
-          {/* previos btn */}
-          <button className="left-0 hidden lg:flex ">
-            <SvgArrowLeft width={30} height={30} />
-          </button>
-
-          {/* slides */}
-          <div className="flex flex-row-reverse gap-4 w-full overflow-x-auto snap-x snap-mandatory px-4 py-10">
+        <div className="w-full h-[450px] py-2 relative">
+        <Carousel
+            responsive={responsive}
+            swipeable={true}
+            draggable={true}
+            showDots={true}
+            infinite={true}
+            className=""
+          >
             {branchFood?.map(
               (food) =>
                 food?.tag === "of" && (
                   <BranchFoodCard key={food?.id} food={food} />
                 )
             )}
-          </div>
-
-          {/* next btn */}
-          <button className="right-0 hidden lg:flex"></button>
+          </Carousel>
         </div>
       </section>
 

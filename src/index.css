@@ -381,3 +381,24 @@ body {
         }
     }
 }
+
+.react-multi-carousel-list {
+    height: 100%;
+}
+
+.react-multi-carousel-track {
+    justify-content: center;
+    align-items: center;
+    /* gap: 40px; */
+}
+
+.react-multi-carousel-item {
+    /* width: 230px !important; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.react-multiple-carousel__arrow {
+    bottom: 0 !important;
+}
