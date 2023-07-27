@@ -5,7 +5,7 @@ const Svg5Star = lazy(() => import("../assets/svg/Svg5Star"));
 
 const CommentCard = ({ name, message, date, avatar, rate }) => {
   return (
-    <div className="w-[310px] md:w-[600px] min-w-[310px] md:min-w-[600px] h-36 py-5 md:py-6 px-5 md:px-8 rounded border-[1px] border-gray-4 flex flex-row items-center justify-between">
+    <div className="w-[300px] min-w-[300px] h-36 py-5 md:py-6 px-5 md:px-8 rounded border-[1px] border-gray-4 flex flex-row items-center justify-between">
       <div className="pr-1 md:pr-5">
         <p className="text-xs sm:text-sm font-normal md:font-medium text-right leading-4 md:leading-7 text-gray-8">
           {message}

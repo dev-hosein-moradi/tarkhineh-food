@@ -38,7 +38,7 @@ const FoodsCategory = ({ handleDisplayBranchPop }) => {
             <m.div
               initial="hidden"
               whileInView="show"
-              variants={zoomIn(0, 0.3)}
+              variants={zoomIn(0, 1)}
               viewport={{ once: true }}
             >
               <div

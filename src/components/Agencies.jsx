@@ -1,6 +1,6 @@
 import React, { lazy } from "react";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import { m, LazyMotion, domAnimation } from "framer-motion";
 import { fadeIn, textVariant } from "../utils/motion";
 import SectionWrapper from "../hoc/sectionWrapper/SectionWrapper";
 import { agencyData } from "../constants";
@@ -11,27 +11,27 @@ const Agencies = () => {
   const navigate = useNavigate();
   return (
     <div className="w-full max-w-[1024px] mx-auto py-[16px] px-[20px] ">
-      <motion.div variants={textVariant(0.2)}>
-        <h2 className="text-center font-bold text-xl lg:text-2xl my-2 lg:my-4">
-          ترخینه گردی
-        </h2>
-      </motion.div>
+      <LazyMotion features={domAnimation}>
+        <m.div variants={textVariant(0.2)}>
+          <h2 className="text-center font-bold text-xl lg:text-2xl my-2 lg:my-4">
+            ترخینه گردی
+          </h2>
+        </m.div>
+      </LazyMotion>
       {/* cards */}
       <div className="flex flex-row-reverse flex-wrap w-full items-center justify-center py-5">
         {agencyData?.map((agency) => (
-          <motion.div
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            variants={fadeIn("up", "tween", 0.2, 0.5)}
-            key={agency.id}
-          >
-            <div
+          <LazyMotion key={agency.id} features={domAnimation}>
+            <m.div
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              variants={fadeIn("up", "tween", 0.2, 0.5)}
               onClick={() => {
                 navigate(`branch/${agency?.title}`);
                 window.scrollTo(0, 0);
               }}
-              className="agency-card w-[340px] h-[102px] border-[1px] border-gray-4 hover:border-Primary rounded-md relative flex flex-row-reverse my-2 sm:mx-1 lg:flex-col lg:w-[230px] lg:h-[344px] hover:shadow-card-shadow ease-in-out duration-500 hover:translate-y-1 group  "
+              className="agency-card w-[340px] h-[102px] border-[1px] border-gray-4 hover:border-Primary rounded-md relative flex flex-row-reverse my-2 sm:mx-1 lg:flex-col lg:w-[230px] lg:h-[344px] hover:shadow-card-shadow ease-in-out duration-500 hover:translate-y-1 group cursor-pointer "
             >
               <img
                 className="w-[160px] min-w-[160px] h-[100px] object-cover rounded-r-md lg:w-[228px] lg:h-[230px] lg:rounded-r-none lg:rounded-t-md lg:group-hover:h-[190px] ease-in-out duration-500 "
@@ -55,8 +55,8 @@ const Agencies = () => {
               <button className=" hidden lg:inline-block w-[128px] h-[35px] text-shade-2 border-[1px] border-shade-2 rounded-md opacity-0 group-hover:opacity-100 ease-in-out duration-500 mx-auto mt-1  ">
                 {"<"} صفحه شعبه
               </button>
-            </div>
-          </motion.div>
+            </m.div>
+          </LazyMotion>
         ))}
       </div>
     </div>

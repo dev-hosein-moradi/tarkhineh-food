@@ -382,23 +382,46 @@ body {
     }
 }
 
-.react-multi-carousel-list {
+.card .react-multi-carousel-list {
     height: 100%;
+    align-items: flex-start !important;
 }
 
-.react-multi-carousel-track {
+.card .react-multi-carousel-track {
     justify-content: center;
     align-items: center;
-    /* gap: 40px; */
 }
 
-.react-multi-carousel-item {
-    /* width: 230px !important; */
+.card .react-multi-carousel-item {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.react-multiple-carousel__arrow {
+.card .react-multiple-carousel__arrow {
+    bottom: 0 !important;
+}
+
+
+.comment .react-multi-carousel-list {
+    height: 100%;
+    align-items: flex-start !important;
+}
+
+.comment .react-multi-carousel-track {
+    justify-content: center;
+    align-items: center;
+    flex-direction: row-reverse !important;
+    width: 100% !important;
+    gap: 10px !important;
+}
+
+.comment .react-multi-carousel-item {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.comment .react-multiple-carousel__arrow {
     bottom: 0 !important;
 }

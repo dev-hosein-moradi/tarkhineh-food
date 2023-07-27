@@ -8,9 +8,7 @@ import "react-multi-carousel/lib/styles.css";
 
 const BranchDetail = lazy(() => import("./BranchDetail"));
 const BranchFoodCard = lazy(() => import("./BranchFoodCard"));
-const SvgArrowLeft = lazy(() => import("../assets/svg/SvgArrowLeft"));
 const SvgNote = lazy(() => import("../assets/svg/SvgNote"));
-const SvgArrowRight = lazy(() => import("../assets/svg/SvgArrowRight"));
 
 const BranchsContent = () => {
   const responsive = {
@@ -35,14 +33,14 @@ const BranchsContent = () => {
   return (
     <div className="w-full">
       {/* special offer section */}
-      <section className="w-full h-[500px] relative">
+      <section className="w-full h-[450px] relative card">
         <motion.div variants={textVariant(0.2)}>
           <h2 className="text-right font-bold text-lg text-gray-8 pr-4 mt-20">
             پیشنهاد ویژه
           </h2>
         </motion.div>
         {/* box wrapper */}
-        <div className="w-full h-[450px] py-5 relative">
+        <div className="w-full h-[380px] py-5 relative">
           <Carousel
             responsive={responsive}
             swipeable={true}
@@ -62,14 +60,14 @@ const BranchsContent = () => {
       </section>
 
       {/* favorite item section */}
-      <section className="w-full h-[500px] relative bg-Primary py-10 my-16">
+      <section className="w-full h-[450px] relative bg-Primary py-10 my-16 card">
         <motion.div variants={textVariant(0.2)}>
           <h2 className="text-right font-bold text-lg text-white pr-4">
             غذاهای محبوب
           </h2>
         </motion.div>
         {/* box wrapper */}
-        <div className="w-full h-[400px] py-5 relative">
+        <div className="w-full h-[380px] py-5 relative">
         <Carousel
             responsive={responsive}
             swipeable={true}
@@ -89,14 +87,14 @@ const BranchsContent = () => {
       </section>
 
       {/* other items section */}
-      <section className="w-full h-[500px] relative py-10 my-16">
+      <section className="w-full h-[450px] relative py-10 my-16 card">
         <motion.div variants={textVariant(0.2)}>
           <h2 className="text-right font-bold text-lg text-gray-8 pr-4">
             غذاهای غیر ایرانی
           </h2>
         </motion.div>
         {/* box wrapper */}
-        <div className="w-full h-[450px] py-2 relative">
+        <div className="w-full h-[380px] py-2 relative">
         <Carousel
             responsive={responsive}
             swipeable={true}

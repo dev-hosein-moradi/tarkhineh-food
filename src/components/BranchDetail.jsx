@@ -1,6 +1,8 @@
 import React, { Fragment, lazy, useState } from "react";
 import { useParams } from "react-router-dom";
 import { agencyData, comments } from "../constants";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 const CommentCard = lazy(() => import("./CommentCard"));
 const SvgLocation = lazy(() => import("../assets/svg/SvgLocation"));
@@ -10,6 +12,26 @@ const SvgCallCalling = lazy(() => import("../assets/svg/SvgCallCalling"));
 const BranchDetail = () => {
   const { branchName } = useParams();
   const [slideCounter, setSlideCounter] = useState(0);
+
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5,
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 2,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 1,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+    },
+  };
 
   return (
     <section className="w-full py-5">
@@ -35,26 +57,23 @@ const BranchDetail = () => {
           }}
         ></button>
 
-        <div className="w-full overflow-x-auto sm:overflow-x-hidden snap-x snap-mandatory scroll-smooth flex flex-row-reverse items-center gap-1">
-          {agencyData[
-            branchName === "ekbatan"
-              ? 0
-              : branchName === "chalus"
-              ? 1
-              : branchName === "aghdasieh"
-              ? 2
-              : 3
-          ]?.images?.map((image, index) => {
-            return (
-              <img
-                key={index}
-                className={`min-w-[100vw] h-[500px] object-cover `}
-                alt={index}
-                src={image?.image}
-                loading="lazy"
-              />
-            );
-          })}
+        <div className="w-full snap-x snap-mandatory scroll-smooth flex flex-row-reverse gap-1 image">
+          <img
+            className={`min-w-[100vw] h-[300px] object-fill `}
+            alt={"branch"}
+            src={
+              agencyData[
+                branchName === "ekbatan"
+                  ? 0
+                  : branchName === "chalus"
+                  ? 1
+                  : branchName === "aghdasieh"
+                  ? 2
+                  : 3
+              ]?.images[0].image
+            }
+            loading="lazy"
+          />
         </div>
 
         <button
@@ -98,11 +117,18 @@ const BranchDetail = () => {
       </div>
 
       {/* people comments about current branch */}
-      <div className="w-full py-8 flex flex-row-reverse overflow-x-auto md:overflow-x-hidden  gap-3">
+      <Carousel
+        responsive={responsive}
+        swipeable={true}
+        draggable={true}
+        showDots={true}
+        infinite={true}
+        className="w-full py-8 flex-row-reverse comment"
+      >
         {comments?.map((comment, index) => (
           <CommentCard key={index} {...comment} />
         ))}
-      </div>
+      </Carousel>
     </section>
   );
 };
