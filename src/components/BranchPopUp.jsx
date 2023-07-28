@@ -1,9 +1,11 @@
 import React, { lazy } from "react";
 import { agencyData } from "../constants";
+import { useNavigate } from "react-router-dom";
 
 const SvgCloseSolid = lazy(() => import("../assets/svg/SvgCloseSolid"));
 
 const BranchPopUp = ({ handleDisplayBranchPop }) => {
+  const navigate = useNavigate();
   return (
     <div className="flex flex-col items-center w-full">
       <div className="bg-gray-3 flex flex-row items-center w-full h-[84px] px-4 py-1 rounded-t-md">
@@ -26,6 +28,10 @@ const BranchPopUp = ({ handleDisplayBranchPop }) => {
         <ul className="flex flex-col lg:flex-row items-center justify-between lg:justify-around">
           {agencyData?.map((agency) => (
             <li
+              onClick={() => {
+                navigate(`/branch/${agency?.title}`);
+                window.scrollTo(0, 0);
+              }}
               key={agency.id}
               className="w-[288px] lg:w-[175px] h-[80px] lg:h-[260px] flex flex-row-reverse lg:flex-col mb-1 border-[1px] border-gray4 rounded-md cursor-pointer hover:border-Primary hover:shadow-card-shadow ease-in-out duration-200 "
             >

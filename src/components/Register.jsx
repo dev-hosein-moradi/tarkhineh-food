@@ -1,8 +1,8 @@
 import React, { lazy, useEffect, useReducer, useState } from "react";
 import VerificationInput from "react-verification-input";
+import Logo from "../assets/image/Logo.svg";
 
 const SvgCloseSolid = lazy(() => import("../assets/svg/SvgCloseSolid"));
-const Logo = lazy(() => import("../assets/image/Logo.svg"));
 const SpinnerLoading = lazy(() => import("./SpinnerLoading"));
 const SvgClock = lazy(() => import("../assets/svg/SvgClock"));
 const SvgArrowRightColor = lazy(() =>

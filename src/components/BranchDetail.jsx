@@ -117,18 +117,20 @@ const BranchDetail = () => {
       </div>
 
       {/* people comments about current branch */}
-      <Carousel
-        responsive={responsive}
-        swipeable={true}
-        draggable={true}
-        showDots={true}
-        infinite={true}
-        className="w-full py-8 flex-row-reverse comment"
-      >
-        {comments?.map((comment, index) => (
-          <CommentCard key={index} {...comment} />
-        ))}
-      </Carousel>
+      <div className="w-full h-[250px] py-5 relative comment">
+        <Carousel
+          responsive={responsive}
+          swipeable={true}
+          draggable={true}
+          showDots={true}
+          infinite={true}
+          className=""
+        >
+          {comments?.map((comment, index) => (
+            <CommentCard key={index} {...comment} />
+          ))}
+        </Carousel>
+      </div>
     </section>
   );
 };

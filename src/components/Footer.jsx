@@ -1,10 +1,13 @@
 import React, { lazy, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SvgTelegram = lazy(() => import("../assets/svg/SvgTelegram"));
 const SvgInstagram = lazy(() => import("../assets/svg/SvgInstagram"));
 const SvgTwitter = lazy(() => import("../assets/svg/SvgTwitter"));
 
 const Footer = () => {
+  const navigate = useNavigate();
+
   const [charCounter, setCharCounter] = useState(0);
 
   const handleChangeMessage = (e) => {
@@ -53,16 +56,40 @@ const Footer = () => {
             شعبه‌های ترخینه
           </h2>
           <ul className="text-sm">
-            <li className="mb-2 lg:mb-6 hover:footer-link-hover hover:text-Primary cursor-pointer lg:text-base ">
+            <li
+              onClick={() => {
+                navigate(`/branch/ekbatan`);
+                window.scrollTo(0, 0);
+              }}
+              className="mb-2 lg:mb-6 hover:footer-link-hover hover:text-Primary cursor-pointer lg:text-base "
+            >
               شعبه اکباتان
             </li>
-            <li className="mb-2 lg:mb-6 hover:footer-link-hover hover:text-Primary cursor-pointer lg:text-base ">
+            <li
+              onClick={() => {
+                navigate(`/branch/chalus`);
+                window.scrollTo(0, 0);
+              }}
+              className="mb-2 lg:mb-6 hover:footer-link-hover hover:text-Primary cursor-pointer lg:text-base "
+            >
               شعبه چالوس
             </li>
-            <li className="mb-2 lg:mb-6 hover:footer-link-hover hover:text-Primary cursor-pointer lg:text-base ">
+            <li
+              onClick={() => {
+                navigate(`/branch/aghdaseih`);
+                window.scrollTo(0, 0);
+              }}
+              className="mb-2 lg:mb-6 hover:footer-link-hover hover:text-Primary cursor-pointer lg:text-base "
+            >
               شعبه اقدسیه
             </li>
-            <li className="mb-2 lg:mb-6 hover:footer-link-hover hover:text-Primary cursor-pointer lg:text-base ">
+            <li
+              onClick={() => {
+                navigate(`/branch/vanak`);
+                window.scrollTo(0, 0);
+              }}
+              className="mb-2 lg:mb-6 hover:footer-link-hover hover:text-Primary cursor-pointer lg:text-base "
+            >
               شعبه ونک
             </li>
           </ul>

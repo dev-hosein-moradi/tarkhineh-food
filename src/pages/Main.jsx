@@ -29,6 +29,7 @@ const Main = ({
   /* handling close and open func for search pop up */
   const handleDisplayBranchPop = (e) => {
     setBranchPop(e);
+    console.log("bitch");
   };
 
   /* handling close and open func for register pop up */
@@ -77,7 +78,10 @@ const Main = ({
             darkEffect && "dark-bg-popups"
           } ease-in-out duration-300`}
         >
-          <FoodsCategory handleDisplayBranchPop={handleDisplayBranchPop} />
+          <FoodsCategory
+            test="test"
+            handleDisplayBranchPop={handleDisplayBranchPop}
+          />
         </section>
 
         {/* search box pop up in desktop size */}

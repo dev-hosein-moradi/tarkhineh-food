@@ -7,7 +7,16 @@ import { foodCategory } from "../constants";
 
 const SvgSearch = lazy(() => import("../assets/svg/SvgSearch"));
 
-const FoodsCategory = ({ handleDisplayBranchPop }) => {
+const FoodsCategory = ({
+  handleDisplayBranchPop,
+  handleDisplaySearchPop,
+  test,
+}) => {
+  const showBranchPop = () => {
+    console.log(typeof handleDisplayBranchPop);
+    console.log(typeof handleDisplaySearchPop);
+    console.log(test);
+  };
   return (
     <div className="w-full max-w-[1024px] mx-auto py-5 flex flex-col items-center">
       {/* search bar */}
@@ -31,32 +40,30 @@ const FoodsCategory = ({ handleDisplayBranchPop }) => {
           </h2>
         </m.div>
       </LazyMotion>
+
       <div className="flex flex-row-reverse justify-center flex-wrap mt-14">
         {/* card */}
         {foodCategory?.map((cat) => (
-          <LazyMotion key={cat.id} features={domAnimation}>
+          <LazyMotion key={cat?.id} features={domAnimation}>
             <m.div
               initial="hidden"
               whileInView="show"
               variants={zoomIn(0, 1)}
               viewport={{ once: true }}
+              className={`category-card relative border-Primary border-[1px] rounded-[4px] h-[111px] lg:h-[160px] w-[162px] lg:w-[230px] mx-1 sm:mx-2 my-12 lg:my-20 hover:shadow-card-shadow ease-out duration-75`}
             >
-              <div
-                className={`category-card relative border-Primary border-[1px] rounded-[4px] h-[111px] lg:h-[160px] w-[162px] lg:w-[230px] mx-1 sm:mx-2 my-12 lg:my-20 hover:shadow-card-shadow ease-out duration-75`}
+              <img
+                className="object-cover absolute -top-14 lg:-top-24 w-[125px] lg:w-[208px] h-[122px] lg:h-[205px] mx-[11%] lg:mx-[5%]"
+                alt="categ"
+                src={cat?.imageSrc}
+                loading="lazy"
+              />
+              <button
+                onClick={() => handleDisplayBranchPop(true)}
+                className="absolute -bottom-4 mx-[20%] lg:mx-[16%] bg-Primary text-white w-[90px] lg:w-[155px] h-[32px] lg:h-[48px] rounded-[4px] shadow-card-shadow font-normal text-[14px] lg:text-[20px]"
               >
-                <img
-                  className="object-cover absolute -top-14 lg:-top-24 w-[125px] lg:w-[208px] h-[122px] lg:h-[205px] mx-[11%] lg:mx-[5%]"
-                  alt="categ"
-                  src={cat?.imageSrc}
-                  loading="lazy"
-                />
-                <button
-                  onClick={() => handleDisplayBranchPop(true)}
-                  className="absolute -bottom-4 mx-[20%] lg:mx-[16%] bg-Primary text-white w-[90px] lg:w-[155px] h-[32px] lg:h-[48px] rounded-[4px] shadow-card-shadow font-normal text-[14px] lg:text-[20px]"
-                >
-                  {cat?.name}
-                </button>
-              </div>
+                {cat?.name}
+              </button>
             </m.div>
           </LazyMotion>
         ))}
@@ -65,4 +72,4 @@ const FoodsCategory = ({ handleDisplayBranchPop }) => {
   );
 };
 
-export default SectionWrapper(FoodsCategory, "foodsCategory");
+export default FoodsCategory;

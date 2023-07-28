@@ -1,6 +1,7 @@
 import React, { lazy, useState } from "react";
 import { agencyData } from "../constants";
 import Logo from "../assets/image/Logo.svg";
+import { useNavigate } from "react-router-dom";
 
 const SvgMenu = lazy(() => import("../assets/svg/SvgMenu"));
 const SvgUser = lazy(() => import("../assets/svg/SvgUser"));
@@ -16,6 +17,8 @@ const Navbar = ({
   setSearchPop,
   setRegisterPop,
 }) => {
+  const navigate = useNavigate();
+
   const [agencySwitcher, setAgencySwitcher] = useState(false);
   const [listSwitcher, setListSwitcher] = useState(false);
 
@@ -42,7 +45,13 @@ const Navbar = ({
       {/* navbar item list for desktop size */}
       <div className="hidden md:flex">
         <ul className="flex flex-row-reverse">
-          <li className="lg:mx-1 px-1 cursor-pointer hover:text-Primary text-gray-7 lg:font-bold border-b-white border-b-2 py-1 hover:border-Primary duration-75 ease-out">
+          <li
+            onClick={() => {
+              navigate(`/`);
+              window.scrollTo(0, 0);
+            }}
+            className="lg:mx-1 px-1 cursor-pointer hover:text-Primary text-gray-7 lg:font-bold border-b-white border-b-2 py-1 hover:border-Primary duration-75 ease-out"
+          >
             صحفه اصلی
           </li>
 
@@ -52,7 +61,14 @@ const Navbar = ({
             </p>
             <ul className="flex-col text-right bg-gray-1 rounded-md shadow-shadow-2 hidden group-hover:flex absolute -right-10 h-[400px] w-[400px] p-2 z-10">
               {agencyData?.map((agency) => (
-                <li key={agency?.id} className="flex flex-row-reverse my-2">
+                <li
+                  onClick={() => {
+                    navigate(`/branch/${agency?.title}`);
+                    window.scrollTo(0, 0);
+                  }}
+                  key={agency?.id}
+                  className="flex flex-row-reverse my-2"
+                >
                   <img
                     className="rounded-md object-cover w-[100px] h-[80px]"
                     alt="agency"
@@ -69,21 +85,45 @@ const Navbar = ({
             </ul>
           </span>
 
-          <span className="lg:mx-1 px-1 cursor-pointer hover:text-Primary text-gray-7 lg:font-bold">
+          <span
+            onClick={() => {
+              navigate(`/branch-menu`);
+              window.scrollTo(0, 0);
+            }}
+            className="lg:mx-1 px-1 cursor-pointer hover:text-Primary text-gray-7 lg:font-bold"
+          >
             <p className="flex flex-row items-center border-b-white border-b-2 py-1 hover:border-Primary duration-75 ease-out">
               <SvgArrowDown width={16} height={16} /> منو
             </p>
           </span>
 
-          <li className="lg:mx-1 px-1 cursor-pointer hover:text-Primary text-gray-7 lg:font-bold border-b-white border-b-2 py-1 hover:border-Primary duration-75 ease-out">
+          <li
+            onClick={() => {
+              navigate(`/brnach/new`);
+              window.scrollTo(0, 0);
+            }}
+            className="lg:mx-1 px-1 cursor-pointer hover:text-Primary text-gray-7 lg:font-bold border-b-white border-b-2 py-1 hover:border-Primary duration-75 ease-out"
+          >
             اعطای نمایندگی
           </li>
 
-          <li className="lg:mx-1 px-1 cursor-pointer hover:text-Primary text-gray-7 lg:font-bold border-b-white border-b-2 py-1 hover:border-Primary duration-75 ease-out">
+          <li
+            onClick={() => {
+              navigate(`/about-us`);
+              window.scrollTo(0, 0);
+            }}
+            className="lg:mx-1 px-1 cursor-pointer hover:text-Primary text-gray-7 lg:font-bold border-b-white border-b-2 py-1 hover:border-Primary duration-75 ease-out"
+          >
             درباره ما
           </li>
 
-          <li className="lg:mx-1 px-1 cursor-pointer hover:text-Primary text-gray-7 lg:font-bold border-b-white border-b-2 py-1 hover:border-Primary duration-75 ease-out">
+          <li
+            onClick={() => {
+              navigate(`/contact-us`);
+              window.scrollTo(0, 0);
+            }}
+            className="lg:mx-1 px-1 cursor-pointer hover:text-Primary text-gray-7 lg:font-bold border-b-white border-b-2 py-1 hover:border-Primary duration-75 ease-out"
+          >
             تماس با ما
           </li>
         </ul>
@@ -131,7 +171,13 @@ const Navbar = ({
           </span>
         </div>
         <ul className="px-3">
-          <li className="py-2 my-1 cursor-pointer border-b-[1px] w-full ">
+          <li
+            onClick={() => {
+              navigate(`/`);
+              window.scrollTo(0, 0);
+            }}
+            className="py-2 my-1 cursor-pointer border-b-[1px] w-full "
+          >
             صحفه اصلی
           </li>
           <span
@@ -160,6 +206,10 @@ const Navbar = ({
                 <li
                   key={agency?.id}
                   className="bg-tint-1 px-3 py-2 rounded-md my-1 h-[85px]"
+                  onClick={() => {
+                    navigate(`branch/${agency?.title}`);
+                    window.scrollTo(0, 0);
+                  }}
                 >
                   <h3 className="text-lg font-medium">{agency?.name}</h3>
                   <p className="text-sm font-normal">{agency?.address}</p>
@@ -168,6 +218,10 @@ const Navbar = ({
             </ul>
           </span>
           <span
+            onClick={() => {
+              navigate(`/brnach-menu`);
+              window.scrollTo(0, 0);
+            }}
             className={`flex flex-col py-2 my-1 cursor-pointer border-b-[1px] w-full duration-100 ease-out ${
               listSwitcher ? "h-[200px]" : "h-[41px]"
             } `}
@@ -181,13 +235,33 @@ const Navbar = ({
               <SvgArrowDown width={16} height={16} /> منو
             </p>
           </span>
-          <li className="py-2 my-1 cursor-pointer border-b-[1px] w-full ">
+          <li
+            onClick={() => {
+              navigate(`/branch/new`);
+              window.scrollTo(0, 0);
+            }}
+            className="py-2 my-1 cursor-pointer border-b-[1px] w-full "
+          >
             اعطای نمایندگی
           </li>
-          <li className="py-2 my-1 cursor-pointer border-b-[1px] w-full ">
+
+          <li
+            onClick={() => {
+              navigate(`/about-us`);
+              window.scrollTo(0, 0);
+            }}
+            className="py-2 my-1 cursor-pointer border-b-[1px] w-full "
+          >
             درباره ما
           </li>
-          <li className="py-2 my-1 cursor-pointer border-b-[1px] w-full ">
+
+          <li
+            onClick={() => {
+              navigate(`/contact-us`);
+              window.scrollTo(0, 0);
+            }}
+            className="py-2 my-1 cursor-pointer border-b-[1px] w-full "
+          >
             تماس با ما
           </li>
         </ul>

@@ -2,6 +2,7 @@ import React, { lazy } from "react";
 import { motion } from "framer-motion";
 import { fadeIn } from "../utils/motion";
 import SectionWrapper from "../hoc/sectionWrapper/SectionWrapper";
+import { useNavigate } from "react-router-dom";
 
 const SvgUserSolid = lazy(() => import("../assets/svg/SvgUserSolid"));
 const SvgDiagram = lazy(() => import("../assets/svg/SvgDiagram"));
@@ -9,6 +10,7 @@ const SvgHomeWifi = lazy(() => import("../assets/svg/SvgHomeWifi"));
 const SvgMenuBoard = lazy(() => import("../assets/svg/SvgMenuBoard"));
 
 const QuickAbout = () => {
+  const navigate = useNavigate();
   return (
     <div className="w-full h-[420px] md:h-[280px] py-[16px] px-[20px] flex flex-col md:flex-row-reverse md:items-center md:justify-between max-w-[1024px] mx-auto">
       <div className="text-white text-right flex flex-col md:w-[50%] lg:w-[45%]">
@@ -26,7 +28,13 @@ const QuickAbout = () => {
           شما عزیزان ارائه دهیم
         </p>
 
-        <button className="border-[1px] border-white w-[150px] h-[35px] font-normal text-[14px] rounded-md mt-4 ">
+        <button
+          onClick={() => {
+            navigate(`/about-us`);
+            window.scrollTo(0, 0);
+          }}
+          className="border-[1px] border-white w-[150px] h-[35px] font-normal text-[14px] rounded-md mt-4 "
+        >
           اطلاعات بیشتر
         </button>
       </div>

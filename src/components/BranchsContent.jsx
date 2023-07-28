@@ -68,7 +68,7 @@ const BranchsContent = () => {
         </motion.div>
         {/* box wrapper */}
         <div className="w-full h-[380px] py-5 relative">
-        <Carousel
+          <Carousel
             responsive={responsive}
             swipeable={true}
             draggable={true}
@@ -95,7 +95,7 @@ const BranchsContent = () => {
         </motion.div>
         {/* box wrapper */}
         <div className="w-full h-[380px] py-2 relative">
-        <Carousel
+          <Carousel
             responsive={responsive}
             swipeable={true}
             draggable={true}
@@ -113,7 +113,13 @@ const BranchsContent = () => {
         </div>
       </section>
 
-      <div className="w-48 h-12 px-2 my-8 md:my-10 flex flex-row items-center justify-around mx-auto border-Primary border-[1px] rounded hover:shadow-shadow-2 cursor-pointer">
+      <div
+        onClick={() => {
+          navigate(`/branch-menu`);
+          window.scrollTo(0, 0);
+        }}
+        className="w-48 h-12 px-2 my-8 md:my-10 flex flex-row items-center justify-around mx-auto border-Primary border-[1px] rounded hover:shadow-shadow-2 cursor-pointer"
+      >
         <p className="text-Primary font-normal text-base">مشاهده منوی کامل</p>
         <SvgNote />
       </div>
