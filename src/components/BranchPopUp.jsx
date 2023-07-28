@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const SvgCloseSolid = lazy(() => import("../assets/svg/SvgCloseSolid"));
 
-const BranchPopUp = ({ handleDisplayBranchPop }) => {
+const BranchPopUp = ({ handleDisplayBranchPop, handleSwitchDarkEffect }) => {
   const navigate = useNavigate();
   return (
     <div className="flex flex-col items-center w-full">
@@ -31,6 +31,7 @@ const BranchPopUp = ({ handleDisplayBranchPop }) => {
               onClick={() => {
                 navigate(`/branch/${agency?.title}`);
                 window.scrollTo(0, 0);
+                handleSwitchDarkEffect();
               }}
               key={agency.id}
               className="w-[288px] lg:w-[175px] h-[80px] lg:h-[260px] flex flex-row-reverse lg:flex-col mb-1 border-[1px] border-gray4 rounded-md cursor-pointer hover:border-Primary hover:shadow-card-shadow ease-in-out duration-200 "

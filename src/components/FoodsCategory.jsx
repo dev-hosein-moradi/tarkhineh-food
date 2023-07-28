@@ -7,16 +7,7 @@ import { foodCategory } from "../constants";
 
 const SvgSearch = lazy(() => import("../assets/svg/SvgSearch"));
 
-const FoodsCategory = ({
-  handleDisplayBranchPop,
-  handleDisplaySearchPop,
-  test,
-}) => {
-  const showBranchPop = () => {
-    console.log(typeof handleDisplayBranchPop);
-    console.log(typeof handleDisplaySearchPop);
-    console.log(test);
-  };
+const FoodsCategory = ({ handleDisplayBranchPop }) => {
   return (
     <div className="w-full max-w-[1024px] mx-auto py-5 flex flex-col items-center">
       {/* search bar */}
@@ -72,4 +63,4 @@ const FoodsCategory = ({
   );
 };
 
-export default FoodsCategory;
+export default SectionWrapper(FoodsCategory);

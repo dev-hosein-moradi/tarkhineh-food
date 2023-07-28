@@ -30,6 +30,7 @@ const App = () => {
           setMenuSwitcher={setMenuSwitcher}
           registerPop={registerPop}
           setRegisterPop={setRegisterPop}
+          setDarkEffect={setDarkEffect}
         />
       ),
       errorElement: <h1>404 NOT FOUND!</h1>,

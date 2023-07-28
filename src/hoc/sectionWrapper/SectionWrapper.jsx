@@ -3,7 +3,7 @@ import { LazyMotion, domAnimation, m } from "framer-motion";
 import { staggerContainer } from "../../utils/motion";
 
 const SectionWrapper = (Component, idName) =>
-  function HOC() {
+  function HOC(props) {
     return (
       <LazyMotion features={domAnimation}>
         <m.section
@@ -12,11 +12,10 @@ const SectionWrapper = (Component, idName) =>
           whileInView="show"
           viewport={{ once: true, amount: 0 }}
         >
-          <Component />
+          <Component {...props} />
         </m.section>
       </LazyMotion>
     );
   };
 
 export default SectionWrapper;
-

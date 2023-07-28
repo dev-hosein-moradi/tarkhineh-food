@@ -16,6 +16,7 @@ const Main = ({
   branchPop,
   setBranchPop,
   darkEffect,
+  setDarkEffect,
   menuSwitcher,
   setMenuSwitcher,
   registerPop,
@@ -29,12 +30,16 @@ const Main = ({
   /* handling close and open func for search pop up */
   const handleDisplayBranchPop = (e) => {
     setBranchPop(e);
-    console.log("bitch");
   };
 
   /* handling close and open func for register pop up */
   const handleDisplayRegisterPop = () => {
     setRegisterPop(false);
+  };
+
+  /* handling close and open func for register pop up */
+  const handleSwitchDarkEffect = () => {
+    setDarkEffect(false);
   };
 
   return (
@@ -78,10 +83,7 @@ const Main = ({
             darkEffect && "dark-bg-popups"
           } ease-in-out duration-300`}
         >
-          <FoodsCategory
-            test="test"
-            handleDisplayBranchPop={handleDisplayBranchPop}
-          />
+          <FoodsCategory handleDisplayBranchPop={handleDisplayBranchPop} />
         </section>
 
         {/* search box pop up in desktop size */}
@@ -103,7 +105,10 @@ const Main = ({
               : "scale-0 opacity-0 pointer-events-none"
           } ease-in-out duration-300`}
         >
-          <BranchPopUp handleDisplayBranchPop={handleDisplayBranchPop} />
+          <BranchPopUp
+            handleSwitchDarkEffect={handleSwitchDarkEffect}
+            handleDisplayBranchPop={handleDisplayBranchPop}
+          />
         </section>
 
         {/* quick summery about us */}
