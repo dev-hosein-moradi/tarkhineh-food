@@ -3,11 +3,16 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Main from "./pages/Main";
 import Loading from "./pages/Loading";
+import { fetchFoods } from "./redux/actions/foodActions";
+import { useDispatch, useSelector } from "react-redux";
 
 const BranchMain = lazy(() => import("./pages/BranchMain"));
 const MenuMain = lazy(() => import("./pages/MenuMain"));
 
 const App = () => {
+  const foods = useSelector((state) => state.foods);
+  const dispatch = useDispatch();
+
   const [darkEffect, setDarkEffect] = useState(false);
 
   const [menuSwitcher, setMenuSwitcher] = useState(false);
@@ -92,6 +97,13 @@ const App = () => {
 
     return () => {};
   }, [menuSwitcher, registerPop]);
+
+  useEffect(() => {
+    dispatch(fetchFoods());
+  }, []);
+  useEffect(() => {
+    console.log(foods);
+  }, []);
 
   return (
     <Suspense fallback={<Loading />}>
