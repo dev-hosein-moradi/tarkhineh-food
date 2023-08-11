@@ -36,7 +36,7 @@ const App = () => {
       errorElement: <h1>404 NOT FOUND!</h1>,
     },
     {
-      path: "branch/:branchName",
+      path: "/branch/:branchName",
       element: (
         <BranchMain
           searchPop={searchPop}
@@ -53,8 +53,23 @@ const App = () => {
       errorElement: <h1>404 NOT FOUND!</h1>,
     },
     {
-      path: "branch-menu",
-      element: <MenuMain />,
+      path: "/branch/:branchName/menu",
+      element: (
+        <MenuMain
+          searchPop={searchPop}
+          setSearchPop={setSearchPop}
+          darkEffect={darkEffect}
+          menuSwitcher={menuSwitcher}
+          setMenuSwitcher={setMenuSwitcher}
+          registerPop={registerPop}
+          setRegisterPop={setRegisterPop}
+        />
+      ),
+      errorElement: <h1>404 NOT FOUND!</h1>,
+    },
+    {
+      path: "/*",
+      element: <h1>you dont have permission to visit this page!</h1>,
       errorElement: <h1>404 NOT FOUND!</h1>,
     },
   ]);

@@ -15,7 +15,8 @@
     "react-dom": "^18.2.0",
     "react-multi-carousel": "^2.8.4",
     "react-router-dom": "^6.14.1",
-    "react-verification-input": "^3.3.0"
+    "react-verification-input": "^3.3.0",
+    "swiper": "^10.1.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",

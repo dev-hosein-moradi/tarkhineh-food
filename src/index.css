@@ -6,7 +6,6 @@
 /* ::-webkit-scrollbar {
     width: 10px;
 } */
-
 body {
     scroll-behavior: smooth;
 }
@@ -410,4 +409,14 @@ body {
 .comment .react-multi-carousel-list {
     height: 100%;
     align-items: flex-start !important;
+}
+
+/* swiper */
+.swiper-slide {
+    width: 120px !important;
+}
+
+
+.swiper-slide p {
+    width: 5rem !important;
 }

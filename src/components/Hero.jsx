@@ -12,10 +12,10 @@ const Hero = ({ clientParams }) => {
         <SvgArrowLeft width={28} height={28} />
       </div>
       {/* text content */}
-      <div>
+      <div className="text-tint-1">
         {/* add condition for hero title in home page, branch page and menu page */}
-        {clientParams === "home" && (
-          <p className="text-lg md:text-2xl lg:text-3xl font-bold">
+        {(clientParams === "home" || clientParams === "menu") && (
+          <p className="text-lg md:text-3xl lg:text-[40px] font-bold">
             تجربه غذای سالم و گیاهی به سبک ترخینه
           </p>
         )}
@@ -39,9 +39,11 @@ const Hero = ({ clientParams }) => {
       </div>
 
       {/* button */}
-      <button className="bg-Primary px-3 py-2 md:px-4 md:py-3 md:mt-6 rounded-md mt-4 font-normal text-[14px]">
-        سفارش آنلاین غذا
-      </button>
+      {clientParams !== "menu" && (
+        <button className="bg-Primary px-3 py-2 md:px-4 md:py-3 md:mt-6 rounded-md mt-4 font-normal text-[14px]">
+          سفارش آنلاین غذا
+        </button>
+      )}
 
       {/* spot slider */}
       <div className="absolute bottom-0 mx-auto w-[120px] h-[30px] bg-white rounded-t-[90px] rounded-r[90px] flex flex-row items-center justify-around px-5">

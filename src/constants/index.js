@@ -102,10 +102,39 @@ const foodCategory = [
   { id: 4, name: "نوشیدنی", imageSrc: Categ4 },
 ];
 
+const menuSubLink = [
+  {
+    id: 1,
+    title: "غذاهای ایرانی",
+  },
+  {
+    id: 2,
+    title: "غذاهای غیر ایرانی",
+  },
+  {
+    id: 3,
+    title: "پیتزاها",
+  },
+  {
+    id: 4,
+    title: "ساندویچ‌ها",
+  },
+  {
+    id: 5,
+    title: "پرفروش‌ترین",
+  },
+  {
+    id: 6,
+    title: "اقتصادی‌ترین",
+  },
+];
+
 const branchFood = [
   {
     id: 1,
     tag: "so",
+    type: "irani",
+    compounds: "برنج سبزی کوفته لپه آرد نخودچی، گردو و زرشک و آلو پیاز",
     name: "دلمه برگ کلم",
     mainPrice: "220,000",
     discountPrice: "209,000",
@@ -118,6 +147,8 @@ const branchFood = [
   {
     id: 2,
     tag: "so",
+    type: "irani",
+    compounds: "برنج سبزی کوفته لپه آرد نخودچی، گردو و زرشک و آلو پیاز",
     name: "بادمجان شکم‌پر",
     mainPrice: "150,000",
     discountPrice: "136,000",
@@ -130,6 +161,8 @@ const branchFood = [
   {
     id: 3,
     tag: "so",
+    type: "irani",
+    compounds: "برنج سبزی کوفته لپه آرد نخودچی، گردو و زرشک و آلو پیاز",
     name: "کالزونه اسفناج",
     mainPrice: "190,000",
     discountPrice: "177,000",
@@ -142,6 +175,8 @@ const branchFood = [
   {
     id: 4,
     tag: "so",
+    type: "irani",
+    compounds: "برنج سبزی کوفته لپه آرد نخودچی، گردو و زرشک و آلو پیاز",
     name: "پیتزا قارچ",
     mainPrice: "215,000",
     discountPrice: "175,000",
@@ -154,6 +189,8 @@ const branchFood = [
   {
     id: 5,
     tag: "so",
+    type: "irani",
+    compounds: "برنج سبزی کوفته لپه آرد نخودچی، گردو و زرشک و آلو پیاز",
     name: "سالاد",
     mainPrice: "215,000",
     discountPrice: "175,000",
@@ -166,6 +203,8 @@ const branchFood = [
   {
     id: 6,
     tag: "ff",
+    type: "other",
+    compounds: "برنج سبزی کوفته لپه آرد نخودچی، گردو و زرشک و آلو پیاز",
     name: "پنینی اسفناج",
     mainPrice: "210,000",
     discountPrice: "190,000",
@@ -178,6 +217,8 @@ const branchFood = [
   {
     id: 7,
     tag: "ff",
+    type: "other",
+    compounds: "برنج سبزی کوفته لپه آرد نخودچی، گردو و زرشک و آلو پیاز",
     name: "پیتزا پپرونی",
     mainPrice: "100,000",
     discountPrice: null,
@@ -190,6 +231,8 @@ const branchFood = [
   {
     id: 8,
     tag: "ff",
+    type: "other",
+    compounds: "برنج سبزی کوفته لپه آرد نخودچی، گردو و زرشک و آلو پیاز",
     name: "راتاتویی",
     mainPrice: "180,000",
     discountPrice: "95,000",
@@ -202,6 +245,8 @@ const branchFood = [
   {
     id: 9,
     tag: "ff",
+    type: "other",
+    compounds: "برنج سبزی کوفته لپه آرد نخودچی، گردو و زرشک و آلو پیاز",
     name: "بورانی بادمجان",
     mainPrice: "170,000",
     discountPrice: "148,000",
@@ -214,6 +259,8 @@ const branchFood = [
   {
     id: 10,
     tag: "ff",
+    type: "other",
+    compounds: "برنج سبزی کوفته لپه آرد نخودچی، گردو و زرشک و آلو پیاز",
     name: "برگر",
     mainPrice: "170,000",
     discountPrice: "148,000",
@@ -226,6 +273,8 @@ const branchFood = [
   {
     id: 11,
     tag: "of",
+    type: "pizza",
+    compounds: "برنج سبزی کوفته لپه آرد نخودچی، گردو و زرشک و آلو پیاز",
     name: "سوشی",
     mainPrice: "100,000",
     discountPrice: "85,000",
@@ -238,6 +287,8 @@ const branchFood = [
   {
     id: 12,
     tag: "of",
+    type: "",
+    compounds: "برنج سبزی کوفته لپه آرد نخودچی، گردو و زرشک و آلو پیاز",
     name: "راتاتویی",
     mainPrice: "180,000",
     discountPrice: "95,000",
@@ -250,6 +301,8 @@ const branchFood = [
   {
     id: 13,
     tag: "of",
+    type: "pizza",
+    compounds: "برنج سبزی کوفته لپه آرد نخودچی، گردو و زرشک و آلو پیاز",
     name: "پاکورا سبزیجات",
     mainPrice: "125,000",
     discountPrice: "110,000",
@@ -262,6 +315,8 @@ const branchFood = [
   {
     id: 14,
     tag: "of",
+    type: "pizza",
+    compounds: "برنج سبزی کوفته لپه آرد نخودچی، گردو و زرشک و آلو پیاز",
     name: "لازانیا",
     mainPrice: "150,000",
     discountPrice: null,
@@ -274,6 +329,8 @@ const branchFood = [
   {
     id: 15,
     tag: "of",
+    type: "pizza",
+    compounds: "برنج سبزی کوفته لپه آرد نخودچی، گردو و زرشک و آلو پیاز",
     name: "مرغ سوخاری",
     mainPrice: "150,000",
     discountPrice: null,
@@ -336,4 +393,4 @@ const comments = [
   },
 ];
 
-export { agencyData, foodCategory, branchFood, comments };
+export { agencyData, foodCategory, branchFood, comments, menuSubLink };

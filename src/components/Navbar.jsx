@@ -87,7 +87,7 @@ const Navbar = ({
 
           <span
             onClick={() => {
-              navigate(`/branch-menu`);
+              navigate(`/branch/ekbatan/menu`);
               window.scrollTo(0, 0);
             }}
             className="lg:mx-1 px-1 cursor-pointer hover:text-Primary text-gray-7 lg:font-bold"
@@ -219,7 +219,7 @@ const Navbar = ({
           </span>
           <span
             onClick={() => {
-              navigate(`/brnach-menu`);
+              navigate(`/brnach/ekbatanmenu`);
               window.scrollTo(0, 0);
             }}
             className={`flex flex-col py-2 my-1 cursor-pointer border-b-[1px] w-full duration-100 ease-out ${

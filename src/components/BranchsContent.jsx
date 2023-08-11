@@ -5,12 +5,16 @@ import { motion } from "framer-motion";
 import { textVariant } from "../utils/motion";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { useNavigate, useParams } from "react-router-dom";
 
 const BranchDetail = lazy(() => import("./BranchDetail"));
 const BranchFoodCard = lazy(() => import("./BranchFoodCard"));
 const SvgNote = lazy(() => import("../assets/svg/SvgNote"));
 
 const BranchsContent = () => {
+  const navigate = useNavigate();
+  const params = useParams();
+
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -115,7 +119,7 @@ const BranchsContent = () => {
 
       <div
         onClick={() => {
-          navigate(`/branch-menu`);
+          navigate(`/branch/${params?.branchName}/menu`);
           window.scrollTo(0, 0);
         }}
         className="w-48 h-12 px-2 my-8 md:my-10 flex flex-row items-center justify-around mx-auto border-Primary border-[1px] rounded hover:shadow-shadow-2 cursor-pointer"
