@@ -131,7 +131,6 @@ const menuSubLink = [
 
 const branchFood = [
   {
-    id: 1,
     tag: "so",
     type: "irani",
     compounds: "برنج سبزی کوفته لپه آرد نخودچی، گردو و زرشک و آلو پیاز",
@@ -145,7 +144,6 @@ const branchFood = [
     imgUrl: sf1,
   },
   {
-    id: 2,
     tag: "so",
     type: "irani",
     compounds: "برنج سبزی کوفته لپه آرد نخودچی، گردو و زرشک و آلو پیاز",
@@ -159,7 +157,6 @@ const branchFood = [
     imgUrl: sf2,
   },
   {
-    id: 3,
     tag: "so",
     type: "irani",
     compounds: "برنج سبزی کوفته لپه آرد نخودچی، گردو و زرشک و آلو پیاز",
@@ -173,7 +170,6 @@ const branchFood = [
     imgUrl: sf3,
   },
   {
-    id: 4,
     tag: "so",
     type: "irani",
     compounds: "برنج سبزی کوفته لپه آرد نخودچی، گردو و زرشک و آلو پیاز",
@@ -187,7 +183,6 @@ const branchFood = [
     imgUrl: sf4,
   },
   {
-    id: 5,
     tag: "so",
     type: "irani",
     compounds: "برنج سبزی کوفته لپه آرد نخودچی، گردو و زرشک و آلو پیاز",
@@ -201,7 +196,6 @@ const branchFood = [
     imgUrl: sf1,
   },
   {
-    id: 6,
     tag: "ff",
     type: "other",
     compounds: "برنج سبزی کوفته لپه آرد نخودچی، گردو و زرشک و آلو پیاز",
@@ -215,7 +209,6 @@ const branchFood = [
     imgUrl: ff1,
   },
   {
-    id: 7,
     tag: "ff",
     type: "other",
     compounds: "برنج سبزی کوفته لپه آرد نخودچی، گردو و زرشک و آلو پیاز",
@@ -229,7 +222,6 @@ const branchFood = [
     imgUrl: ff2,
   },
   {
-    id: 8,
     tag: "ff",
     type: "other",
     compounds: "برنج سبزی کوفته لپه آرد نخودچی، گردو و زرشک و آلو پیاز",
@@ -243,7 +235,6 @@ const branchFood = [
     imgUrl: ff3,
   },
   {
-    id: 9,
     tag: "ff",
     type: "other",
     compounds: "برنج سبزی کوفته لپه آرد نخودچی، گردو و زرشک و آلو پیاز",
@@ -257,7 +248,6 @@ const branchFood = [
     imgUrl: ff4,
   },
   {
-    id: 10,
     tag: "ff",
     type: "other",
     compounds: "برنج سبزی کوفته لپه آرد نخودچی، گردو و زرشک و آلو پیاز",
@@ -271,7 +261,6 @@ const branchFood = [
     imgUrl: ff1,
   },
   {
-    id: 11,
     tag: "of",
     type: "pizza",
     compounds: "برنج سبزی کوفته لپه آرد نخودچی، گردو و زرشک و آلو پیاز",
@@ -285,9 +274,8 @@ const branchFood = [
     imgUrl: of1,
   },
   {
-    id: 12,
     tag: "of",
-    type: "",
+    type: "pizza",
     compounds: "برنج سبزی کوفته لپه آرد نخودچی، گردو و زرشک و آلو پیاز",
     name: "راتاتویی",
     mainPrice: "180,000",
@@ -299,7 +287,6 @@ const branchFood = [
     imgUrl: of2,
   },
   {
-    id: 13,
     tag: "of",
     type: "pizza",
     compounds: "برنج سبزی کوفته لپه آرد نخودچی، گردو و زرشک و آلو پیاز",
@@ -313,7 +300,6 @@ const branchFood = [
     imgUrl: of3,
   },
   {
-    id: 14,
     tag: "of",
     type: "pizza",
     compounds: "برنج سبزی کوفته لپه آرد نخودچی، گردو و زرشک و آلو پیاز",
@@ -327,7 +313,6 @@ const branchFood = [
     imgUrl: of4,
   },
   {
-    id: 15,
     tag: "of",
     type: "pizza",
     compounds: "برنج سبزی کوفته لپه آرد نخودچی، گردو و زرشک و آلو پیاز",

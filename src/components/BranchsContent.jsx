@@ -1,19 +1,28 @@
 // eslint-disable-next-line no-unused-vars
-import React, { lazy } from "react";
+import React, { lazy, useEffect } from "react";
 import { branchFood } from "../constants";
 import { motion } from "framer-motion";
 import { textVariant } from "../utils/motion";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchFoods } from "../redux/actions/foodActions";
+import Notifications from "./Notifications";
 
 const BranchDetail = lazy(() => import("./BranchDetail"));
 const BranchFoodCard = lazy(() => import("./BranchFoodCard"));
 const SvgNote = lazy(() => import("../assets/svg/SvgNote"));
 
+let initialRequest = true;
+
 const BranchsContent = () => {
   const navigate = useNavigate();
   const params = useParams();
+  const dispatch = useDispatch();
+
+  const foods = useSelector((state) => state.foods.foods);
+  const notification = useSelector((state) => state.notifications.notification);
 
   const responsive = {
     superLargeDesktop: {
@@ -34,6 +43,30 @@ const BranchsContent = () => {
       items: 1,
     },
   };
+
+  // get list of foods
+  useEffect(() => {
+    if (initialRequest) {
+      if (!foods.length) {
+        const parameter = {
+          caller: {
+            name: "branchContent",
+          },
+        };
+        dispatch(fetchFoods(parameter));
+      }
+    }
+
+    return () => {
+      initialRequest = false;
+    };
+  }, [foods]);
+
+  // get notification
+  useEffect(() => {
+    const caller = "branchContent";
+    Notifications({ caller, notification });
+  }, [notification]);
   return (
     <div className="w-full">
       {/* special offer section */}
@@ -53,7 +86,7 @@ const BranchsContent = () => {
             infinite={true}
             className=""
           >
-            {branchFood?.map(
+            {foods?.map(
               (food) =>
                 food?.tag === "so" && (
                   <BranchFoodCard key={food?.id} food={food} />
@@ -80,7 +113,7 @@ const BranchsContent = () => {
             infinite={true}
             className=""
           >
-            {branchFood?.map(
+            {foods?.map(
               (food) =>
                 food?.tag === "ff" && (
                   <BranchFoodCard key={food?.id} food={food} />
@@ -107,7 +140,7 @@ const BranchsContent = () => {
             infinite={true}
             className=""
           >
-            {branchFood?.map(
+            {foods?.map(
               (food) =>
                 food?.tag === "of" && (
                   <BranchFoodCard key={food?.id} food={food} />

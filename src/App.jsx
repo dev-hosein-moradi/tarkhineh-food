@@ -4,14 +4,13 @@ import toast, { Toaster } from "react-hot-toast";
 
 import Main from "./pages/Main";
 import Loading from "./pages/Loading";
-import { fetchFoods } from "./redux/actions/foodActions";
 import { useDispatch, useSelector } from "react-redux";
 import { ErrorBoundary } from "react-error-boundary";
 import Fallback from "./components/Fallback";
-import Notifications from "./components/Notifications";
 
 const BranchMain = lazy(() => import("./pages/BranchMain"));
 const MenuMain = lazy(() => import("./pages/MenuMain"));
+const Admin = lazy(() => import("./pages/admin/Admin"));
 
 const App = () => {
   const notification = useSelector((state) => state.notifications.notification);
@@ -79,6 +78,11 @@ const App = () => {
           someKey={someKey}
         />
       ),
+      errorElement: <h1>404 NOT FOUND!</h1>,
+    },
+    {
+      path: "/admin",
+      element: <Admin />,
       errorElement: <h1>404 NOT FOUND!</h1>,
     },
     {

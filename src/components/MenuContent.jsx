@@ -1,16 +1,50 @@
-import React, { Fragment, lazy, useState } from "react";
+import React, { Fragment, lazy, useEffect, useState } from "react";
 import { branchFood, foodCategory, menuSubLink } from "../constants";
 import SectionWrapper from "../hoc/sectionWrapper/SectionWrapper";
 import MenuFoodCard from "./MenuFoodCard";
+import { useDispatch, useSelector } from "react-redux";
+import Notifications from "./Notifications";
+import { fetchFoods } from "../redux/actions/foodActions";
 
 const SvgSearch = lazy(() => import("../assets/svg/SvgSearch"));
 const SvgShoppingCart = lazy(() => import("../assets/svg/SvgShoppingCart"));
 
+let initialRequest = true;
+
 const MenuContent = () => {
+  const dispatch = useDispatch();
+
+  const foods = useSelector((state) => state.foods.foods);
+  const notification = useSelector((state) => state.notifications.notification);
+
   // state for food category active item
   const [menuCategory, setMenuCategory] = useState(1);
   // state for sublink menu active item
   const [activeSubLink, setActiveSubLink] = useState(1);
+
+  // get list of foods
+  useEffect(() => {
+    if (initialRequest) {
+      if (!foods.length) {
+        const parameter = {
+          caller: {
+            name: "menuContent",
+          },
+        };
+        dispatch(fetchFoods(parameter));
+      }
+    }
+
+    return () => {
+      initialRequest = false;
+    };
+  }, [foods]);
+
+  // get notification
+  useEffect(() => {
+    const caller = "branchContent";
+    Notifications({ caller, notification });
+  }, [notification]);
   return (
     <Fragment>
       {/* top switcher for food title */}
@@ -70,7 +104,7 @@ const MenuContent = () => {
         </div>
 
         <div className="grid md:grid-cols-2 items-center justify-center gap-2 mt-5">
-          {branchFood.map(
+          {foods.map(
             (food) =>
               food.type === "irani" && (
                 <MenuFoodCard key={food.id} food={food} />
@@ -88,7 +122,7 @@ const MenuContent = () => {
         </div>
 
         <div className="grid md:grid-cols-2 items-center justify-center gap-2 mt-5">
-          {branchFood.map(
+          {foods.map(
             (food) =>
               food.type === "other" && (
                 <MenuFoodCard key={food.id} food={food} />
@@ -104,7 +138,7 @@ const MenuContent = () => {
         </div>
 
         <div className="grid md:grid-cols-2 items-center justify-center gap-2 mt-5">
-          {branchFood.map(
+          {foods.map(
             (food) =>
               food.type === "pizza" && (
                 <MenuFoodCard key={food.id} food={food} />
