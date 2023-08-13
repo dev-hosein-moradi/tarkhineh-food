@@ -9,7 +9,6 @@ const foodsSlice = createSlice({
   initialState: INITIAL_STATE,
   reducers: {
     setFoods(state, action) {
-      console.log(action.payload);
       state.foods = action.payload;
     },
   },
