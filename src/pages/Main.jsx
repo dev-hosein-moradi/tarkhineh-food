@@ -40,6 +40,7 @@ const Main = ({
   /* handling close and open func for register pop up */
   const handleSwitchDarkEffect = () => {
     setDarkEffect(false);
+    
   };
 
   return (

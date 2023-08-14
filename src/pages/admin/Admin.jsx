@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
-import { branchFood } from "../../constants";
+import { agencyData, branchFood, comments } from "../../constants";
 import Notifications from "../../components/Notifications";
 import { useDispatch, useSelector } from "react-redux";
-import { addNewFood, fetchFoods } from "../../redux/actions/foodActions";
+import { fetchFoods } from "../../redux/actions/foodActions";
+import { addNewBranch } from "../../redux/actions/branchActions";
 
 const Admin = () => {
   const notification = useSelector((state) => state.notifications.notification);
@@ -10,22 +11,13 @@ const Admin = () => {
 
   const onSubmitNewFood = () => {
     const parameter = {
-      food: branchFood[14],
+      branch: agencyData[3],
       caller: {
         name: "admin",
       },
     };
-    dispatch(addNewFood(parameter));
+    dispatch(addNewBranch(parameter));
   };
-
-  useEffect(() => {
-    const parameter = {
-      caller: {
-        name: "admin",
-      },
-    };
-    dispatch(fetchFoods(parameter));
-  }, []);
 
   useEffect(() => {
     const caller = "admin";

@@ -7,40 +7,44 @@ import {
   doc,
 } from "firebase/firestore";
 import { db } from "../../configs/firebase";
-import { foodsActions } from "../reducers/foodSlice";
+import {
+  errorNotification,
+  pendingNotification,
+  successNotification,
+} from "../../utils/notificationTypes";
 import { notificationActions } from "../reducers/notificationSlice";
+import { branchActions } from "../reducers/branchSlice";
 
-const foodsCollectionRef = collection(db, "foods");
+const branchsCollectionRef = collection(db, "branchs");
 
-/* get list of foods from firebase */
-export const fetchFoods = (parameter) => {
+// async thunk to get comments list
+export const getBranchs = (parameter) => {
   return async (dispatch) => {
+    let errorBody = errorNotification(parameter?.caller);
+
     try {
       // get collection data from firestore
-      const data = await getDocs(foodsCollectionRef);
+      const data = await getDocs(branchsCollectionRef);
       // filter response to find right data from response
       const filteredData = data?.docs?.map((doc) => ({
         ...doc.data(),
         id: doc.id,
       }));
+
       if (data) {
         // call slice reducer to work on recived data
-        dispatch(foodsActions.setFoods(filteredData));
+        dispatch(branchActions.getBranchs(filteredData));
+      } else {
+        dispatch(notificationActions.errorNotification(errorBody));
       }
     } catch (error) {
-      const errorNotif = {
-        isError: true,
-        id: parameter?.caller?.name,
-        title: "خطا",
-        message: "خطایی رخ داده است. عملیات انجام نشد",
-      };
-      dispatch(notificationActions.errorNotification(errorNotif));
+      dispatch(notificationActions.errorNotification(errorBody));
     }
   };
 };
 
-// async thunk for add new food
-export const addNewFood = (parameter) => {
+// async thunk to add new comment
+export const addNewBranch = (parameter) => {
   return async (dispatch) => {
     let pendingBody = pendingNotification(parameter?.caller);
     let successBody = successNotification(parameter?.caller);
@@ -50,7 +54,7 @@ export const addNewFood = (parameter) => {
 
     try {
       // send request to add item in firestore
-      const data = await addDoc(foodsCollectionRef, parameter?.food);
+      const data = await addDoc(branchsCollectionRef, parameter?.branch);
       // filter response to find right data from response
       const filteredData = data?.docs?.map((doc) => ({
         ...doc.data(),
@@ -59,7 +63,7 @@ export const addNewFood = (parameter) => {
 
       if (data) {
         // call slice reducer to work on recived data
-        dispatch(foodsActions.setFoods(filteredData));
+        dispatch(branchActions.addNewBranch(filteredData));
 
         // push notification about status of request and response
         dispatch(notificationActions.successNotification(successBody));
@@ -67,6 +71,7 @@ export const addNewFood = (parameter) => {
         dispatch(notificationActions.errorNotification(errorBody));
       }
     } catch (error) {
+      console.log(error);
       dispatch(notificationActions.errorNotification(errorBody));
     }
   };

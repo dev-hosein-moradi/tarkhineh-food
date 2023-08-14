@@ -1,6 +1,5 @@
 // eslint-disable-next-line no-unused-vars
 import React, { lazy, useEffect } from "react";
-import { branchFood } from "../constants";
 import { motion } from "framer-motion";
 import { textVariant } from "../utils/motion";
 import Carousel from "react-multi-carousel";
@@ -60,13 +59,14 @@ const BranchsContent = () => {
     return () => {
       initialRequest = false;
     };
-  }, [foods]);
+  }, []);
 
   // get notification
   useEffect(() => {
     const caller = "branchContent";
     Notifications({ caller, notification });
-  }, [notification]);
+  }, []);
+  
   return (
     <div className="w-full">
       {/* special offer section */}

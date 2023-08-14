@@ -1,14 +1,36 @@
-import React, { lazy } from "react";
+import React, { lazy, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { m, LazyMotion, domAnimation } from "framer-motion";
 import { fadeIn, textVariant } from "../utils/motion";
 import SectionWrapper from "../hoc/sectionWrapper/SectionWrapper";
-import { agencyData } from "../constants";
+import { useDispatch, useSelector } from "react-redux";
+import { getBranchs } from "../redux/actions/branchActions";
 
 const SvgExpand = lazy(() => import("../assets/svg/SvgExpand"));
 
+let initialRequest = true;
+
 const Agencies = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const branchs = useSelector((state) => state.branchs.branchs);
+
+  useEffect(() => {
+    if (initialRequest) {
+      if (!branchs.length) {
+        const parameter = {
+          caller: {
+            name: "agencies",
+          },
+        };
+        dispatch(getBranchs(parameter));
+      }
+    }
+
+    return () => {
+      initialRequest = false;
+    };
+  }, [branchs]);
   return (
     <div className="w-full max-w-[1024px] mx-auto py-[16px] px-[20px] ">
       <LazyMotion features={domAnimation}>
@@ -20,7 +42,7 @@ const Agencies = () => {
       </LazyMotion>
       {/* cards */}
       <div className="flex flex-row-reverse flex-wrap w-full items-center justify-center py-5">
-        {agencyData?.map((agency) => (
+        {branchs?.map((agency) => (
           <LazyMotion key={agency.id} features={domAnimation}>
             <m.div
               initial="hidden"

@@ -25,7 +25,6 @@ import hosein from "../assets/image/hosein.jpg";
 
 const agencyData = [
   {
-    id: 1001,
     name: "شعبه اکباتان",
     address: "شهرک اکباتان، فاز ۳، مجتمع تجاری کوروش، طبقه سوم",
     imageSource: ekbatan,
@@ -42,7 +41,6 @@ const agencyData = [
     timeActivity: "همه‌روزه از ساعت ۱۲  الی ۲۳ ",
   },
   {
-    id: 1002,
     name: "شعبه چالوس",
     address:
       "چالوس، خیابان ۱۷ شهریور، بعد کوچه کوروش، جنب داروخانه دکتر میلانی",
@@ -60,7 +58,6 @@ const agencyData = [
     timeActivity: "همه‌روزه از ساعت ۱۲  الی ۲۳ ",
   },
   {
-    id: 1003,
     name: "شعبه اقدسیه",
     address: "خیابان اقدسیه ، نرسیده به میدان خیام، پلاک ۸",
     imageSource: aghdasieh,
@@ -77,7 +74,6 @@ const agencyData = [
     timeActivity: "همه‌روزه از ساعت ۱۲  الی ۲۳ ",
   },
   {
-    id: 1004,
     name: "شعبه ونک",
     address: "میدان ونک، خیابان فردوسی، نبش کوچه نیلوفر، پلاک ۲۶",
     imageSource: vanak,

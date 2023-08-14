@@ -1,7 +1,9 @@
-import React, { lazy, useState } from "react";
+import React, { lazy, useEffect, useState } from "react";
 import { agencyData } from "../constants";
 import Logo from "../assets/image/Logo.svg";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getBranchs } from "../redux/actions/branchActions";
 
 const SvgMenu = lazy(() => import("../assets/svg/SvgMenu"));
 const SvgUser = lazy(() => import("../assets/svg/SvgUser"));
@@ -9,6 +11,8 @@ const SvgArrowDown = lazy(() => import("../assets/svg/SvgArrowDown"));
 const SvgShoppingCart = lazy(() => import("../assets/svg/SvgShoppingCart"));
 const SvgClose = lazy(() => import("../assets/svg/SvgClose"));
 const SvgSearchColored = lazy(() => import("../assets/svg/SvgSearchColored"));
+
+let initialRequest = true;
 
 const Navbar = ({
   menuSwitcher,
@@ -18,9 +22,29 @@ const Navbar = ({
   setRegisterPop,
 }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const branchs = useSelector((state) => state.branchs.branchs);
 
   const [agencySwitcher, setAgencySwitcher] = useState(false);
   const [listSwitcher, setListSwitcher] = useState(false);
+
+  // get list of branchs
+  useEffect(() => {
+    if (initialRequest) {
+      if (!branchs.length) {
+        const parameter = {
+          caller: {
+            name: "navbar",
+          },
+        };
+        dispatch(getBranchs(parameter));
+      }
+    }
+
+    return () => {
+      initialRequest = false;
+    };
+  }, [branchs]);
 
   return (
     <div
@@ -60,7 +84,7 @@ const Navbar = ({
               <SvgArrowDown width={16} height={16} /> شعبه
             </p>
             <ul className="flex-col text-right bg-gray-1 rounded-md shadow-shadow-2 hidden group-hover:flex absolute -right-10 h-[400px] w-[400px] p-2 z-10">
-              {agencyData?.map((agency) => (
+              {branchs?.map((agency) => (
                 <li
                   onClick={() => {
                     navigate(`/branch/${agency?.title}`);
@@ -202,7 +226,7 @@ const Navbar = ({
                   : "h-[0px] opacity-0"
               } overflow-y-auto snap-y snap-mandatory`}
             >
-              {agencyData?.map((agency) => (
+              {branchs?.map((agency) => (
                 <li
                   key={agency?.id}
                   className="bg-tint-1 px-3 py-2 rounded-md my-1 h-[85px]"

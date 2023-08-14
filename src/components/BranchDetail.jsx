@@ -1,16 +1,28 @@
-import React, { Fragment, lazy, useState } from "react";
+import React, { Fragment, lazy, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { agencyData, comments } from "../constants";
+import { agencyData } from "../constants";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { useDispatch, useSelector } from "react-redux";
+import { getComments } from "../redux/actions/commentActions";
+import Notifications from "./Notifications";
+import { getBranchs } from "../redux/actions/branchActions";
 
 const CommentCard = lazy(() => import("./CommentCard"));
 const SvgLocation = lazy(() => import("../assets/svg/SvgLocation"));
 const SvgClock = lazy(() => import("../assets/svg/SvgClock"));
 const SvgCallCalling = lazy(() => import("../assets/svg/SvgCallCalling"));
 
+let initialRequest = true;
+let initialRequest2 = true;
+
 const BranchDetail = () => {
+  const comments = useSelector((state) => state.comments.comments);
+  const branchs = useSelector((state) => state.branchs.branchs);
+  const notification = useSelector((state) => state.notifications.notification);
+
   const { branchName } = useParams();
+  const dispatch = useDispatch();
   const [slideCounter, setSlideCounter] = useState(0);
 
   const responsive = {
@@ -32,6 +44,48 @@ const BranchDetail = () => {
       items: 1,
     },
   };
+
+  // get list of comments
+  useEffect(() => {
+    if (initialRequest) {
+      if (!comments.length) {
+        const parameter = {
+          caller: {
+            name: "branchDetail",
+          },
+        };
+        dispatch(getComments(parameter));
+      }
+    }
+
+    return () => {
+      initialRequest = false;
+    };
+  }, []);
+
+  // get list of branchs
+  useEffect(() => {
+    if (initialRequest2) {
+      if (!branchs.length) {
+        const parameter = {
+          caller: {
+            name: "branchDetail",
+          },
+        };
+        dispatch(getBranchs(parameter));
+      }
+    }
+
+    return () => {
+      initialRequest2 = false;
+    };
+  }, []);
+
+  // get notification
+  useEffect(() => {
+    const caller = "branchDetail";
+    Notifications({ caller, notification });
+  }, []);
 
   return (
     <section className="w-full py-5">
@@ -88,7 +142,7 @@ const BranchDetail = () => {
 
       {/* contact card */}
       <div className="bg-white w-[85%] sm:w-[80%] md:w-[60%] relative -top-12 mx-auto h-20 sm:h-24 rounded border-Primary border-[1px] flex flex-col sm:flex-row sm:items-center justify-around px-2 ">
-        {agencyData?.map((contact) => {
+        {branchs?.map((contact) => {
           if (contact?.title === branchName) {
             return (
               <Fragment key={contact?.id}>
@@ -124,10 +178,9 @@ const BranchDetail = () => {
           draggable={true}
           showDots={true}
           infinite={true}
-          className=""
         >
-          {comments?.map((comment, index) => (
-            <CommentCard key={index} {...comment} />
+          {comments?.map((comment) => (
+            <CommentCard key={comment.id} {...comment} />
           ))}
         </Carousel>
       </div>
