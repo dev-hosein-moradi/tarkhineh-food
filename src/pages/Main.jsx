@@ -27,8 +27,6 @@ const Main = ({
   registerPop,
   setRegisterPop,
 }) => {
-  const [token, setToken] = useState();
-
   /* handling close and open func for search pop up */
   const handleDisplaySearchPop = () => {
     setSearchPop(false);
@@ -83,8 +81,6 @@ const Main = ({
         >
           <Hero clientParams={"home"} />
         </section>
-
-       
 
         {/* food category lists */}
         <section
