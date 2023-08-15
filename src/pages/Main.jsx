@@ -84,13 +84,7 @@ const Main = ({
           <Hero clientParams={"home"} />
         </section>
 
-        <GoogleReCaptchaProvider reCaptchaKey="6LcE26knAAAAAPC3AJCcozFmQ3chFCsMsDTc8K28">
-          <GoogleReCaptcha
-            onVerify={(token) => {
-              setToken(token);
-            }}
-          />
-        </GoogleReCaptchaProvider>
+       
 
         {/* food category lists */}
         <section
