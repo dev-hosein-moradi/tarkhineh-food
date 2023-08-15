@@ -1,11 +1,36 @@
-import React, { lazy } from "react";
+import React, { lazy, useEffect } from "react";
 import { agencyData } from "../constants";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getBranchs } from "../redux/actions/branchActions";
 
 const SvgCloseSolid = lazy(() => import("../assets/svg/SvgCloseSolid"));
 
+let initialRequest = true;
+
 const BranchPopUp = ({ handleDisplayBranchPop, handleSwitchDarkEffect }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const branchs = useSelector((state) => state.branchs.branchs);
+
+  useEffect(() => {
+    if (initialRequest) {
+      if (!branchs.length) {
+        const parameter = {
+          caller: {
+            name: "branchPopUp",
+          },
+        };
+        dispatch(getBranchs(parameter));
+      }
+    }
+
+    return () => {
+      initialRequest = false;
+    };
+  }, []);
+
   return (
     <div className="flex flex-col items-center w-full">
       <div className="bg-gray-3 flex flex-row items-center w-full h-[84px] px-4 py-1 rounded-t-md">
@@ -26,7 +51,7 @@ const BranchPopUp = ({ handleDisplayBranchPop, handleSwitchDarkEffect }) => {
         </p>
 
         <ul className="flex flex-col lg:flex-row items-center justify-between lg:justify-around">
-          {agencyData?.map((agency) => (
+          {branchs?.map((agency) => (
             <li
               onClick={() => {
                 navigate(`/branch/${agency?.title}`);
