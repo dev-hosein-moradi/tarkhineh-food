@@ -1,4 +1,9 @@
-import React, { Fragment, lazy } from "react";
+import React, { Fragment, lazy, useState } from "react";
+
+import {
+  GoogleReCaptcha,
+  GoogleReCaptchaProvider,
+} from "react-google-recaptcha-v3";
 
 const Register = lazy(() => import("../components/Register"));
 const BranchPopUp = lazy(() => import("../components/BranchPopUp"));
@@ -22,6 +27,8 @@ const Main = ({
   registerPop,
   setRegisterPop,
 }) => {
+  const [token, setToken] = useState();
+
   /* handling close and open func for search pop up */
   const handleDisplaySearchPop = () => {
     setSearchPop(false);
@@ -40,7 +47,6 @@ const Main = ({
   /* handling close and open func for register pop up */
   const handleSwitchDarkEffect = () => {
     setDarkEffect(false);
-    
   };
 
   return (
@@ -77,6 +83,14 @@ const Main = ({
         >
           <Hero clientParams={"home"} />
         </section>
+
+        <GoogleReCaptchaProvider reCaptchaKey="6LcE26knAAAAAPC3AJCcozFmQ3chFCsMsDTc8K28">
+          <GoogleReCaptcha
+            onVerify={(token) => {
+              setToken(token);
+            }}
+          />
+        </GoogleReCaptchaProvider>
 
         {/* food category lists */}
         <section
