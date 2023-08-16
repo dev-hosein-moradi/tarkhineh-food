@@ -5,16 +5,19 @@ import MenuFoodCard from "./MenuFoodCard";
 import { useDispatch, useSelector } from "react-redux";
 import Notifications from "./Notifications";
 import { fetchFoods } from "../redux/actions/foodActions";
+import { addNewItem, getCartItems } from "../redux/actions/cartActions";
 
 const SvgSearch = lazy(() => import("../assets/svg/SvgSearch"));
 const SvgShoppingCart = lazy(() => import("../assets/svg/SvgShoppingCart"));
 
 let initialRequest = true;
+let initialRequest2 = true;
 
 const MenuContent = () => {
   const dispatch = useDispatch();
 
   const foods = useSelector((state) => state.foods.foods);
+  const cart = useSelector((state) => state.cart.cartItems);
   const notification = useSelector((state) => state.notifications.notification);
 
   // state for food category active item
@@ -40,9 +43,41 @@ const MenuContent = () => {
     };
   }, [foods]);
 
+  // get list of cart
+  useEffect(() => {
+    if (initialRequest2) {
+      if (!cart.length) {
+        const parameter = {
+          caller: {
+            name: "menuContent",
+          },
+        };
+        dispatch(getCartItems(parameter));
+      }
+    }
+
+    return () => {
+      initialRequest2 = false;
+    };
+  }, [cart]);
+
+  const handleSubmitFoodToCart = (food) => {
+    const parameter = {
+      item: {
+        ...food,
+        originId: food.id,
+      },
+      caller: {
+        name: "menuContent",
+      },
+    };
+
+    dispatch(addNewItem(parameter));
+  };
+
   // get notification
   useEffect(() => {
-    const caller = "branchContent";
+    const caller = "menuContent";
     Notifications({ caller, notification });
   }, [notification]);
   return (
@@ -107,7 +142,11 @@ const MenuContent = () => {
           {foods.map(
             (food) =>
               food.type === "irani" && (
-                <MenuFoodCard key={food.id} food={food} />
+                <MenuFoodCard
+                  key={food.id}
+                  food={food}
+                  handleSubmitFoodToCart={handleSubmitFoodToCart}
+                />
               )
           )}
         </div>
@@ -125,7 +164,11 @@ const MenuContent = () => {
           {foods.map(
             (food) =>
               food.type === "other" && (
-                <MenuFoodCard key={food.id} food={food} />
+                <MenuFoodCard
+                  key={food.id}
+                  food={food}
+                  handleSubmitFoodToCart={handleSubmitFoodToCart}
+                />
               )
           )}
         </div>
@@ -141,7 +184,11 @@ const MenuContent = () => {
           {foods.map(
             (food) =>
               food.type === "pizza" && (
-                <MenuFoodCard key={food.id} food={food} />
+                <MenuFoodCard
+                  key={food.id}
+                  food={food}
+                  handleSubmitFoodToCart={handleSubmitFoodToCart}
+                />
               )
           )}
         </div>

@@ -155,7 +155,11 @@ const BranchsContent = () => {
             {foods?.map(
               (food) =>
                 food?.tag === "ff" && (
-                  <BranchFoodCard key={food?.id} food={food} />
+                  <BranchFoodCard
+                    key={food?.id}
+                    food={food}
+                    handleSubmitFoodToCart={handleSubmitFoodToCart}
+                  />
                 )
             )}
           </Carousel>
@@ -182,7 +186,11 @@ const BranchsContent = () => {
             {foods?.map(
               (food) =>
                 food?.tag === "of" && (
-                  <BranchFoodCard key={food?.id} food={food} />
+                  <BranchFoodCard
+                    key={food?.id}
+                    food={food}
+                    handleSubmitFoodToCart={handleSubmitFoodToCart}
+                  />
                 )
             )}
           </Carousel>
