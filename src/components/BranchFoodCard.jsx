@@ -1,11 +1,14 @@
-import React, { Fragment, lazy } from "react";
+import React, { Fragment, lazy, useState } from "react";
+import SpinnerLoading from "./SpinnerLoading";
 
 const Svg5Star = lazy(() => import("../assets/svg/Svg5Star"));
 const Svg4Star = lazy(() => import("../assets/svg/Svg4Star"));
 const Svg3Star = lazy(() => import("../assets/svg/Svg3Star"));
 const SvgHeart = lazy(() => import("../assets/svg/SvgHeart"));
 
-const BranchFoodCard = ({ food }) => {
+const BranchFoodCard = ({ food, handleSubmitFoodToCart }) => {
+  const [loading, setLoading] = useState(false);
+
   return (
     <div className="w-[230px] min-w-[230px] h-[280px] min-h-[280px] rounded-md border-[1px] border-gray-4 bg-white p-2 shadow-card-shadow hover:shadow-content-card-shadow ease-in-out duration-300">
       <img
@@ -60,8 +63,18 @@ const BranchFoodCard = ({ food }) => {
           )}
         </span>
       </div>
-      <button className="bg-Primary text-white w-[213px] h-[32px] rounded-md mt-4 text-sm font-normal">
-        افزودن به سبد خرید
+      <button
+        onClick={() => {
+          setLoading(true);
+          handleSubmitFoodToCart(food);
+          setTimeout(() => {
+            setLoading(false);
+          }, 500);
+        }}
+        disabled={loading}
+        className="bg-Primary text-white w-[213px] h-[32px] rounded-md mt-4 text-sm font-normal flex items-center justify-center"
+      >
+        {loading ? <SpinnerLoading size="1.5" /> : " افزودن به سبد خرید"}
       </button>
     </div>
   );

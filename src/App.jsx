@@ -1,6 +1,6 @@
 import React, { Suspense, lazy, useEffect, useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 
 import Main from "./pages/Main";
 import Loading from "./pages/Loading";
@@ -13,9 +13,6 @@ const MenuMain = lazy(() => import("./pages/MenuMain"));
 const Admin = lazy(() => import("./pages/admin/Admin"));
 
 const App = () => {
-  const notification = useSelector((state) => state.notifications.notification);
-  const dispatch = useDispatch();
-
   const [darkEffect, setDarkEffect] = useState(false);
 
   const [menuSwitcher, setMenuSwitcher] = useState(false);

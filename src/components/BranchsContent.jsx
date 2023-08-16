@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import React, { lazy, useEffect } from "react";
+import React, { lazy, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { textVariant } from "../utils/motion";
 import Carousel from "react-multi-carousel";
@@ -8,12 +8,14 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchFoods } from "../redux/actions/foodActions";
 import Notifications from "./Notifications";
+import { addNewItem, getCartItems } from "../redux/actions/cartActions";
 
 const BranchDetail = lazy(() => import("./BranchDetail"));
 const BranchFoodCard = lazy(() => import("./BranchFoodCard"));
 const SvgNote = lazy(() => import("../assets/svg/SvgNote"));
 
 let initialRequest = true;
+let initialRequest2 = true;
 
 const BranchsContent = () => {
   const navigate = useNavigate();
@@ -21,6 +23,7 @@ const BranchsContent = () => {
   const dispatch = useDispatch();
 
   const foods = useSelector((state) => state.foods.foods);
+  const cart = useSelector((state) => state.cart.cartItems);
   const notification = useSelector((state) => state.notifications.notification);
 
   const responsive = {
@@ -59,14 +62,46 @@ const BranchsContent = () => {
     return () => {
       initialRequest = false;
     };
-  }, []);
+  }, [foods]);
+
+  // get list of cart
+  useEffect(() => {
+    if (initialRequest2) {
+      if (!cart.length) {
+        const parameter = {
+          caller: {
+            name: "branchContent",
+          },
+        };
+        dispatch(getCartItems(parameter));
+      }
+    }
+
+    return () => {
+      initialRequest2 = false;
+    };
+  }, [cart]);
+
+  const handleSubmitFoodToCart = (food) => {
+    const parameter = {
+      item: {
+        ...food,
+        originId: food.id,
+      },
+      caller: {
+        name: "branchContent",
+      },
+    };
+
+    dispatch(addNewItem(parameter));
+  };
 
   // get notification
   useEffect(() => {
     const caller = "branchContent";
     Notifications({ caller, notification });
-  }, []);
-  
+  }, [notification]);
+
   return (
     <div className="w-full">
       {/* special offer section */}
@@ -89,7 +124,11 @@ const BranchsContent = () => {
             {foods?.map(
               (food) =>
                 food?.tag === "so" && (
-                  <BranchFoodCard key={food?.id} food={food} />
+                  <BranchFoodCard
+                    key={food?.id}
+                    food={food}
+                    handleSubmitFoodToCart={handleSubmitFoodToCart}
+                  />
                 )
             )}
           </Carousel>

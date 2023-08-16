@@ -8,23 +8,11 @@ const cartSlice = createSlice({
   name: "cart",
   initialState: INITIAL_STATE,
   reducers: {
+    getCartItems(state, action) {
+      state.cartItems = action.payload;
+    },
     addItems(state, action) {
-      // filter catItems array to check if dublicate item, then increase quantity
-      const existItem = state.cartItems.filter(
-        (item) => item?.id === action.payload.id
-      );
-      // if item exist
-      if (existItem) {
-        return {
-          ...state,
-          cartItems: state.cartItems.find((item) => {
-            item.quantity = item.quantity++;
-          }),
-        };
-      } else {
-        // if not exist then add new item
-        return { ...state, cartItems: [...state.cartItems, action.payload] };
-      }
+      return { ...state, cartItems: [...state.cartItems, action.payload.item] };
     },
     removeItem(state, action) {
       // if item exist in cart.

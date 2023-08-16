@@ -18,10 +18,10 @@ const app = initializeApp(firebaseConfig);
 
 const analytics = getAnalytics(app);
 
-const appCheck = initializeAppCheck(app, {
-  provider: new ReCaptchaV3Provider("6LcE26knAAAAAPC3AJCcozFmQ3chFCsMsDTc8K28"),
-  isTokenAutoRefreshEnabled: true,
-});
+// const appCheck = initializeAppCheck(app, {
+//   provider: new ReCaptchaV3Provider("6LcE26knAAAAAPC3AJCcozFmQ3chFCsMsDTc8K28"),
+//   isTokenAutoRefreshEnabled: true,
+// });
 
 export const db = getFirestore(app);
 export const storage = getStorage(app);
