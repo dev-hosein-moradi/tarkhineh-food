@@ -1,3 +1,5 @@
+import { lazy } from "react";
+
 import chalus from "../assets/image/agency/chalus.webp";
 import aghdasieh from "../assets/image/agency/aghdasieh.webp";
 import ekbatan from "../assets/image/agency/ekbatan.webp";
@@ -22,6 +24,8 @@ import of3 from "../assets/image/of3.svg";
 import of4 from "../assets/image/of4.svg";
 
 import hosein from "../assets/image/hosein.jpg";
+
+const SvgShoppingCart = lazy(() => import("../assets/svg/SvgShoppingCart"));
 
 const agencyData = [
   {
@@ -374,4 +378,29 @@ const comments = [
   },
 ];
 
-export { agencyData, foodCategory, branchFood, comments, menuSubLink };
+const cartProccessNavigator = [
+  {
+    id: 1,
+    title: "سبد خرید",
+    icon: SvgShoppingCart,
+  },
+  {
+    id: 2,
+    title: "تکمیل اطلاعات",
+    icon: SvgShoppingCart,
+  },
+  {
+    id: 3,
+    title: "پرداخت",
+    icon: SvgShoppingCart,
+  },
+];
+
+export {
+  agencyData,
+  foodCategory,
+  branchFood,
+  comments,
+  menuSubLink,
+  cartProccessNavigator,
+};

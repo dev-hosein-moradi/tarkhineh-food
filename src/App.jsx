@@ -4,13 +4,13 @@ import { Toaster } from "react-hot-toast";
 
 import Main from "./pages/Main";
 import Loading from "./pages/Loading";
-import { useDispatch, useSelector } from "react-redux";
 import { ErrorBoundary } from "react-error-boundary";
 import Fallback from "./components/Fallback";
 
 const BranchMain = lazy(() => import("./pages/BranchMain"));
 const MenuMain = lazy(() => import("./pages/MenuMain"));
 const Admin = lazy(() => import("./pages/admin/Admin"));
+const ShoppingCart = lazy(() => import("./pages/ShoppingCart"));
 
 const App = () => {
   const [darkEffect, setDarkEffect] = useState(false);
@@ -80,6 +80,21 @@ const App = () => {
     {
       path: "/admin",
       element: <Admin />,
+      errorElement: <h1>404 NOT FOUND!</h1>,
+    },
+    {
+      path: "/shopping-cart",
+      element: (
+        <ShoppingCart
+          searchPop={searchPop}
+          setSearchPop={setSearchPop}
+          darkEffect={darkEffect}
+          menuSwitcher={menuSwitcher}
+          setMenuSwitcher={setMenuSwitcher}
+          registerPop={registerPop}
+          setRegisterPop={setRegisterPop}
+        />
+      ),
       errorElement: <h1>404 NOT FOUND!</h1>,
     },
     {

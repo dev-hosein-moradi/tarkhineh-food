@@ -162,7 +162,13 @@ const Navbar = ({
           <SvgUser width={24} height={24} />
         </button>
 
-        <button className="mx-1 p-1 bg-tint-1 rounded-[4px] md:p-2">
+        <button
+          onClick={() => {
+            navigate(`/shopping-cart`);
+            window.scrollTo(0, 0);
+          }}
+          className="mx-1 p-1 bg-tint-1 rounded-[4px] md:p-2"
+        >
           <SvgShoppingCart width={24} height={24} />
         </button>
 

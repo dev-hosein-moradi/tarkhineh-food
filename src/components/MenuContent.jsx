@@ -134,7 +134,15 @@ const MenuContent = () => {
 
           <button className="flex flex-row-reverse justify-between items-center w-[120px] h-[38px] rounded border-[1px] border-Primary p-2 text-Primary">
             <SvgShoppingCart width={20} height={20} />
-            <p className="font-normal text-sm leading-5">تکمیل خرید</p>
+            <p
+              onClick={() => {
+                navigate(`/shopping-cart`);
+                window.scrollTo(0, 0);
+              }}
+              className="font-normal text-sm leading-5"
+            >
+              تکمیل خرید
+            </p>
           </button>
         </div>
 
