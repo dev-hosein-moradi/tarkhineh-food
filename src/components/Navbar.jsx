@@ -1,7 +1,7 @@
 import React, { lazy, useEffect, useState } from "react";
 import { agencyData } from "../constants";
 import Logo from "../assets/image/Logo.svg";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getBranchs } from "../redux/actions/branchActions";
 
@@ -24,6 +24,7 @@ const Navbar = ({
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const branchs = useSelector((state) => state.branchs.branchs);
+  const location = useLocation();
 
   const [agencySwitcher, setAgencySwitcher] = useState(false);
   const [listSwitcher, setListSwitcher] = useState(false);
@@ -157,7 +158,7 @@ const Navbar = ({
       <div className="flex">
         <button
           onClick={() => setRegisterPop(true)}
-          className="p-1 bg-tint-1 rounded-[4px] md:p-2"
+          className={`p-1 bg-tint-1 rounded-[4px] md:p-2`}
         >
           <SvgUser width={24} height={24} />
         </button>
@@ -167,9 +168,11 @@ const Navbar = ({
             navigate(`/shopping-cart`);
             window.scrollTo(0, 0);
           }}
-          className="mx-1 p-1 bg-tint-1 rounded-[4px] md:p-2"
+          className={`mx-1 ${
+            location?.pathname === "/shopping-cart" ? "bg-Primary" : "bg-tint-1"
+          } p-1 rounded-[4px] md:p-2`}
         >
-          <SvgShoppingCart width={24} height={24} />
+          <SvgShoppingCart width={24} height={24} theme={`${location?.pathname === "/shopping-cart" ? "#ffffff" : "#417F56"}`} />
         </button>
 
         <button

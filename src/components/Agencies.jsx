@@ -48,7 +48,7 @@ const Agencies = () => {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
-              variants={fadeIn("up", "tween", 0.2, 0.5)}
+              variants={fadeIn("up", "tween", 0.1, 0.7)}
               onClick={() => {
                 navigate(`branch/${agency?.title}`);
                 window.scrollTo(0, 0);

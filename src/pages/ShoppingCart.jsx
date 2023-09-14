@@ -66,7 +66,7 @@ const ShoppingCart = ({
         </section>
 
         {/* main content of menu page */}
-        <main className="h-auto">
+        <main className="h-auto py-[16px] px-[20px]">
           <ShoppingCartContent />
         </main>
 
