@@ -1,15 +1,19 @@
 import React, { Fragment, lazy, useState } from "react";
 import { useSelector } from "react-redux";
+import ShoppingFoodCard from "./ShoppingFoodCard";
 
 const SvgArrowRight = lazy(() => import("../assets/svg/SvgArrowRight"));
 const SvgShoppingCart = lazy(() => import("../assets/svg/SvgShoppingCart"));
 const SvgTickSqure = lazy(() => import("../assets/svg/SvgTickSqure"));
 const SvgWallet = lazy(() => import("../assets/svg/SvgWallet"));
 const SvgTrash = lazy(() => import("../assets/svg/SvgTrash"));
+const SvgWarning2 = lazy(() => import("../assets/svg/SvgWarning2"));
 
 const ShoppingCartContent = () => {
   const [activeLevel, setActiveLevel] = useState(1);
   const cartItems = useSelector((state) => state.cart.cartItems);
+
+  console.log(cartItems);
   return (
     <Fragment>
       {/* road map procces */}
@@ -93,8 +97,9 @@ const ShoppingCartContent = () => {
       {/* cart items */}
       <section
         className={`${
-          !cartItems.length && "bg-empty bg-no-repeat bg-center"
-        } h-[400px] py-5 flex flex-col items-center justify-center border-[1px] border-gray-4 rounded-lg my-4 duration-200`}
+          !cartItems.length &&
+          "bg-empty bg-no-repeat bg-center border-[1px] border-gray-4"
+        } h-[480px] py-5 flex flex-col items-center justify-center rounded-lg duration-200`}
       >
         {!cartItems.length ? (
           <Fragment>
@@ -114,26 +119,69 @@ const ShoppingCartContent = () => {
             </button>
           </Fragment>
         ) : (
-          <section>
+          <section className="border-[1px] border-gray-4 w-full h-full rounded p-6 lg:flex lg:flex-row-reverse">
             {/* section for items list */}
-            <section>
-              <article dir="rtl" className="md:hidden">
+            <section className="">
+              <article
+                dir="rtl"
+                className="overflow-y-auto max-h-[300px]"
+              >
                 {cartItems?.map((item) => (
-                  <div>
-                    <div>
-                      <h6>{item?.name}</h6>
-                      <p>{item?.price}</p>
-                    </div>
-
-                    <div>
-                      
-                    </div>
-                  </div>
+                 <ShoppingFoodCard key={item.id} {...item} />
                 ))}
               </article>
-
-              <article></article>
             </section>
+
+            <hr className="mt-5 w-full border-gray-4 lg:hidden" />
+
+            <article className="w-full flex flex-col">
+              <div className="flex flex-row items-center justify-between py-2">
+                <p className="font-normal text-sm text-gray-7" dir="rtl">
+                  63,000 تومان
+                </p>
+                <h3 className="font-normal text-sm text-gray-8">
+                  تخفیف محصولات
+                </h3>
+              </div>
+
+              <hr className="my-2 w-full border-gray-4" />
+
+              <div className="w-full py-1">
+                <span className="flex flex-row items-center justify-between">
+                  <p className="font-normal text-sm text-gray-7" dir="rtl">
+                    0 تومان
+                  </p>
+                  <h3 className="font-normal text-sm text-gray-8">
+                    هزینه ارسال
+                  </h3>
+                </span>
+
+                <span className="flex flex-row pt-2">
+                  <p className="text-right mr-1 text-warning font-normal text-xs" dir="rtl">
+                    هزینه ارسال در ادامه بر اساس آدرس، زمان و نحوه ارسال انتخابی
+                    شما محاسبه و به این مبلغ اضافه خواهد شد.
+                  </p>
+
+                  <span>
+                    <SvgWarning2 width={20} height={20} theme="#A9791C" />
+                  </span>
+                </span>
+              </div>
+
+              <hr className="my-2 w-full border-gray-4" />
+
+              <div className="flex flex-row items-center justify-between py-1">
+                <p className="font-normal text-sm text-Primary" dir="rtl">
+                  542,000 تومان
+                </p>
+
+                <h3 className="font-normal text-sm text-gray-8">
+                  مبلغ قابل پرداخت
+                </h3>
+              </div>
+
+              <button className="w-full h-[35px] rounded bg-Primary text-white font-normal text-sm my-2">ورود / ثبت‌نام</button>
+            </article>
 
             <section></section>
           </section>
