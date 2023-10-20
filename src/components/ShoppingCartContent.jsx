@@ -8,6 +8,7 @@ const SvgTickSqure = lazy(() => import("../assets/svg/SvgTickSqure"));
 const SvgWallet = lazy(() => import("../assets/svg/SvgWallet"));
 const SvgTrash = lazy(() => import("../assets/svg/SvgTrash"));
 const SvgWarning2 = lazy(() => import("../assets/svg/SvgWarning2"));
+const SvgUserSolid = lazy(() => import("../assets/svg/SvgUserSolid"));
 
 const ShoppingCartContent = () => {
   const [activeLevel, setActiveLevel] = useState(1);
@@ -119,22 +120,30 @@ const ShoppingCartContent = () => {
             </button>
           </Fragment>
         ) : (
-          <section className="border-[1px] border-gray-4 w-full h-full rounded p-6 lg:flex lg:flex-row-reverse">
+          <section className="border-[1px] lg:border-none border-gray-4 w-full h-fit rounded p-6 lg:p-0 lg:flex lg:flex-row-reverse justify-between">
             {/* section for items list */}
-            <section className="">
-              <article
-                dir="rtl"
-                className="overflow-y-auto max-h-[300px]"
-              >
+            <section className="lg:border-[1px] border-gray-4 lg:p-6 lg:rounded-lg lg:max-w-[80%]">
+              <article dir="rtl" className="overflow-y-auto max-h-[300px]">
                 {cartItems?.map((item) => (
-                 <ShoppingFoodCard key={item.id} {...item} />
+                  <ShoppingFoodCard key={item.id} {...item} />
                 ))}
               </article>
             </section>
 
             <hr className="mt-5 w-full border-gray-4 lg:hidden" />
 
-            <article className="w-full flex flex-col">
+            <article className="w-full flex flex-col lg:border-[1px] border-gray-4 lg:h-fit lg:p-6 lg:rounded-lg lg:max-w-[30%] mr-auto">
+              <div className="lg:flex flex-row items-center justify-between py-2 hidden">
+                <span className="cursor-pointer">
+                  <SvgTrash width={20} height={20} theme="#353535" />
+                </span>
+                <p className="font-normal text-sm text-gray-7" dir="rtl">
+                  سبد خرید (4)
+                </p>
+              </div>
+
+              <hr className="my-2 w-full border-gray-4 hidden lg:flex" />
+
               <div className="flex flex-row items-center justify-between py-2">
                 <p className="font-normal text-sm text-gray-7" dir="rtl">
                   63,000 تومان
@@ -157,7 +166,10 @@ const ShoppingCartContent = () => {
                 </span>
 
                 <span className="flex flex-row pt-2">
-                  <p className="text-right mr-1 text-warning font-normal text-xs" dir="rtl">
+                  <p
+                    className="text-right mr-1 text-warning font-normal text-xs"
+                    dir="rtl"
+                  >
                     هزینه ارسال در ادامه بر اساس آدرس، زمان و نحوه ارسال انتخابی
                     شما محاسبه و به این مبلغ اضافه خواهد شد.
                   </p>
@@ -180,10 +192,13 @@ const ShoppingCartContent = () => {
                 </h3>
               </div>
 
-              <button className="w-full h-[35px] rounded bg-Primary text-white font-normal text-sm my-2">ورود / ثبت‌نام</button>
+              <button className="flex flex-row items-center justify-center w-full h-[35px] rounded bg-Primary text-white font-normal text-sm my-2">
+                <p>ورود / ثبت‌نام</p>
+                <span className="ml-2">
+                  <SvgUserSolid width={18} height={18} theme="#fff" />
+                </span>
+              </button>
             </article>
-
-            <section></section>
           </section>
         )}
       </section>

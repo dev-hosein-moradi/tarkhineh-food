@@ -1,5 +1,8 @@
 import React, { lazy } from "react";
 const SvgTrash = lazy(() => import("../assets/svg/SvgTrash"));
+const Svg5Star = lazy(() => import("../assets/svg/Svg5Star"));
+const Svg4Star = lazy(() => import("../assets/svg/Svg4Star"));
+const Svg3Star = lazy(() => import("../assets/svg/Svg3Star"));
 
 const ShoppingFoodCard = ({
   name,
@@ -9,13 +12,18 @@ const ShoppingFoodCard = ({
   compounds,
   mainPrice,
   percentOfDiscount,
+  rate,
 }) => {
   return (
-    <div className="flex flex-row items-center justify-between bg-gray-1 p-2 lg:min-w-[656px]">
+    <div className="flex flex-row items-center justify-between bg-gray-1 lg:bg-white lg:border-[1px] border-gray-4 lg:rounded-lg p-2 lg:min-w-[630px]">
       {/* for large view */}
-      <img alt={name} src={imgUrl} className="w-[169px] h-[158px] rounded" />
+      <img
+        alt={name}
+        src={imgUrl}
+        className="w-[169px] h-[158px] rounded hidden lg:inline-block"
+      />
 
-      <div className="flex flex-col justify-between w-full h-full">
+      <div className="lg:flex flex-col justify-between w-full h-[160px] p-4 hidden">
         {/* for large view */}
         <div className="hidden lg:flex items-center justify-between">
           <h6 className="font-semibold text-xl leading-5 text-gray-8">
@@ -41,10 +49,24 @@ const ShoppingFoodCard = ({
         </div>
 
         {/* for large view */}
-        <div className="hidden lg:flex">
-          <span></span>
-          <span></span>
-          <span></span>
+        <div className="hidden lg:flex flex-row-reverse justify-between items-center">
+          <span>
+            <p dir="rtl" className="font-normal text-xl text-gray-8">{price} تومان</p>
+          </span>
+          <div className="flex flex-row-reverse items-center bg-tint-1 text-Primary p-1 rounded">
+            <span className="font-bold text-2xl cursor-pointer">-</span>
+            <span className="mx-2 font-medium text-base">{quintity}</span>
+            <span className="font-bold text-2xl cursor-pointer">+</span>
+          </div>
+          <span>
+            {rate === 5 ? (
+              <Svg5Star />
+            ) : rate === 4 ? (
+              <Svg4Star />
+            ) : (
+              <Svg3Star />
+            )}
+          </span>
         </div>
       </div>
 
