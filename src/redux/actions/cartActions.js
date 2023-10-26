@@ -8,12 +8,12 @@ import {
 } from "firebase/firestore";
 import { db } from "../../configs/firebase";
 import { notificationActions } from "../reducers/notificationSlice";
-import { cartActions } from "../reducers/cartSlice";
 import {
   errorNotification,
   pendingNotification,
   successNotification,
 } from "../../utils/notificationTypes";
+import { cartActions } from "../reducers/cartSlice";
 
 const cartCollectionRef = collection(db, "cart");
 
@@ -32,7 +32,7 @@ export const getCartItems = (parameter) => {
       }));
       if (data) {
         // call slice reducer to work on recived data
-        dispatch(cartActions.getCartItems(filteredData));
+        dispatch(cartActions.setCartItems(filteredData));
       }
     } catch (error) {
       dispatch(notificationActions.errorNotification(errorBody));

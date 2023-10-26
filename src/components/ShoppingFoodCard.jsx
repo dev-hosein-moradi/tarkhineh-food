@@ -7,7 +7,7 @@ const Svg3Star = lazy(() => import("../assets/svg/Svg3Star"));
 const ShoppingFoodCard = ({
   name,
   price,
-  quintity,
+  quantity,
   imgUrl,
   compounds,
   mainPrice,
@@ -55,7 +55,7 @@ const ShoppingFoodCard = ({
           </span>
           <div className="flex flex-row-reverse items-center bg-tint-1 text-Primary p-1 rounded">
             <span className="font-bold text-2xl cursor-pointer">-</span>
-            <span className="mx-2 font-medium text-base">{quintity}</span>
+            <span className="mx-2 font-medium text-base">{quantity}</span>
             <span className="font-bold text-2xl cursor-pointer">+</span>
           </div>
           <span>
@@ -82,7 +82,7 @@ const ShoppingFoodCard = ({
         <span className="cursor-pointer">
           <SvgTrash width={20} height={20} theme="#417F56" />
         </span>
-        <span className="mx-2 font-medium text-base">{quintity}</span>
+        <span className="mx-2 font-medium text-base">{quantity}</span>
         <span className="font-bold text-2xl cursor-pointer">+</span>
       </div>
     </div>

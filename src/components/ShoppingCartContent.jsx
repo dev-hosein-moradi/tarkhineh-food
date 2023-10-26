@@ -1,6 +1,7 @@
-import React, { Fragment, lazy, useState } from "react";
-import { useSelector } from "react-redux";
+import React, { Fragment, lazy, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import ShoppingFoodCard from "./ShoppingFoodCard";
+import { getCartItems } from "../redux/actions/cartActions";
 
 const SvgArrowRight = lazy(() => import("../assets/svg/SvgArrowRight"));
 const SvgShoppingCart = lazy(() => import("../assets/svg/SvgShoppingCart"));
@@ -10,16 +11,67 @@ const SvgTrash = lazy(() => import("../assets/svg/SvgTrash"));
 const SvgWarning2 = lazy(() => import("../assets/svg/SvgWarning2"));
 const SvgUserSolid = lazy(() => import("../assets/svg/SvgUserSolid"));
 
+let initiaReq = true;
+
 const ShoppingCartContent = () => {
+  const dispatch = useDispatch();
+
   const [activeLevel, setActiveLevel] = useState(1);
+  const [discountAmount, setDiscountAmount] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
   const cartItems = useSelector((state) => state.cart.cartItems);
 
-  console.log(cartItems);
+  // get list of cart
+  useEffect(() => {
+    if (initiaReq) {
+      if (!cartItems.length) {
+        const parameter = {
+          caller: {
+            name: "shoppingContent",
+          },
+        };
+        dispatch(getCartItems(parameter));
+      }
+    }
+
+    return () => {
+      initiaReq = false;
+    };
+  }, [cartItems]);
+
+  // console.log(cartItems);
+
+  // calculate the amount of whole discount
+  const discountChecker = () => {
+    let singleDiscount = 0;
+    cartItems?.map((item) => {
+      singleDiscount += Number(item.mainPrice) - Number(item.discountPrice);
+    });
+    return Number(singleDiscount.toFixed(1));
+  };
+  useEffect(() => {
+    let allDiscount = discountChecker();
+    setDiscountAmount(allDiscount);
+  }, [cartItems]);
+
+  // calculate the total price of carts
+  const totalPriceChecker = () => {
+    let total = 0;
+    cartItems?.map((item) => {
+      total += Number(item.mainPrice);
+    });
+    return Number(total.toFixed(1));
+  };
+  useEffect(() => {
+    let totalPrice = totalPriceChecker();
+    setTotalPrice(totalPrice);
+  }, [cartItems]);
+
   return (
     <Fragment>
       {/* road map procces */}
       <div
-        className="h-auto flex flex-row items-center justify-around"
+        className="h-auto flex flex-row items-center justify-around mb-4"
         dir="rtl"
       >
         <div className="lg:hidden">
@@ -99,8 +151,8 @@ const ShoppingCartContent = () => {
       <section
         className={`${
           !cartItems.length &&
-          "bg-empty bg-no-repeat bg-center border-[1px] border-gray-4"
-        } h-[480px] py-5 flex flex-col items-center justify-center rounded-lg duration-200`}
+          "bg-empty bg-no-repeat bg-center border-[1px] border-gray-4 max-h-[450px]"
+        } h-[510px] py-5 flex flex-col items-center justify-center rounded-lg duration-200`}
       >
         {!cartItems.length ? (
           <Fragment>
@@ -123,7 +175,7 @@ const ShoppingCartContent = () => {
           <section className="border-[1px] lg:border-none border-gray-4 w-full h-fit rounded p-6 lg:p-0 lg:flex lg:flex-row-reverse justify-between">
             {/* section for items list */}
             <section className="lg:border-[1px] border-gray-4 lg:p-6 lg:rounded-lg lg:max-w-[80%]">
-              <article dir="rtl" className="overflow-y-auto max-h-[300px]">
+              <article dir="rtl" className="overflow-y-auto max-h-[200px]">
                 {cartItems?.map((item) => (
                   <ShoppingFoodCard key={item.id} {...item} />
                 ))}
@@ -146,7 +198,7 @@ const ShoppingCartContent = () => {
 
               <div className="flex flex-row items-center justify-between py-2">
                 <p className="font-normal text-sm text-gray-7" dir="rtl">
-                  63,000 تومان
+                  {discountAmount + "00"} تومان
                 </p>
                 <h3 className="font-normal text-sm text-gray-8">
                   تخفیف محصولات
@@ -184,7 +236,7 @@ const ShoppingCartContent = () => {
 
               <div className="flex flex-row items-center justify-between py-1">
                 <p className="font-normal text-sm text-Primary" dir="rtl">
-                  542,000 تومان
+                  {totalPrice + "00"} تومان
                 </p>
 
                 <h3 className="font-normal text-sm text-gray-8">

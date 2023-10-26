@@ -87,6 +87,7 @@ const BranchsContent = () => {
       item: {
         ...food,
         originId: food.id,
+        quantity: 1,
       },
       caller: {
         name: "branchContent",
