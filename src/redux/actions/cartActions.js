@@ -95,6 +95,7 @@ export const removeItem = (parameter) => {
     try {
       const id = parameter.itemId;
       const itemDoc = doc(db, "cart", id);
+
       if (parameter?.itemQuantity === 1) {
         // send request to firestore
         const data = await deleteDoc(itemDoc);
@@ -104,6 +105,10 @@ export const removeItem = (parameter) => {
           dispatch(notificationActions.successNotification(successBody));
         }
       } else {
+        // update Doc from firestore
+        await updateDoc(itemDoc, {
+          quantity: parameter?.item.quantity,
+        });
         // update ui
         dispatch(cartActions.removeItem(parameter?.item));
       }

@@ -9,7 +9,6 @@ const cartSlice = createSlice({
   initialState: INITIAL_STATE,
   reducers: {
     setCartItems(state, action) {
-      console.log("bitch");
       state.cartItems = action.payload;
     },
     addItems(state, action) {
@@ -17,23 +16,30 @@ const cartSlice = createSlice({
     },
     removeItem(state, action) {
       // if item exist in cart.
-      const existItem = state.cartItems.filter(
+      const existItem = state?.cartItems?.filter(
         (item) => item?.id === action.payload.id
       );
+
       // if item exist
       if (existItem) {
-        const itemQuantity = state.cartItems.filter(
-          (item) => item.id === action.payload?.id && item.quantity
+        // const itemQuantity = state.cartItems.filter(
+        //   (item) => item.id === action.payload?.id && item.quantity
+        // );
+        const targetItem = state.cartItems.find(
+          (item) => item.id === action.payload?.id
         );
         // if item exist and have quantity more than 1 should decrease quantity.
-        if (itemQuantity > 1) {
+        if (targetItem.quantity > 1) {
+          console.log("fuck");
           return {
             ...state,
-            cartItems: state.cartItems.find((item) => {
-              item.quantity = item.quantity--;
-            }),
+            cartItems: state.cartItems.map((item) =>
+              item.id === action.payload?.id
+                ? { ...item, quantity: item?.quantity - 1 }
+                : item
+            ),
           };
-        } else if (itemQuantity === 1) {
+        } else if (targetItem.quantity === 1) {
           // if item exist and have quantity with value of 1 should remove dirctly.
           return {
             ...state,

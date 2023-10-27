@@ -39,8 +39,6 @@ const ShoppingCartContent = () => {
     };
   }, [cartItems]);
 
-  // console.log(cartItems);
-
   // calculate the amount of whole discount
   const discountChecker = () => {
     let singleDiscount = 0;
@@ -175,7 +173,10 @@ const ShoppingCartContent = () => {
           <section className="border-[1px] lg:border-none border-gray-4 w-full h-fit rounded p-6 lg:p-0 lg:flex lg:flex-row-reverse justify-between">
             {/* section for items list */}
             <section className="lg:border-[1px] border-gray-4 lg:p-6 lg:rounded-lg lg:max-w-[80%]">
-              <article dir="rtl" className="overflow-y-auto max-h-[200px]">
+              <article
+                dir="rtl"
+                className="overflow-y-auto max-h-[200px] lg:max-h-[285px]"
+              >
                 {cartItems?.map((item) => (
                   <ShoppingFoodCard key={item.id} {...item} />
                 ))}
