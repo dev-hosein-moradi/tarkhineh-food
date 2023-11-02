@@ -43,9 +43,13 @@ const ShoppingCartContent = () => {
   const discountChecker = () => {
     let singleDiscount = 0;
     cartItems?.map((item) => {
-      singleDiscount += Number(item.mainPrice) - Number(item.discountPrice);
+      singleDiscount +=
+        item.quantity * (Number(item.mainPrice) - Number(item.discountPrice));
     });
-    return Number(singleDiscount.toFixed(1));
+
+    const formattedPrice = singleDiscount.toLocaleString("fa-IR");
+
+    return formattedPrice;
   };
   useEffect(() => {
     let allDiscount = discountChecker();
@@ -56,9 +60,13 @@ const ShoppingCartContent = () => {
   const totalPriceChecker = () => {
     let total = 0;
     cartItems?.map((item) => {
-      total += Number(item.mainPrice);
+      total +=
+        item.quantity * Number(item.mainPrice) -
+        item.quantity * (Number(item.mainPrice) - Number(item.discountPrice));
     });
-    return Number(total.toFixed(1));
+    const formattedPrice = total.toLocaleString("fa-IR");
+
+    return formattedPrice;
   };
   useEffect(() => {
     let totalPrice = totalPriceChecker();
@@ -199,7 +207,7 @@ const ShoppingCartContent = () => {
 
               <div className="flex flex-row items-center justify-between py-2">
                 <p className="font-normal text-sm text-gray-7" dir="rtl">
-                  {discountAmount + "00"} تومان
+                  {discountAmount} تومان
                 </p>
                 <h3 className="font-normal text-sm text-gray-8">
                   تخفیف محصولات
@@ -211,7 +219,7 @@ const ShoppingCartContent = () => {
               <div className="w-full py-1">
                 <span className="flex flex-row items-center justify-between">
                   <p className="font-normal text-sm text-gray-7" dir="rtl">
-                    0 تومان
+                    ۰ تومان
                   </p>
                   <h3 className="font-normal text-sm text-gray-8">
                     هزینه ارسال
@@ -237,7 +245,7 @@ const ShoppingCartContent = () => {
 
               <div className="flex flex-row items-center justify-between py-1">
                 <p className="font-normal text-sm text-Primary" dir="rtl">
-                  {totalPrice + "00"} تومان
+                  {totalPrice} تومان
                 </p>
 
                 <h3 className="font-normal text-sm text-gray-8">

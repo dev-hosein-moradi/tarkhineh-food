@@ -47,7 +47,6 @@ const cartSlice = createSlice({
       }
     },
     increaseQuantity(state, action) {
-      console.log(action.payload);
       return {
         ...state,
         cartItems: state.cartItems.map((item) =>

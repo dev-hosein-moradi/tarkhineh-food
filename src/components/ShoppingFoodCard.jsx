@@ -32,7 +32,6 @@ const ShoppingFoodCard = ({
     dispatch(removeItem(parameter));
   };
   const increasmentItem = () => {
-    console.log(1);
     const parameter = {
       item: {
         id,
@@ -70,10 +69,10 @@ const ShoppingFoodCard = ({
 
           <span className="flex flex-row">
             <p className="line-through text-gray-5 text-base font-normal ml-1">
-              {mainPrice}
+              {Number(mainPrice)?.toLocaleString("fa-IR")}
             </p>
             <p className="text-xs font-normal text-error p-1 rounded-md bg-error-extra-light">
-              %{percentOfDiscount}
+              %{percentOfDiscount?.toLocaleString("fa-IR")}
             </p>
           </span>
         </div>
@@ -82,7 +81,7 @@ const ShoppingFoodCard = ({
         <div className="hidden lg:flex flex-row-reverse justify-between items-center">
           <span>
             <p dir="rtl" className="font-normal text-xl text-gray-8">
-              {discountPrice} تومان
+              {Number(discountPrice)?.toLocaleString("fa-IR")} تومان
             </p>
           </span>
           <div className="flex flex-row-reverse items-center bg-tint-1 text-Primary p-1 rounded">
@@ -92,7 +91,9 @@ const ShoppingFoodCard = ({
             >
               -
             </span>
-            <span className="mx-2 font-medium text-base">{quantity}</span>
+            <span className="mx-2 font-medium text-base">
+              {quantity?.toLocaleString("fa-IR")}
+            </span>
             <span
               onClick={increasmentItem}
               className="font-bold text-2xl cursor-pointer"
@@ -116,7 +117,7 @@ const ShoppingFoodCard = ({
       <div className="lg:hidden">
         <h6 className="font-normal text-sm leading-5 text-gray-8">{name}</h6>
         <p dir="rtl" className="font-normal text-sm text-gray-7">
-          {discountPrice} تومان
+          {Number(discountPrice)?.toLocaleString("fa-IR")} تومان
         </p>
       </div>
 
@@ -124,7 +125,9 @@ const ShoppingFoodCard = ({
         <span onClick={deceremantItem} className="cursor-pointer">
           <SvgTrash width={20} height={20} theme="#417F56" />
         </span>
-        <span className="mx-2 font-medium text-base">{quantity}</span>
+        <span className="mx-2 font-medium text-base">
+          {quantity?.toLocaleString("fa-IR")}
+        </span>
         <span
           onClick={increasmentItem}
           className="font-bold text-2xl cursor-pointer"
