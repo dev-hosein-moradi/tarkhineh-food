@@ -95,22 +95,23 @@ export const removeItem = (parameter) => {
     try {
       const id = parameter.itemId;
       const itemDoc = doc(db, "cart", id);
+      console.log(parameter);
 
-      if (parameter?.itemQuantity === 1) {
+      if (parameter.item?.quantity <= 1) {
         // send request to firestore
-        const data = await deleteDoc(itemDoc);
         dispatch(cartActions.removeItem(parameter?.item));
+        const data = deleteDoc(itemDoc);
 
         if (data) {
           dispatch(notificationActions.successNotification(successBody));
         }
       } else {
-        // update Doc from firestore
-        await updateDoc(itemDoc, {
-          quantity: parameter?.item.quantity,
-        });
         // update ui
         dispatch(cartActions.removeItem(parameter?.item));
+        // update Doc from firestore
+        updateDoc(itemDoc, {
+          quantity: parameter?.item.quantity,
+        });
       }
     } catch (error) {
       // push notification

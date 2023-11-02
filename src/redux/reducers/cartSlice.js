@@ -30,7 +30,6 @@ const cartSlice = createSlice({
         );
         // if item exist and have quantity more than 1 should decrease quantity.
         if (targetItem.quantity > 1) {
-          console.log("fuck");
           return {
             ...state,
             cartItems: state.cartItems.map((item) =>
