@@ -96,7 +96,7 @@ export const removeItem = (parameter) => {
       const id = parameter.itemId;
       const itemDoc = doc(db, "cart", id);
 
-      if (parameter.item?.quantity <= 1) {
+      if (parameter.item?.quantity < 1) {
         // send request to firestore
         dispatch(cartActions.removeItem(parameter?.item));
         const data = deleteDoc(itemDoc);
