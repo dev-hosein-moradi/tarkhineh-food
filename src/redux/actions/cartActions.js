@@ -138,3 +138,25 @@ export const increaseItem = (parameter) => {
     }
   };
 };
+
+// delete all items in cart function
+export const deleteCartCollection = (parameter) => {
+  return async (dispatch) => {
+    let errorBody = errorNotification(parameter?.caller);
+
+    try {
+      dispatch(cartActions.deleteCollection());
+
+      const collectionRef = collection(db, "cart");
+      const querySnapshot = await getDocs(collectionRef);
+
+      querySnapshot.forEach((doc) => {
+        const docRef = doc.ref;
+        deleteDoc(docRef);
+      });
+    } catch (error) {
+      // push notification
+      dispatch(notificationActions.errorNotification(errorBody));
+    }
+  };
+};

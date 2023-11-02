@@ -67,7 +67,7 @@ const ShoppingCart = ({
 
         {/* main content of menu page */}
         <main className="h-auto py-[16px] px-[20px] max-w-[1024px] mx-auto">
-          <ShoppingCartContent />
+          <ShoppingCartContent setRegisterPop={setRegisterPop} />
         </main>
 
         {/* footer section */}

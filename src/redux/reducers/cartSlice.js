@@ -56,6 +56,9 @@ const cartSlice = createSlice({
         ),
       };
     },
+    deleteCollection(state) {
+      state.cartItems = [];
+    },
   },
 });
 

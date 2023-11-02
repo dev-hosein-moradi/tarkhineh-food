@@ -44,30 +44,27 @@ const ShoppingFoodCard = ({
     dispatch(increaseItem(parameter));
   };
   return (
-    <div className="flex flex-row items-center justify-between bg-gray-1 lg:bg-white lg:border-[1px] border-gray-4 lg:rounded-lg p-2 lg:min-w-[610px]">
+    <div className="flex flex-row-reverse items-center justify-between bg-gray-1 lg:bg-white lg:border-[1px] border-gray-4 lg:rounded-lg p-2 mb-3 mr-1 lg:min-w-[610px]">
       {/* for large view */}
       <img
         alt={name}
         src={imgUrl}
-        className="w-[169px] h-[158px] rounded hidden lg:inline-block"
+        className="w-[169px] h-[150px] rounded hidden lg:inline-block"
       />
 
       <div className="lg:flex flex-col justify-between w-full h-[160px] pr-4 py-2 hidden">
         {/* for large view */}
-        <div className="hidden lg:flex items-center justify-between">
+        <div className="hidden lg:flex flex-row-reverse items-center justify-between">
           <h6 className="font-semibold text-xl leading-5 text-gray-8">
             {name}
           </h6>
-          <span className="cursor-pointer">
-            <SvgTrash width={20} height={20} theme="#417F56" />
-          </span>
         </div>
 
         {/* for large view */}
-        <div className="hidden lg:flex justify-between">
+        <div className="hidden lg:flex flex-row-reverse justify-between">
           <p className="font-normal text-sm text-gray-8">{compounds}</p>
 
-          <span className="flex flex-row">
+          <span className="flex flex-row-reverse">
             <p className="line-through text-gray-5 text-base font-normal ml-1">
               {Number(mainPrice)?.toLocaleString("fa-IR")}
             </p>
@@ -78,7 +75,7 @@ const ShoppingFoodCard = ({
         </div>
 
         {/* for large view */}
-        <div className="hidden lg:flex flex-row-reverse justify-between items-center">
+        <div className="hidden lg:flex flex-row justify-between items-center">
           <span>
             <p dir="rtl" className="font-normal text-xl text-gray-8">
               {Number(discountPrice)?.toLocaleString("fa-IR")} تومان

@@ -1,7 +1,10 @@
 import React, { Fragment, lazy, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ShoppingFoodCard from "./ShoppingFoodCard";
-import { getCartItems } from "../redux/actions/cartActions";
+import {
+  deleteCartCollection,
+  getCartItems,
+} from "../redux/actions/cartActions";
 
 const SvgArrowRight = lazy(() => import("../assets/svg/SvgArrowRight"));
 const SvgShoppingCart = lazy(() => import("../assets/svg/SvgShoppingCart"));
@@ -13,7 +16,7 @@ const SvgUserSolid = lazy(() => import("../assets/svg/SvgUserSolid"));
 
 let initiaReq = true;
 
-const ShoppingCartContent = () => {
+const ShoppingCartContent = ({ setRegisterPop }) => {
   const dispatch = useDispatch();
 
   const [activeLevel, setActiveLevel] = useState(1);
@@ -182,8 +185,8 @@ const ShoppingCartContent = () => {
             {/* section for items list */}
             <section className="lg:border-[1px] border-gray-4 lg:p-6 lg:rounded-lg lg:max-w-[80%]">
               <article
-                dir="rtl"
-                className="overflow-y-auto max-h-[200px] lg:max-h-[285px]"
+                dir="ltr"
+                className="overflow-y-auto max-h-[200px] lg:max-h-[400px]"
               >
                 {cartItems?.map((item) => (
                   <ShoppingFoodCard key={item.id} {...item} />
@@ -195,11 +198,14 @@ const ShoppingCartContent = () => {
 
             <article className="w-full flex flex-col lg:border-[1px] border-gray-4 lg:h-fit lg:p-6 lg:rounded-lg lg:max-w-[30%] mr-auto">
               <div className="lg:flex flex-row items-center justify-between py-2 hidden">
-                <span className="cursor-pointer">
+                <span
+                  onClick={() => dispatch(deleteCartCollection())}
+                  className="cursor-pointer"
+                >
                   <SvgTrash width={20} height={20} theme="#353535" />
                 </span>
                 <p className="font-normal text-sm text-gray-7" dir="rtl">
-                  سبد خرید (4)
+                  سبد خرید ({cartItems.length.toLocaleString("fa-IR")})
                 </p>
               </div>
 
@@ -253,7 +259,10 @@ const ShoppingCartContent = () => {
                 </h3>
               </div>
 
-              <button className="flex flex-row items-center justify-center w-full h-[35px] rounded bg-Primary text-white font-normal text-sm my-2">
+              <button
+                onClick={() => setRegisterPop(true)}
+                className="flex flex-row items-center justify-center w-full h-[35px] rounded bg-Primary text-white font-normal text-sm my-2"
+              >
                 <p>ورود / ثبت‌نام</p>
                 <span className="ml-2">
                   <SvgUserSolid width={18} height={18} theme="#fff" />
