@@ -95,7 +95,6 @@ export const removeItem = (parameter) => {
     try {
       const id = parameter.itemId;
       const itemDoc = doc(db, "cart", id);
-      console.log(parameter);
 
       if (parameter.item?.quantity <= 1) {
         // send request to firestore
@@ -113,6 +112,26 @@ export const removeItem = (parameter) => {
           quantity: parameter?.item.quantity,
         });
       }
+    } catch (error) {
+      // push notification
+      dispatch(notificationActions.errorNotification(errorBody));
+    }
+  };
+};
+
+// increasement function
+export const increaseItem = (parameter) => {
+  return async (dispatch) => {
+    let errorBody = errorNotification(parameter?.caller);
+
+    try {
+      const id = parameter.item.id;
+      const itemDoc = doc(db, "cart", id);
+
+      dispatch(cartActions.increaseQuantity(parameter.item));
+      updateDoc(itemDoc, {
+        quantity: parameter?.item.quantity,
+      });
     } catch (error) {
       // push notification
       dispatch(notificationActions.errorNotification(errorBody));

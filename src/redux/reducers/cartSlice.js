@@ -22,9 +22,6 @@ const cartSlice = createSlice({
 
       // if item exist
       if (existItem) {
-        // const itemQuantity = state.cartItems.filter(
-        //   (item) => item.id === action.payload?.id && item.quantity
-        // );
         const targetItem = state.cartItems.find(
           (item) => item.id === action.payload?.id
         );
@@ -48,6 +45,17 @@ const cartSlice = createSlice({
           };
         }
       }
+    },
+    increaseQuantity(state, action) {
+      console.log(action.payload);
+      return {
+        ...state,
+        cartItems: state.cartItems.map((item) =>
+          item.id === action.payload?.id
+            ? { ...item, quantity: item?.quantity + 1 }
+            : item
+        ),
+      };
     },
   },
 });

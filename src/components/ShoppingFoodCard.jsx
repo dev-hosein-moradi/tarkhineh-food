@@ -1,6 +1,6 @@
 import React, { lazy } from "react";
 import { useDispatch } from "react-redux";
-import { removeItem } from "../redux/actions/cartActions";
+import { increaseItem, removeItem } from "../redux/actions/cartActions";
 const SvgTrash = lazy(() => import("../assets/svg/SvgTrash"));
 const Svg5Star = lazy(() => import("../assets/svg/Svg5Star"));
 const Svg4Star = lazy(() => import("../assets/svg/Svg4Star"));
@@ -25,9 +25,24 @@ const ShoppingFoodCard = ({
         quantity: --quantity,
       },
       itemId: id,
-      caller: "shopFoodCard",
+      caller: {
+        name: "shopFoodCard",
+      },
     };
     dispatch(removeItem(parameter));
+  };
+  const increasmentItem = () => {
+    console.log(1);
+    const parameter = {
+      item: {
+        id,
+        quantity: ++quantity,
+      },
+      caller: {
+        name: "shopFoodCard",
+      },
+    };
+    dispatch(increaseItem(parameter));
   };
   return (
     <div className="flex flex-row items-center justify-between bg-gray-1 lg:bg-white lg:border-[1px] border-gray-4 lg:rounded-lg p-2 lg:min-w-[610px]">
@@ -78,7 +93,12 @@ const ShoppingFoodCard = ({
               -
             </span>
             <span className="mx-2 font-medium text-base">{quantity}</span>
-            <span className="font-bold text-2xl cursor-pointer">+</span>
+            <span
+              onClick={increasmentItem}
+              className="font-bold text-2xl cursor-pointer"
+            >
+              +
+            </span>
           </div>
           <span>
             {rate === 5 ? (
@@ -105,7 +125,12 @@ const ShoppingFoodCard = ({
           <SvgTrash width={20} height={20} theme="#417F56" />
         </span>
         <span className="mx-2 font-medium text-base">{quantity}</span>
-        <span className="font-bold text-2xl cursor-pointer">+</span>
+        <span
+          onClick={increasmentItem}
+          className="font-bold text-2xl cursor-pointer"
+        >
+          +
+        </span>
       </div>
     </div>
   );
