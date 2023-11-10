@@ -50,7 +50,7 @@ const ShoppingCartContent = ({ setRegisterPop }) => {
         item.quantity * (Number(item.mainPrice) - Number(item.discountPrice));
     });
 
-    const formattedPrice = singleDiscount.toLocaleString("fa-IR");
+    const formattedPrice = singleDiscount?.toLocaleString("fa-IR");
 
     return formattedPrice;
   };
@@ -67,7 +67,7 @@ const ShoppingCartContent = ({ setRegisterPop }) => {
         item.quantity * Number(item.mainPrice) -
         item.quantity * (Number(item.mainPrice) - Number(item.discountPrice));
     });
-    const formattedPrice = total.toLocaleString("fa-IR");
+    const formattedPrice = total?.toLocaleString("fa-IR");
 
     return formattedPrice;
   };
@@ -75,6 +75,10 @@ const ShoppingCartContent = ({ setRegisterPop }) => {
     let totalPrice = totalPriceChecker();
     setTotalPrice(totalPrice);
   }, [cartItems]);
+
+  const handleDeleteCartItems = () => {
+    dispatch(deleteCartCollection())
+  }
 
   return (
     <Fragment>
@@ -152,7 +156,7 @@ const ShoppingCartContent = ({ setRegisterPop }) => {
           </div>
         </div>
 
-        <div className="lg:hidden">
+        <div onClick={handleDeleteCartItems} className="lg:hidden cursor-pointer">
           <SvgTrash width={24} height={24} theme="#353535" />
         </div>
       </div>
