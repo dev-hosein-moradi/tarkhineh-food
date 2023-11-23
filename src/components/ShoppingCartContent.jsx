@@ -22,6 +22,7 @@ const ShoppingCartContent = ({ setRegisterPop }) => {
   const [activeLevel, setActiveLevel] = useState(1);
   const [discountAmount, setDiscountAmount] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [itemsCount, setItemsCount] = useState(0);
   const cartItems = useSelector((state) => state.cart.cartItems);
 
   // get list of cart
@@ -77,8 +78,23 @@ const ShoppingCartContent = ({ setRegisterPop }) => {
   }, [cartItems]);
 
   const handleDeleteCartItems = () => {
-    dispatch(deleteCartCollection())
-  }
+    dispatch(deleteCartCollection());
+  };
+
+  // calculate items count in cart
+  const totalItems = () => {
+    let total = 0;
+    cartItems?.map((item) => {
+      total += item.quantity;
+    });
+    return total
+  };
+
+  useEffect(() => {
+    setItemsCount(totalItems());
+    console.log(totalItems());
+  }, [cartItems]);
+
 
   return (
     <Fragment>
@@ -156,7 +172,10 @@ const ShoppingCartContent = ({ setRegisterPop }) => {
           </div>
         </div>
 
-        <div onClick={handleDeleteCartItems} className="lg:hidden cursor-pointer">
+        <div
+          onClick={handleDeleteCartItems}
+          className="lg:hidden cursor-pointer"
+        >
           <SvgTrash width={24} height={24} theme="#353535" />
         </div>
       </div>
@@ -190,7 +209,7 @@ const ShoppingCartContent = ({ setRegisterPop }) => {
             <section className="lg:border-[1px] border-gray-4 lg:p-6 lg:rounded-lg lg:max-w-[80%]">
               <article
                 dir="ltr"
-                className="overflow-y-auto max-h-[200px] lg:max-h-[400px]"
+                className="overflow-y-auto overflow-x-hidden max-h-[200px] lg:max-h-[400px]"
               >
                 {cartItems?.map((item) => (
                   <ShoppingFoodCard key={item.id} {...item} />
@@ -209,7 +228,7 @@ const ShoppingCartContent = ({ setRegisterPop }) => {
                   <SvgTrash width={20} height={20} theme="#353535" />
                 </span>
                 <p className="font-normal text-sm text-gray-7" dir="rtl">
-                  سبد خرید ({cartItems.length.toLocaleString("fa-IR")})
+                  سبد خرید ({itemsCount?.toLocaleString("fa-IR")})
                 </p>
               </div>
 

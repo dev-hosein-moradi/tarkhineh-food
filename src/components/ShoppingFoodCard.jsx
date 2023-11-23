@@ -77,7 +77,7 @@ const ShoppingFoodCard = ({
         {/* for large view */}
         <div className="hidden lg:flex flex-row justify-between items-center">
           <span>
-            <p dir="rtl" className="font-normal text-xl text-gray-8">
+            <p dir="rtl" className="font-normal text-xl text-gray-8 w-[150px]">
               {Number(discountPrice)?.toLocaleString("fa-IR")} تومان
             </p>
           </span>
