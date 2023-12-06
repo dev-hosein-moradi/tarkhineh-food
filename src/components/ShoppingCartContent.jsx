@@ -5,6 +5,7 @@ import {
   deleteCartCollection,
   getCartItems,
 } from "../redux/actions/cartActions";
+import { useNavigate } from "react-router-dom";
 
 const SvgArrowRight = lazy(() => import("../assets/svg/SvgArrowRight"));
 const SvgShoppingCart = lazy(() => import("../assets/svg/SvgShoppingCart"));
@@ -18,6 +19,7 @@ let initiaReq = true;
 
 const ShoppingCartContent = ({ setRegisterPop }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [activeLevel, setActiveLevel] = useState(1);
   const [discountAmount, setDiscountAmount] = useState(0);
@@ -87,14 +89,13 @@ const ShoppingCartContent = ({ setRegisterPop }) => {
     cartItems?.map((item) => {
       total += item.quantity;
     });
-    return total
+    return total;
   };
 
   useEffect(() => {
     setItemsCount(totalItems());
     console.log(totalItems());
   }, [cartItems]);
-
 
   return (
     <Fragment>
@@ -179,6 +180,7 @@ const ShoppingCartContent = ({ setRegisterPop }) => {
           <SvgTrash width={24} height={24} theme="#353535" />
         </div>
       </div>
+
       {/* cart items */}
       <section
         className={`${
@@ -186,7 +188,7 @@ const ShoppingCartContent = ({ setRegisterPop }) => {
           "bg-empty bg-no-repeat bg-center border-[1px] border-gray-4 max-h-[450px]"
         } h-[510px] py-5 flex flex-col items-center justify-center rounded-lg duration-200`}
       >
-        {!cartItems.length ? (
+        { !cartItems.length ? (
           <Fragment>
             <p
               className="text-gray-7 font-normal sm:font-medium text-sm sm:text-base leading-6 duration-200"
@@ -283,7 +285,7 @@ const ShoppingCartContent = ({ setRegisterPop }) => {
               </div>
 
               <button
-                onClick={() => setRegisterPop(true)}
+                onClick={() => navigate('confirm')}
                 className="flex flex-row items-center justify-center w-full h-[35px] rounded bg-Primary text-white font-normal text-sm my-2"
               >
                 <p>ورود / ثبت‌نام</p>

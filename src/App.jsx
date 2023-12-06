@@ -6,6 +6,10 @@ import Main from "./pages/Main";
 import Loading from "./pages/Loading";
 import { ErrorBoundary } from "react-error-boundary";
 import Fallback from "./components/Fallback";
+import ConfirmInformation from "./pages/ConfirmInformation";
+import { useSelector } from "react-redux";
+
+import chacheImage from "./utils/preloadImages";
 
 const BranchMain = lazy(() => import("./pages/BranchMain"));
 const MenuMain = lazy(() => import("./pages/MenuMain"));
@@ -14,6 +18,7 @@ const ShoppingCart = lazy(() => import("./pages/ShoppingCart"));
 
 const App = () => {
   const [darkEffect, setDarkEffect] = useState(false);
+  const branchImage = useSelector((state) => state?.branches?.branchs);
 
   const [menuSwitcher, setMenuSwitcher] = useState(false);
   const [searchPop, setSearchPop] = useState(false);
@@ -21,6 +26,12 @@ const App = () => {
   const [registerPop, setRegisterPop] = useState(false);
 
   const [someKey, setSomeKey] = useState(null);
+
+  useEffect(() => {
+    chacheImage([
+      "https://firebasestorage.googleapis.com/v0/b/tarkhineh-9ade7.appspot.com/o/branchs%2Fvanak.webp4bd02bfd-f809-4675-a6c1-219e83022798?alt=media&token=74ddcb4a-a97c-48fc-97a7-fa80f0ec0b49",
+    ]);
+  }, []);
 
   /* browser router */
   const router = createBrowserRouter([
@@ -96,6 +107,22 @@ const App = () => {
         />
       ),
       errorElement: <h1>404 NOT FOUND!</h1>,
+      children: [
+        {
+          path: "confirm",
+          element: (
+            <ConfirmInformation
+              searchPop={searchPop}
+              setSearchPop={setSearchPop}
+              darkEffect={darkEffect}
+              menuSwitcher={menuSwitcher}
+              setMenuSwitcher={setMenuSwitcher}
+              registerPop={registerPop}
+              setRegisterPop={setRegisterPop}
+            />
+          ),
+        },
+      ],
     },
     {
       path: "/*",

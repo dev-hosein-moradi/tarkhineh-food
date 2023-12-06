@@ -59,7 +59,7 @@ const Agencies = () => {
                 className="w-[160px] min-w-[160px] h-[100px] object-cover rounded-r-md lg:w-[228px] lg:h-[230px] lg:rounded-r-none lg:rounded-t-md lg:group-hover:h-[190px] ease-in-out duration-500 "
                 alt="agency"
                 src={agency?.imageSource}
-                loading="lazy"
+                loading="eager"
               />
               <span className="absolute bottom-2 lg:bottom-[130px] right-2 hover:scale-105 ease-out duration-75 cursor-pointer lg:group-hover:bottom-[240px] lg:group-hover:right-[105px] lg:duration-500 ">
                 <SvgExpand width={20} height={20} />
