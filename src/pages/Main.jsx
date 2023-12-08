@@ -129,7 +129,7 @@ const Main = ({
 
         {/* quick summery about us */}
         <section
-          className={`w-full bg-summery-img  bg-blend-darken bg-no-repeat bg-cover bg-center ${
+          className={`w-full  ${
             darkEffect && "dark-bg-popups"
           } ease-in-out duration-300`}
         >
