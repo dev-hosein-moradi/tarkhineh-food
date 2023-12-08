@@ -47,6 +47,13 @@ const Navbar = ({
     };
   }, [branchs]);
 
+  const handleClickLink = (path, shouldClose) => {
+    navigate(path);
+    window.scrollTo(0, 0);
+
+    shouldClose && setMenuSwitcher(false);
+  };
+
   return (
     <div
       className={`font-estedad flex flex-row-reverse items-center justify-between py-[16px] px-[20px] relative max-w-[1024px] mx-auto`}
@@ -71,10 +78,7 @@ const Navbar = ({
       <div className="hidden md:flex">
         <ul className="flex flex-row-reverse">
           <li
-            onClick={() => {
-              navigate(`/`);
-              window.scrollTo(0, 0);
-            }}
+            onClick={() => handleClickLink(`/`, false)}
             className="lg:mx-1 px-1 cursor-pointer hover:text-Primary text-gray-7 lg:font-bold border-b-white border-b-2 py-1 hover:border-Primary duration-75 ease-out"
           >
             صحفه اصلی
@@ -87,10 +91,9 @@ const Navbar = ({
             <ul className="flex-col text-right bg-gray-1 rounded-md shadow-shadow-2 hidden group-hover:flex absolute -right-10 h-[400px] w-[400px] p-2 z-10">
               {branchs?.map((agency) => (
                 <li
-                  onClick={() => {
-                    navigate(`/branch/${agency?.title}`);
-                    window.scrollTo(0, 0);
-                  }}
+                  onClick={() =>
+                    handleClickLink(`/branch/${agency?.title}`, false)
+                  }
                   key={agency?.id}
                   className="flex flex-row-reverse my-2"
                 >
@@ -111,10 +114,7 @@ const Navbar = ({
           </span>
 
           <span
-            onClick={() => {
-              navigate(`/branch/ekbatan/menu`);
-              window.scrollTo(0, 0);
-            }}
+            onClick={() => handleClickLink(`/branch/ekbatan/menu`, false)}
             className="lg:mx-1 px-1 cursor-pointer hover:text-Primary text-gray-7 lg:font-bold"
           >
             <p className="flex flex-row items-center border-b-white border-b-2 py-1 hover:border-Primary duration-75 ease-out">
@@ -123,30 +123,21 @@ const Navbar = ({
           </span>
 
           <li
-            onClick={() => {
-              navigate(`/brnach/new`);
-              window.scrollTo(0, 0);
-            }}
+            onClick={() => handleClickLink(`/brnach/new`, false)}
             className="lg:mx-1 px-1 cursor-pointer hover:text-Primary text-gray-7 lg:font-bold border-b-white border-b-2 py-1 hover:border-Primary duration-75 ease-out"
           >
             اعطای نمایندگی
           </li>
 
           <li
-            onClick={() => {
-              navigate(`/about-us`);
-              window.scrollTo(0, 0);
-            }}
+            onClick={() => handleClickLink(`/about-us`, false)}
             className="lg:mx-1 px-1 cursor-pointer hover:text-Primary text-gray-7 lg:font-bold border-b-white border-b-2 py-1 hover:border-Primary duration-75 ease-out"
           >
             درباره ما
           </li>
 
           <li
-            onClick={() => {
-              navigate(`/contact-us`);
-              window.scrollTo(0, 0);
-            }}
+            onClick={() => handleClickLink(`/contact-us`, false)}
             className="lg:mx-1 px-1 cursor-pointer hover:text-Primary text-gray-7 lg:font-bold border-b-white border-b-2 py-1 hover:border-Primary duration-75 ease-out"
           >
             تماس با ما
@@ -164,15 +155,18 @@ const Navbar = ({
         </button>
 
         <button
-          onClick={() => {
-            navigate(`/shopping-cart`);
-            window.scrollTo(0, 0);
-          }}
+          onClick={() => handleClickLink(`/shopping-cart`, false)}
           className={`mx-1 ${
             location?.pathname === "/shopping-cart" ? "bg-Primary" : "bg-tint-1"
           } p-1 rounded-[4px] md:p-2`}
         >
-          <SvgShoppingCart width={24} height={24} theme={`${location?.pathname === "/shopping-cart" ? "#ffffff" : "#417F56"}`} />
+          <SvgShoppingCart
+            width={24}
+            height={24}
+            theme={`${
+              location?.pathname === "/shopping-cart" ? "#ffffff" : "#417F56"
+            }`}
+          />
         </button>
 
         <button
@@ -205,10 +199,7 @@ const Navbar = ({
         </div>
         <ul className="px-3">
           <li
-            onClick={() => {
-              navigate(`/`);
-              window.scrollTo(0, 0);
-            }}
+            onClick={() => handleClickLink(`/`, true)}
             className="py-2 my-1 cursor-pointer border-b-[1px] w-full "
           >
             صحفه اصلی
@@ -239,10 +230,9 @@ const Navbar = ({
                 <li
                   key={agency?.id}
                   className="bg-tint-1 px-3 py-2 rounded-md my-1 h-[85px]"
-                  onClick={() => {
-                    navigate(`branch/${agency?.title}`);
-                    window.scrollTo(0, 0);
-                  }}
+                  onClick={() =>
+                    handleClickLink(`branch/${agency?.title}`, true)
+                  }
                 >
                   <h3 className="text-lg font-medium">{agency?.name}</h3>
                   <p className="text-sm font-normal">{agency?.address}</p>
@@ -251,10 +241,7 @@ const Navbar = ({
             </ul>
           </span>
           <span
-            onClick={() => {
-              navigate(`/brnach/ekbatanmenu`);
-              window.scrollTo(0, 0);
-            }}
+            onClick={() => handleClickLink(`/brnach/ekbatanmenu`, false)}
             className={`flex flex-col py-2 my-1 cursor-pointer border-b-[1px] w-full duration-100 ease-out ${
               listSwitcher ? "h-[200px]" : "h-[41px]"
             } `}
@@ -269,30 +256,21 @@ const Navbar = ({
             </p>
           </span>
           <li
-            onClick={() => {
-              navigate(`/branch/new`);
-              window.scrollTo(0, 0);
-            }}
+            onClick={() => handleClickLink(`/branch/new`, true)}
             className="py-2 my-1 cursor-pointer border-b-[1px] w-full "
           >
             اعطای نمایندگی
           </li>
 
           <li
-            onClick={() => {
-              navigate(`/about-us`);
-              window.scrollTo(0, 0);
-            }}
+            onClick={() => handleClickLink(`/about-us`, true)}
             className="py-2 my-1 cursor-pointer border-b-[1px] w-full "
           >
             درباره ما
           </li>
 
           <li
-            onClick={() => {
-              navigate(`/contact-us`);
-              window.scrollTo(0, 0);
-            }}
+            onClick={() => handleClickLink(`/contact-us`, true)}
             className="py-2 my-1 cursor-pointer border-b-[1px] w-full "
           >
             تماس با ما
