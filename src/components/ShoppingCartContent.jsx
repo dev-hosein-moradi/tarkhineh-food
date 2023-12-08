@@ -94,7 +94,6 @@ const ShoppingCartContent = ({ setRegisterPop }) => {
 
   useEffect(() => {
     setItemsCount(totalItems());
-    console.log(totalItems());
   }, [cartItems]);
 
   return (
@@ -185,10 +184,10 @@ const ShoppingCartContent = ({ setRegisterPop }) => {
       <section
         className={`${
           !cartItems.length &&
-          "bg-empty bg-no-repeat bg-center border-[1px] border-gray-4 max-h-[450px]"
+          "bg-empty bg-no-repeat bg-center border-[1px] border-gray-4 max-h-[510px]"
         } h-[510px] py-5 flex flex-col items-center justify-center rounded-lg duration-200`}
       >
-        { !cartItems.length ? (
+        {!cartItems.length ? (
           <Fragment>
             <p
               className="text-gray-7 font-normal sm:font-medium text-sm sm:text-base leading-6 duration-200"
@@ -201,6 +200,10 @@ const ShoppingCartContent = ({ setRegisterPop }) => {
               aria-label="منوی رستوران"
               role="button"
               name="button"
+              onClick={() => {
+                navigate(`/`);
+                window.scrollTo(0, 0);
+              }}
             >
               منوی رستوران
             </button>
@@ -285,7 +288,7 @@ const ShoppingCartContent = ({ setRegisterPop }) => {
               </div>
 
               <button
-                onClick={() => navigate('confirm')}
+                onClick={() => navigate("confirm")}
                 className="flex flex-row items-center justify-center w-full h-[35px] rounded bg-Primary text-white font-normal text-sm my-2"
               >
                 <p>ورود / ثبت‌نام</p>

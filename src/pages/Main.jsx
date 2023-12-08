@@ -1,4 +1,4 @@
-import React, { Fragment, lazy, useState } from "react";
+import React, { Fragment, lazy, useRef, useState } from "react";
 
 import {
   GoogleReCaptcha,
@@ -29,6 +29,8 @@ const Main = ({
   registerPop,
   setRegisterPop,
 }) => {
+  const MenuRef = useRef();
+
   /* handling close and open func for search pop up */
   const handleDisplaySearchPop = () => {
     setSearchPop(false);
@@ -81,7 +83,7 @@ const Main = ({
             darkEffect && "dark-bg-popups"
           } ease-in-out duration-300`}
         >
-          <Hero clientParams={"home"} />
+          <Hero MenuRef={MenuRef} clientParams={"home"} />
         </section>
 
         {/* food category lists */}
@@ -90,7 +92,10 @@ const Main = ({
             darkEffect && "dark-bg-popups"
           } ease-in-out duration-300`}
         >
-          <FoodsCategory handleDisplayBranchPop={handleDisplayBranchPop} />
+          <FoodsCategory
+            MenuRef={MenuRef}
+            handleDisplayBranchPop={handleDisplayBranchPop}
+          />
         </section>
 
         {/* search box pop up in desktop size */}

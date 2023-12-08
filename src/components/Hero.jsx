@@ -4,8 +4,17 @@ import { useParams } from "react-router-dom";
 const SvgArrowLeft = lazy(() => import("../assets/svg/SvgArrowLeft"));
 const SvgArrowRight = lazy(() => import("../assets/svg/SvgArrowRight"));
 
-const Hero = ({ clientParams }) => {
+const Hero = ({ clientParams, MenuRef }) => {
   const params = useParams();
+
+  const scrollToMenu = () => {
+    const titleTopOffset = MenuRef.current?.getBoundingClientRect();
+    console.log(titleTopOffset);
+    scrollTo({
+      top: titleTopOffset.top,
+      behavior: "smooth",
+    });
+  };
   return (
     <>
       <div className="hidden md:flex absolute left-0 mx-3 h-[30px] w-[30px] cursor-pointer">
@@ -40,7 +49,10 @@ const Hero = ({ clientParams }) => {
 
       {/* button */}
       {clientParams !== "menu" && (
-        <button className="bg-Primary px-3 py-2 md:px-4 md:py-3 md:mt-6 rounded-md mt-4 font-normal text-[14px]">
+        <button
+          onClick={scrollToMenu}
+          className="bg-Primary px-3 py-2 md:px-4 md:py-3 md:mt-6 rounded-md mt-4 font-normal text-[14px]"
+        >
           سفارش آنلاین غذا
         </button>
       )}

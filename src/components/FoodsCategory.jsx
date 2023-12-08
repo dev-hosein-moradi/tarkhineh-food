@@ -9,7 +9,7 @@ import { foodCategory } from "../constants";
 const SpinnerLoading = lazy(() => import("./SpinnerLoading"));
 const SvgSearch = lazy(() => import("../assets/svg/SvgSearch"));
 
-const FoodsCategory = ({ handleDisplayBranchPop }) => {
+const FoodsCategory = ({ handleDisplayBranchPop, MenuRef }) => {
   return (
     <div className="w-full max-w-[1024px] mx-auto py-5 flex flex-col items-center">
       {/* search bar */}
@@ -28,7 +28,11 @@ const FoodsCategory = ({ handleDisplayBranchPop }) => {
       {/* list of category */}
       <LazyMotion features={domAnimation}>
         <m.div variants={textVariant()}>
-          <h2 className="font-bold text-gray-8 text-2xl sm:text-[26px] md:my-10 md:text-[30px] mt-8">
+          <h2
+            ref={MenuRef}
+            id="all-menu-title"
+            className="font-bold text-gray-8 text-2xl sm:text-[26px] md:my-10 md:text-[30px] mt-8"
+          >
             منوی رستوران
           </h2>
         </m.div>
