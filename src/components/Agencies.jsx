@@ -1,10 +1,11 @@
-import React, { lazy, useEffect } from "react";
+import React, { Suspense, lazy, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { m, LazyMotion, domAnimation } from "framer-motion";
 import { fadeIn, textVariant } from "../utils/motion";
 import SectionWrapper from "../hoc/sectionWrapper/SectionWrapper";
 import { useDispatch, useSelector } from "react-redux";
 import { getBranchs } from "../redux/actions/branchActions";
+import SpinnerLoading from "./SpinnerLoading";
 
 const SvgExpand = lazy(() => import("../assets/svg/SvgExpand"));
 
@@ -42,13 +43,10 @@ const Agencies = () => {
       </LazyMotion>
       {/* cards */}
       <div className="flex flex-row-reverse flex-wrap w-full items-center justify-center py-5">
-        {branchs?.map((agency) => (
-          <LazyMotion key={agency.id} features={domAnimation}>
-            <m.div
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-              variants={fadeIn("up", "tween", 0.1, 0.7)}
+        <Suspense fallback={<SpinnerLoading size={2} />}>
+          {branchs?.map((agency) => (
+            <div
+              key={agency.id}
               onClick={() => {
                 navigate(`branch/${agency?.title}`);
                 window.scrollTo(0, 0);
@@ -77,9 +75,9 @@ const Agencies = () => {
               <button className=" hidden lg:inline-block w-[128px] h-[35px] text-shade-2 border-[1px] border-shade-2 rounded-md opacity-0 group-hover:opacity-100 ease-in-out duration-500 mx-auto mt-1  ">
                 {"<"} صفحه شعبه
               </button>
-            </m.div>
-          </LazyMotion>
-        ))}
+            </div>
+          ))}
+        </Suspense>
       </div>
     </div>
   );

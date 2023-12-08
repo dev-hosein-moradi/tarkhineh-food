@@ -1,11 +1,12 @@
-import React, { lazy } from "react";
+import React, { Suspense, lazy } from "react";
 
 import SectionWrapper from "../hoc/sectionWrapper/SectionWrapper";
 
 import { LazyMotion, domAnimation, m } from "framer-motion";
-import { textVariant, zoomIn } from "../utils/motion";
+import { textVariant } from "../utils/motion";
 import { foodCategory } from "../constants";
 
+const SpinnerLoading = lazy(() => import("./SpinnerLoading"));
 const SvgSearch = lazy(() => import("../assets/svg/SvgSearch"));
 
 const FoodsCategory = ({ handleDisplayBranchPop }) => {
@@ -35,20 +36,17 @@ const FoodsCategory = ({ handleDisplayBranchPop }) => {
 
       <div className="flex flex-row-reverse justify-center flex-wrap mt-14">
         {/* card */}
-        {foodCategory?.map((cat) => (
-          <LazyMotion key={cat?.id} features={domAnimation}>
-            <m.div
-              initial="hidden"
-              whileInView="show"
-              variants={zoomIn(0, 1)}
-              viewport={{ once: true }}
+        <Suspense fallback={<SpinnerLoading size={2} />}>
+          {foodCategory?.map((cat) => (
+            <div
+              key={cat?.id}
               className={`category-card relative border-Primary border-[1px] rounded-[4px] h-[111px] lg:h-[160px] w-[162px] lg:w-[230px] mx-1 sm:mx-2 my-12 lg:my-20 hover:shadow-card-shadow ease-out duration-75`}
             >
               <img
                 className="object-cover absolute -top-14 lg:-top-24 w-[125px] lg:w-[208px] h-[122px] lg:h-[205px] mx-[11%] lg:mx-[5%]"
                 alt="categ"
                 src={cat?.imageSrc}
-                loading="eager"
+                loading="lazy"
               />
               <button
                 onClick={() => handleDisplayBranchPop(true)}
@@ -56,9 +54,9 @@ const FoodsCategory = ({ handleDisplayBranchPop }) => {
               >
                 {cat?.name}
               </button>
-            </m.div>
-          </LazyMotion>
-        ))}
+            </div>
+          ))}
+        </Suspense>
       </div>
     </div>
   );

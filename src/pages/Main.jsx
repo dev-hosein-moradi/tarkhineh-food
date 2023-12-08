@@ -6,15 +6,16 @@ import {
 } from "react-google-recaptcha-v3";
 
 const Register = lazy(() => import("../components/Register"));
+
 const BranchPopUp = lazy(() => import("../components/BranchPopUp"));
 const SearchPopUp = lazy(() => import("../components/SearchPopUp"));
 const Footer = lazy(() => import("../components/Footer"));
+
 const Agencies = lazy(() => import("../components/Agencies"));
 const QuickAbout = lazy(() => import("../components/QuickAbout"));
 const FoodsCategory = lazy(() => import("../components/FoodsCategory"));
 const Navbar = lazy(() => import("../components/Navbar"));
 const Hero = lazy(() => import("../components/Hero"));
-
 
 const Main = ({
   searchPop,
