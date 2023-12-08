@@ -4,18 +4,22 @@ import {
   GoogleReCaptcha,
   GoogleReCaptchaProvider,
 } from "react-google-recaptcha-v3";
+import Navbar from "../components/Navbar";
+import Hero from "../components/Hero";
+import FoodsCategory from "../components/FoodsCategory";
+import QuickAbout from "../components/QuickAbout";
+import Agencies from "../components/Agencies";
 
-const Register = lazy(() => import("../components/Register"));
+// const Navbar = lazy(() => import("../components/Navbar"));
+// const Hero = lazy(() => import("../components/Hero"));
+// const FoodsCategory = lazy(() => import("../components/FoodsCategory"));
+// const QuickAbout = lazy(() => import("../components/QuickAbout"));
+// const Agencies = lazy(() => import("../components/Agencies"));
 
-const BranchPopUp = lazy(() => import("../components/BranchPopUp"));
 const SearchPopUp = lazy(() => import("../components/SearchPopUp"));
+const BranchPopUp = lazy(() => import("../components/BranchPopUp"));
+const Register = lazy(() => import("../components/Register"));
 const Footer = lazy(() => import("../components/Footer"));
-
-const Agencies = lazy(() => import("../components/Agencies"));
-const QuickAbout = lazy(() => import("../components/QuickAbout"));
-const FoodsCategory = lazy(() => import("../components/FoodsCategory"));
-const Navbar = lazy(() => import("../components/Navbar"));
-const Hero = lazy(() => import("../components/Hero"));
 
 const Main = ({
   searchPop,
