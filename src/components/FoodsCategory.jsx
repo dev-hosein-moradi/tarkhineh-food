@@ -1,6 +1,7 @@
 import React, { lazy } from "react";
 
 import SectionWrapper from "../hoc/sectionWrapper/SectionWrapper";
+
 import { LazyMotion, domAnimation, m } from "framer-motion";
 import { textVariant, zoomIn } from "../utils/motion";
 import { foodCategory } from "../constants";
@@ -47,7 +48,7 @@ const FoodsCategory = ({ handleDisplayBranchPop }) => {
                 className="object-cover absolute -top-14 lg:-top-24 w-[125px] lg:w-[208px] h-[122px] lg:h-[205px] mx-[11%] lg:mx-[5%]"
                 alt="categ"
                 src={cat?.imageSrc}
-                loading="lazy"
+                loading="eager"
               />
               <button
                 onClick={() => handleDisplayBranchPop(true)}

@@ -9,7 +9,6 @@ import Fallback from "./components/Fallback";
 import ConfirmInformation from "./pages/ConfirmInformation";
 import { useSelector } from "react-redux";
 
-import chacheImage from "./utils/preloadImages";
 
 const BranchMain = lazy(() => import("./pages/BranchMain"));
 const MenuMain = lazy(() => import("./pages/MenuMain"));
@@ -27,11 +26,7 @@ const App = () => {
 
   const [someKey, setSomeKey] = useState(null);
 
-  useEffect(() => {
-    chacheImage([
-      "https://firebasestorage.googleapis.com/v0/b/tarkhineh-9ade7.appspot.com/o/branchs%2Fvanak.webp4bd02bfd-f809-4675-a6c1-219e83022798?alt=media&token=74ddcb4a-a97c-48fc-97a7-fa80f0ec0b49",
-    ]);
-  }, []);
+
 
   /* browser router */
   const router = createBrowserRouter([

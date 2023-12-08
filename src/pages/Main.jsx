@@ -15,6 +15,7 @@ const FoodsCategory = lazy(() => import("../components/FoodsCategory"));
 const Navbar = lazy(() => import("../components/Navbar"));
 const Hero = lazy(() => import("../components/Hero"));
 
+
 const Main = ({
   searchPop,
   setSearchPop,
