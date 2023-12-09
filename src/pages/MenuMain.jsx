@@ -1,94 +1,14 @@
 import React, { Fragment, lazy } from "react";
+import { PageWrapper } from "../hoc";
 
-const Register = lazy(() => import("../components/Register"));
-const Navbar = lazy(() => import("../components/Navbar"));
-const Hero = lazy(() => import("../components/Hero"));
-const SearchPopUp = lazy(() => import("../components/SearchPopUp"));
-const Footer = lazy(() => import("../components/Footer"));
 const MenuContent = lazy(() => import("../components/MenuContent"));
 
-const MenuMain = ({
-  searchPop,
-  setSearchPop,
-  darkEffect,
-  menuSwitcher,
-  setMenuSwitcher,
-  registerPop,
-  setRegisterPop,
-}) => {
-  /* handling close and open func for search pop up */
-  const handleDisplaySearchPop = () => {
-    setSearchPop(false);
-  };
-
-  /* handling close and open func for register pop up */
-  const handleDisplayRegisterPop = () => {
-    setRegisterPop(false);
-  };
-
+const MenuMain = () => {
   return (
     <Fragment>
-      <section className={`${darkEffect && "dark-bg-popups"} font-estedad`}>
-        <Navbar
-          menuSwitcher={menuSwitcher}
-          setMenuSwitcher={setMenuSwitcher}
-          searchPop={searchPop}
-          setSearchPop={setSearchPop}
-          darkEffect={darkEffect}
-          registerPop={registerPop}
-          setRegisterPop={setRegisterPop}
-        />
-      </section>
-
-      {/* main content */}
-      <div className="relative font-estedad">
-        {/* register pop up section */}
-        <section
-          className={`w-[100dvw] h-[100dvh] bg-white absolute left-0 -top-[72px] z-10 ${
-            registerPop
-              ? "scale-100 opacity-100 pointer-events-auto"
-              : "scale-0 opacity-0 pointer-events-none"
-          } ease-in-out duration-300 `}
-        >
-          <Register handleDisplayRegisterPop={handleDisplayRegisterPop} />
-        </section>
-
-        {/* hero */}
-        <section
-          className={`w-full h-[400px] bg-hero-slider bg-blend-darken bg-no-repeat bg-cover bg-center flex flex-col items-center justify-center text-white relative ${
-            darkEffect && "dark-bg-popups"
-          } ease-in-out duration-300`}
-        >
-          <Hero clientParams={"menu"} />
-        </section>
-
-        {/* search box pop up in desktop size */}
-        <section
-          className={`absolute top-[12%] search-popup w-[600px] h-[253px] shadow-shadow-12 ${
-            searchPop
-              ? "scale-100 opacity-100 pointer-events-auto"
-              : "scale-0 opacity-0 pointer-events-none"
-          } ease-in-out duration-300`}
-        >
-          <SearchPopUp handleDisplaySearchPop={handleDisplaySearchPop} />
-        </section>
-        
-        {/* main content of menu page */}
-        <main>
-          <MenuContent />
-        </main>
-
-        {/* footer section */}
-        <section
-          className={`w-full bg-footer-img bg-blend-darken bg-no-repeat bg-cover bg-center ${
-            darkEffect && "dark-bg-popups"
-          } ease-in-out duration-300`}
-        >
-          <Footer />
-        </section>
-      </div>
+      <MenuContent />
     </Fragment>
   );
 };
 
-export default MenuMain;
+export default PageWrapper(MenuMain, "MenuMain", "menu");

@@ -1,2 +1,3 @@
 import SectionWrapper from "./sectionWrapper/SectionWrapper";
-export { SectionWrapper };
+import PageWrapper from "./pageWrapper/PageWrapper";
+export { SectionWrapper, PageWrapper };

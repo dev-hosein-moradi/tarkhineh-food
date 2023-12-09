@@ -43,7 +43,7 @@ const CodeReducer = (state, action) => {
   return { value: "", isValid: false };
 };
 
-const Register = ({ handleDisplayRegisterPop }) => {
+const Register = ({ handleDisplayRegisterPop, setRegisterPop }) => {
   /* state for phone number */
   const [phoneState, dispatchPhone] = useReducer(phoneReducer, {
     value: "",
@@ -178,7 +178,7 @@ const Register = ({ handleDisplayRegisterPop }) => {
       <div className="w-full h-[80px] flex flex-row items-start justify-between">
         <span
           className="w-[35px] cursor-pointer"
-          onClick={() => handleDisplayRegisterPop()}
+          onClick={() => setRegisterPop(false)}
         >
           <SvgCloseSolid width={30} height={30} />
         </span>
