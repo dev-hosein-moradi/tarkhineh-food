@@ -12,15 +12,15 @@ const SvgMenuBoard = lazy(() => import("../assets/svg/SvgMenuBoard"));
 const QuickAbout = () => {
   const navigate = useNavigate();
   return (
-    <div className="w-full h-[420px] md:h-[280px] py-[16px] px-[20px] flex flex-col md:flex-row-reverse md:items-center md:justify-between max-w-[1024px] mx-auto text-black">
+    <div className="w-full h-[420px] md:h-[280px] py-[16px] px-[20px] flex flex-col md:flex-row-reverse md:items-center md:justify-between max-w-[1024px] mx-auto">
       <div className="text-white text-right flex flex-col md:w-[50%] lg:w-[45%]">
         <motion.div variants={fadeIn("down", "tween", 0.1, 0.5)}>
-          <h2 className="font-normal text-xl text-blue-900 mb-4">
+          <h2 className="font-normal text-xl mb-4">
             رستوران‌های زنجیره‌ای ترخینه
           </h2>
         </motion.div>
 
-        <p className="font-normal text-[13px] sm:text-[15px] md:text-sm leading-6 md:leading-7 break-normal text-black">
+        <p className="font-normal text-[13px] sm:text-[15px] md:text-sm leading-6 md:leading-7 break-normal ">
           مهمان‌نوازی یکی از مهم‌ترین مشخصه‌های ایرانیان است و باعث افتخار ماست
           که بیش از 20 سال است خدمت‌گزار مردم شریف ایران هستیم. ما در
           رستوران‌های زنجیره‌ای ترخینه همواره تلاش کردیم که در محیطی اصیل بر
