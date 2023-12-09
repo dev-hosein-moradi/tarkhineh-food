@@ -45,7 +45,11 @@ const Agencies = () => {
       <div className="flex flex-row-reverse flex-wrap w-full items-center justify-center py-5">
         <Suspense fallback={<SpinnerLoading size={2} />}>
           {branchs?.map((agency) => (
-            <div
+            <m.div
+             initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              variants={fadeIn("up", "tween", 0, 0.3)}
               key={agency.id}
               onClick={() => {
                 navigate(`branch/${agency?.title}`);
@@ -75,7 +79,7 @@ const Agencies = () => {
               <button className=" hidden lg:inline-block w-[128px] h-[35px] text-shade-2 border-[1px] border-shade-2 rounded-md opacity-0 group-hover:opacity-100 ease-in-out duration-500 mx-auto mt-1  ">
                 {"<"} صفحه شعبه
               </button>
-            </div>
+            </m.div>
           ))}
         </Suspense>
       </div>
