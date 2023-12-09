@@ -47,10 +47,13 @@ const FoodsCategory = ({ handleDisplayBranchPop, MenuRef }) => {
               className={`category-card relative border-Primary border-[1px] rounded-[4px] h-[111px] lg:h-[160px] w-[162px] lg:w-[230px] mx-1 sm:mx-2 my-12 lg:my-20 hover:shadow-card-shadow ease-out duration-75`}
             >
               <img
-                className="object-cover absolute -top-14 lg:-top-24 w-[125px] lg:w-[208px] h-[122px] lg:h-[205px] mx-[11%] lg:mx-[5%]"
+                className="object-cover absolute -top-14 lg:-top-24 w-[125px] lg:w-[208px] h-[122px] lg:h-[205px] mx-[11%] lg:mx-[5%] bg-gray-100 duration-200"
                 alt="categ"
                 src={cat?.imageSrc}
                 loading="lazy"
+                onLoad={(image) => {
+                  image.target.classList.remove("bg-gray-100");
+                }}
               />
               <button
                 onClick={() => handleDisplayBranchPop(true)}
