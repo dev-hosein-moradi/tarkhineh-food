@@ -30,22 +30,22 @@ const Navbar = ({
   const [listSwitcher, setListSwitcher] = useState(false);
 
   // get list of branchs
-  useEffect(() => {
-    if (initialRequest) {
-      if (!branchs.length) {
-        const parameter = {
-          caller: {
-            name: "navbar",
-          },
-        };
-        dispatch(getBranchs(parameter));
-      }
-    }
+  // useEffect(() => {
+  //   if (initialRequest) {
+  //     if (!branchs.length) {
+  //       const parameter = {
+  //         caller: {
+  //           name: "navbar",
+  //         },
+  //       };
+  //       dispatch(getBranchs(parameter));
+  //     }
+  //   }
 
-    return () => {
-      initialRequest = false;
-    };
-  }, [branchs]);
+  //   return () => {
+  //     initialRequest = false;
+  //   };
+  // }, [branchs]);
 
   const handleClickLink = (path, shouldClose) => {
     navigate(path);

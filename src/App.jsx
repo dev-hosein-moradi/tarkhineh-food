@@ -2,14 +2,13 @@ import React, { Suspense, lazy, useEffect, useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 
-import Main from "./pages/Main";
-import Loading from "./pages/Loading";
 import { ErrorBoundary } from "react-error-boundary";
-import Fallback from "./components/Fallback";
-import ConfirmInformation from "./pages/ConfirmInformation";
 import { useSelector } from "react-redux";
 
-
+const Main = lazy(() => import("./pages/Main"));
+const Loading = lazy(() => import("./pages/Loading"));
+const ConfirmInformation = lazy(() => import("./pages/ConfirmInformation"));
+const Fallback = lazy(() => import("./components/Fallback"));
 const BranchMain = lazy(() => import("./pages/BranchMain"));
 const MenuMain = lazy(() => import("./pages/MenuMain"));
 const Admin = lazy(() => import("./pages/admin/Admin"));
@@ -25,8 +24,6 @@ const App = () => {
   const [registerPop, setRegisterPop] = useState(false);
 
   const [someKey, setSomeKey] = useState(null);
-
-
 
   /* browser router */
   const router = createBrowserRouter([
@@ -49,81 +46,81 @@ const App = () => {
       ),
       errorElement: <h1>404 NOT FOUND!</h1>,
     },
-    {
-      path: "/branch/:branchName",
-      element: (
-        <BranchMain
-          searchPop={searchPop}
-          setSearchPop={setSearchPop}
-          branchPop={branchPop}
-          setBranchPop={setBranchPop}
-          darkEffect={darkEffect}
-          menuSwitcher={menuSwitcher}
-          setMenuSwitcher={setMenuSwitcher}
-          registerPop={registerPop}
-          setRegisterPop={setRegisterPop}
-          someKey={someKey}
-        />
-      ),
-      errorElement: <h1>404 NOT FOUND!</h1>,
-    },
-    {
-      path: "/branch/:branchName/menu",
-      element: (
-        <MenuMain
-          searchPop={searchPop}
-          setSearchPop={setSearchPop}
-          darkEffect={darkEffect}
-          menuSwitcher={menuSwitcher}
-          setMenuSwitcher={setMenuSwitcher}
-          registerPop={registerPop}
-          setRegisterPop={setRegisterPop}
-          someKey={someKey}
-        />
-      ),
-      errorElement: <h1>404 NOT FOUND!</h1>,
-    },
-    {
-      path: "/admin",
-      element: <Admin />,
-      errorElement: <h1>404 NOT FOUND!</h1>,
-    },
-    {
-      path: "/shopping-cart",
-      element: (
-        <ShoppingCart
-          searchPop={searchPop}
-          setSearchPop={setSearchPop}
-          darkEffect={darkEffect}
-          menuSwitcher={menuSwitcher}
-          setMenuSwitcher={setMenuSwitcher}
-          registerPop={registerPop}
-          setRegisterPop={setRegisterPop}
-        />
-      ),
-      errorElement: <h1>404 NOT FOUND!</h1>,
-      children: [
-        {
-          path: "confirm",
-          element: (
-            <ConfirmInformation
-              searchPop={searchPop}
-              setSearchPop={setSearchPop}
-              darkEffect={darkEffect}
-              menuSwitcher={menuSwitcher}
-              setMenuSwitcher={setMenuSwitcher}
-              registerPop={registerPop}
-              setRegisterPop={setRegisterPop}
-            />
-          ),
-        },
-      ],
-    },
-    {
-      path: "/*",
-      element: <h1>you dont have permission to visit this page!</h1>,
-      errorElement: <h1>404 NOT FOUND!</h1>,
-    },
+    // {
+    //   path: "/branch/:branchName",
+    //   element: (
+    //     <BranchMain
+    //       searchPop={searchPop}
+    //       setSearchPop={setSearchPop}
+    //       branchPop={branchPop}
+    //       setBranchPop={setBranchPop}
+    //       darkEffect={darkEffect}
+    //       menuSwitcher={menuSwitcher}
+    //       setMenuSwitcher={setMenuSwitcher}
+    //       registerPop={registerPop}
+    //       setRegisterPop={setRegisterPop}
+    //       someKey={someKey}
+    //     />
+    //   ),
+    //   errorElement: <h1>404 NOT FOUND!</h1>,
+    // },
+    // {
+    //   path: "/branch/:branchName/menu",
+    //   element: (
+    //     <MenuMain
+    //       searchPop={searchPop}
+    //       setSearchPop={setSearchPop}
+    //       darkEffect={darkEffect}
+    //       menuSwitcher={menuSwitcher}
+    //       setMenuSwitcher={setMenuSwitcher}
+    //       registerPop={registerPop}
+    //       setRegisterPop={setRegisterPop}
+    //       someKey={someKey}
+    //     />
+    //   ),
+    //   errorElement: <h1>404 NOT FOUND!</h1>,
+    // },
+    // {
+    //   path: "/admin",
+    //   element: <Admin />,
+    //   errorElement: <h1>404 NOT FOUND!</h1>,
+    // },
+    // {
+    //   path: "/shopping-cart",
+    //   element: (
+    //     <ShoppingCart
+    //       searchPop={searchPop}
+    //       setSearchPop={setSearchPop}
+    //       darkEffect={darkEffect}
+    //       menuSwitcher={menuSwitcher}
+    //       setMenuSwitcher={setMenuSwitcher}
+    //       registerPop={registerPop}
+    //       setRegisterPop={setRegisterPop}
+    //     />
+    //   ),
+    //   errorElement: <h1>404 NOT FOUND!</h1>,
+    //   children: [
+    //     {
+    //       path: "confirm",
+    //       element: (
+    //         <ConfirmInformation
+    //           searchPop={searchPop}
+    //           setSearchPop={setSearchPop}
+    //           darkEffect={darkEffect}
+    //           menuSwitcher={menuSwitcher}
+    //           setMenuSwitcher={setMenuSwitcher}
+    //           registerPop={registerPop}
+    //           setRegisterPop={setRegisterPop}
+    //         />
+    //       ),
+    //     },
+    //   ],
+    // },
+    // {
+    //   path: "/*",
+    //   element: <h1>you dont have permission to visit this page!</h1>,
+    //   errorElement: <h1>404 NOT FOUND!</h1>,
+    // },
   ]);
 
   useEffect(() => {

@@ -24,7 +24,8 @@ export const getBranchs = (parameter) => {
 
     try {
       // get collection data from firestore
-      const data = await getDocs(branchsCollectionRef);
+      // const data = await getDocs(branchsCollectionRef);
+      const data = [];
       // filter response to find right data from response
       const filteredData = data?.docs?.map((doc) => ({
         ...doc.data(),
@@ -32,6 +33,7 @@ export const getBranchs = (parameter) => {
       }));
 
       if (data) {
+        console.log(data);
         // call slice reducer to work on recived data
         dispatch(branchActions.getBranchs(filteredData));
       } else {

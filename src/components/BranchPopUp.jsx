@@ -14,22 +14,22 @@ const BranchPopUp = ({ handleDisplayBranchPop, handleSwitchDarkEffect }) => {
 
   const branchs = useSelector((state) => state.branchs.branchs);
 
-  useEffect(() => {
-    if (initialRequest) {
-      if (!branchs.length) {
-        const parameter = {
-          caller: {
-            name: "branchPopUp",
-          },
-        };
-        dispatch(getBranchs(parameter));
-      }
-    }
+  // useEffect(() => {
+  //   if (initialRequest) {
+  //     if (!branchs.length) {
+  //       const parameter = {
+  //         caller: {
+  //           name: "branchPopUp",
+  //         },
+  //       };
+  //       dispatch(getBranchs(parameter));
+  //     }
+  //   }
 
-    return () => {
-      initialRequest = false;
-    };
-  }, []);
+  //   return () => {
+  //     initialRequest = false;
+  //   };
+  // }, []);
 
   return (
     <div className="flex flex-col items-center w-full">

@@ -6,6 +6,7 @@ import { LazyMotion, domAnimation, m } from "framer-motion";
 import { textVariant } from "../utils/motion";
 import { foodCategory } from "../constants";
 
+
 const SpinnerLoading = lazy(() => import("./SpinnerLoading"));
 const SvgSearch = lazy(() => import("../assets/svg/SvgSearch"));
 
