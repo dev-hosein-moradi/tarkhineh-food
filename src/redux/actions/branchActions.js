@@ -24,8 +24,7 @@ export const getBranchs = (parameter) => {
 
     try {
       // get collection data from firestore
-      // const data = await getDocs(branchsCollectionRef);
-      const data = [];
+      const data = await getDocs(branchsCollectionRef);
       // filter response to find right data from response
       const filteredData = data?.docs?.map((doc) => ({
         ...doc.data(),

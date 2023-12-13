@@ -5,10 +5,10 @@ import { lazy } from "react";
 // import ekbatan from "../assets/image/agency/ekbatan.webp";
 // import vanak from "../assets/image/agency/vanak.webp";
 
-// import Categ1 from "../assets/image/categ1.svg";
-// import Categ2 from "../assets/image/categ2.svg";
-// import Categ3 from "../assets/image/categ3.svg";
-// import Categ4 from "../assets/image/categ4.svg";
+import Categ1 from "../assets/image/categ1.svg";
+import Categ2 from "../assets/image/categ2.svg";
+import Categ3 from "../assets/image/categ3.svg";
+import Categ4 from "../assets/image/categ4.svg";
 
 // import sf1 from "../assets/image/sf1.svg";
 // import sf2 from "../assets/image/sf2.svg";
@@ -99,22 +99,22 @@ const foodCategory = [
   {
     id: 1,
     name: "غذای اصلی",
-    // imageSrc: Categ1
+    imageSrc: Categ1
   },
   {
     id: 2,
     name: "پیش غذا",
-    // imageSrc: Categ2
+    imageSrc: Categ2
   },
   {
     id: 3,
     name: "دسر",
-    // imageSrc: Categ3
+    imageSrc: Categ3
   },
   {
     id: 4,
     name: "نوشیدنی",
-    // imageSrc: Categ4
+    imageSrc: Categ4
   },
 ];
 
